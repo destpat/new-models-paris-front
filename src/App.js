@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import logo from './logo.png';
 import { Route, Link, Switch} from "react-router-dom";
 import Register from './components/register/Register';
-import Home from './components/home/home';
 
 const Header = styled.header`
   background-color: #fafafa;
