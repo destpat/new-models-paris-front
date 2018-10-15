@@ -5,7 +5,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const renderSelectField = ({ datas, input, label, meta, helperText, classes, style }) => {
-  let displayError = meta.submitFailed && meta.error;
+  let displayError = meta.submitFailed && meta.error ? true : false;
   return (
     <FormControl style={style}>
       <InputLabel>{label}</InputLabel>

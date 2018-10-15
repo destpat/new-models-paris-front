@@ -6,7 +6,7 @@ const initialState = {
   value: 1
 }
 
-const inforamtion = (state = initialState, action) => {
+const Information = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENTE:
       return {
@@ -18,4 +18,4 @@ const inforamtion = (state = initialState, action) => {
   }
 }
 
-export default inforamtion
+export default Information

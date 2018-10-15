@@ -3,7 +3,6 @@ export const getDay = () => {
   for (let i = 1; i < 32; i++) {
     day.push({name: i, value: i})
   }
-  console.log(day);
   return day
 }
 
@@ -13,7 +12,6 @@ export const getYears = () => {
   for (let i = currentYear; i > 1930; i--) {
     day.push({name: i, value: i})
   }
-  console.log(day);
   return day
 }
 

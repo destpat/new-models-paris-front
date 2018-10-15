@@ -8,7 +8,8 @@ import {getDay, getYears, month} from '../../utilis/date'
 import validate from './validate'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
-import { StyledButton } from '../../utilis/styled'
+import NextButton from '../../utilis/NextButton'
+import { withRouter } from 'react-router-dom'
 
 const Title = styled.h2`
   text-align: center;
@@ -22,11 +23,6 @@ const TitleHelper = styled.p`
 `
 
 const Form = styled.form`
-  margin-top: 5%;
-`
-
-const ValidateButtonContainer = styled.div`
-  text-align: center;
   margin-top: 5%;
 `
 
@@ -91,9 +87,7 @@ class Inforamtion extends Component {
           </Grid>
         </Grid>
       </Grid>
-      <ValidateButtonContainer>
-        <StyledButton type="submit"> Valider </StyledButton>
-      </ValidateButtonContainer>
+      <NextButton/>
     </Form>
     )
   }
@@ -110,7 +104,9 @@ const mapDispatchToProps = dispatch => ({
 Inforamtion = reduxForm({
   form: 'inforamtion',
   validate,
-  onSubmit: () => {console.log('submit');},
+  onSubmit: (values, dispatch, props) => {
+    props.history.push(`contact`)
+  },
 })(Inforamtion)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inforamtion);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Inforamtion));
