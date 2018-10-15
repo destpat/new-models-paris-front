@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../utilis/renderTextField'
+import renderSelectField from '../../utilis/renderSelectField'
 import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
 import styled from 'styled-components'
 import NextButton from '../../utilis/NextButton'
 import validate from './validate'
 import { withRouter } from 'react-router-dom'
+import {eyesColors, hairsColors} from './descriptionSelectValue'
 
 const Title = styled.h2`
   text-align: center;
@@ -31,16 +34,17 @@ class Contact extends Component {
         <Grid container item justify="center" >
           <Grid item xs={12} md={3}>
             <TitleHelper>
-              Nous avons besoin de ton contact afin que tu soit informer le plus
-              rapidement possible si nous avons une figuration a te proposer
+              Une petite description pour les prodcutions
             </TitleHelper>
           </Grid>
         </Grid>
         <Grid container spacing={24} direction="column">
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={12} md={3}>
-              <Field name="phone"
-                     label="Téléphone"
+              <Field name="height"
+                     label="Taille"
+                     type="number"
+                     inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment>}}
                      style={{width:'100%'}}
                      component={renderTextField}/>
             </Grid>
@@ -48,20 +52,22 @@ class Contact extends Component {
           <Grid container item spacing={0} justify="center">
             <Grid item xs={12} md={3}>
               <Field
-                name="mail"
-                label="Email"
                 style={{width:'100%'}}
-                component={renderTextField}
+                name="hairsColors"
+                label="Couleurs des cheveux"
+                datas={hairsColors}
+                component={renderSelectField}
               />
             </Grid>
           </Grid>
           <Grid container item spacing={0} justify="center">
             <Grid item xs={12} md={3}>
               <Field
-                name="city"
-                label="Ville"
                 style={{width:'100%'}}
-                component={renderTextField}
+                name="eyesColors"
+                label="Couleur des yeux"
+                datas={eyesColors}
+                component={renderSelectField}
               />
             </Grid>
           </Grid>
@@ -76,7 +82,7 @@ Contact = reduxForm({
   form: 'Information',
   validate,
   onSubmit: (values, dispatch, props) => {
-    props.history.push(`description`)
+    props.history.push(`contact`)
   },
 })(Contact)
 

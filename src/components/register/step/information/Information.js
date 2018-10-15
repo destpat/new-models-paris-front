@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { increment } from './action'
 import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../utilis/renderTextField'
 import renderSelectField from '../../utilis/renderSelectField'
-import {getDay, getYears, month} from '../../utilis/date'
+import {getDay, getYears, month} from './dateSelectValue'
 import validate from './validate'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
@@ -26,7 +24,7 @@ const Form = styled.form`
   margin-top: 5%;
 `
 
-class Inforamtion extends Component {
+class Information extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -93,20 +91,12 @@ class Inforamtion extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  value: state.inforamtion.value
-})
-
-const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(increment())
-})
-
-Inforamtion = reduxForm({
-  form: 'inforamtion',
+Information = reduxForm({
+  form: 'information',
   validate,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`contact`)
   },
-})(Inforamtion)
+})(Information)
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Inforamtion));
+export default withRouter(Information);
