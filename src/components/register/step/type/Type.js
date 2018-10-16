@@ -78,7 +78,8 @@ class Type extends Component {
 }
 
 Type = reduxForm({
-  form: 'Information',
+  form: 'typeForm',
+  destroyOnUnmount: false,
   validate,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`photo`)

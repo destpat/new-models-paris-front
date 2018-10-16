@@ -4,6 +4,7 @@ import Informations from './step/information/Information';
 import Contact from './step/contact/Contact';
 import Description from './step/description/Description';
 import Type from './step/type/Type';
+import Photo from './step/photo/Photo';
 import HomeRegistration from './HomeRegistration';
 
 const Register = ({match}) => {
@@ -14,6 +15,7 @@ const Register = ({match}) => {
       <Route path={`${match.url}/contact`} component={Contact}/>
       <Route path={`${match.url}/description`} component={Description}/>
       <Route path={`${match.url}/type`} component={Type}/>
+      <Route path={`${match.url}/photo`} component={Photo}/>
     </div>
   )
 }

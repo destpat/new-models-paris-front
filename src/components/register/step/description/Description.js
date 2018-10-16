@@ -32,11 +32,9 @@ class Contact extends Component {
       <Form onSubmit={handleSubmit}>
         <Title> Inscription</Title>
         <Grid container item justify="center" >
-          <Grid item xs={12} md={3}>
-            <TitleHelper>
-              Une petite description pour les prodcutions
-            </TitleHelper>
-          </Grid>
+          <TitleHelper>
+            Une petite description pour les prodcutions
+          </TitleHelper>
         </Grid>
         <Grid container spacing={24} direction="column">
           <Grid container item spacing={0} justify="center" >
@@ -79,8 +77,9 @@ class Contact extends Component {
 }
 
 Contact = reduxForm({
-  form: 'Information',
+  form: 'descriptionForm',
   validate,
+  destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`type`)
   },

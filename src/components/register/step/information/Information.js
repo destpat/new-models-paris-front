@@ -32,7 +32,7 @@ class Information extends Component {
       <Title> Inscription</Title>
       <Grid container item justify="center" >
         <Grid item xs={12} md={3}>
-          <TitleHelper> Afin de créer ton profil nous avons besoin de créer quelques informations </TitleHelper>
+          <TitleHelper> Afin de créer ton profil nous avons besoin de quelques informations </TitleHelper>
         </Grid>
       </Grid>
       <Grid container spacing={24} direction="column">
@@ -92,8 +92,9 @@ class Information extends Component {
 }
 
 Information = reduxForm({
-  form: 'information',
+  form: 'informationForm',
   validate,
+  destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`contact`)
   },

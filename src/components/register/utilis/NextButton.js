@@ -17,7 +17,7 @@ const ValidateButtonContainer = styled.div`
   margin-top: 5%;
 `
 
-const NextButton = ({ history, valid, path}) => (
+const NextButton = ({name}) => (
   <ValidateButtonContainer>
     <StyledButton
       type='submit'>

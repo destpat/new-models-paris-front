@@ -73,8 +73,9 @@ class Contact extends Component {
 }
 
 Contact = reduxForm({
-  form: 'Information',
+  form: 'contactForm',
   validate,
+  destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`description`)
   },
