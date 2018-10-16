@@ -82,7 +82,7 @@ Contact = reduxForm({
   form: 'Information',
   validate,
   onSubmit: (values, dispatch, props) => {
-    props.history.push(`contact`)
+    props.history.push(`type`)
   },
 })(Contact)
 
