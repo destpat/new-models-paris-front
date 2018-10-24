@@ -12,9 +12,8 @@ const Title = styled.h2`
 `
 
 const TitleHelper = styled.p`
-  text-align: center;
-  width: 40%;
-  font-weight: 100;
+  font-weight: 200;
+  text-align: center
 `
 
 export const StyledButton = styled(Button)`
@@ -37,16 +36,18 @@ class HomeRegistration extends Component {
     return (
       <div>
         <Title> Devenir modele </Title>
-        <Grid container item justify="center" >
+        <Grid container item justify="center">
+        <Grid item md={6} xs={11}>
           <TitleHelper>
             Hey bienvenue dans notre agence de modele, nous allons créer ton profile
             afin que celui ci puisse être consulter par les productions
           </TitleHelper>
         </Grid>
+        </Grid>
         <ValidateButtonContainer>
           <StyledButton
             type='submit'
-            onClick={() => history.push(`${match.url}information`)}>
+            onClick={() => history.push(`${match.url}/information`)}>
             C'est partie
           </StyledButton>
         </ValidateButtonContainer>

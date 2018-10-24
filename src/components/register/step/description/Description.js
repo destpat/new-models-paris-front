@@ -30,7 +30,7 @@ class Contact extends Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Inscription</Title>
+        <Title> Description </Title>
         <Grid container item justify="center" >
           <TitleHelper>
             Une petite description pour les prodcutions
@@ -38,7 +38,7 @@ class Contact extends Component {
         </Grid>
         <Grid container spacing={24} direction="column">
           <Grid container item spacing={0} justify="center" >
-            <Grid item xs={12} md={3}>
+            <Grid item xs={11} md={3}>
               <Field name="height"
                      label="Taille"
                      type="number"
@@ -48,7 +48,7 @@ class Contact extends Component {
             </Grid>
           </Grid>
           <Grid container item spacing={0} justify="center">
-            <Grid item xs={12} md={3}>
+            <Grid item xs={11} md={3}>
               <Field
                 style={{width:'100%'}}
                 name="hairsColors"
@@ -59,7 +59,7 @@ class Contact extends Component {
             </Grid>
           </Grid>
           <Grid container item spacing={0} justify="center">
-            <Grid item xs={12} md={3}>
+            <Grid item xs={11} md={3}>
               <Field
                 style={{width:'100%'}}
                 name="eyesColors"

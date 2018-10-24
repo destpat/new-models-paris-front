@@ -33,26 +33,26 @@ class Contact extends Component {
             </TitleHelper>
         </Grid>
         <Grid container spacing={16}>
-         <Grid item xs={12}>
-           <Grid container justify="center" spacing={32}>
-            <Grid item>
-              <Field name="photo1"
-                component={renderDropzoneField}/>
+           <Grid item xs={12}>
+              <Grid container justify="center" spacing={32}>
+                <Grid item>
+                  <Field name="photo1"
+                    component={renderDropzoneField}/>
+                </Grid>
+                <Grid item>
+                  <Field name="photo2"
+                    component={renderDropzoneField}/>
+                </Grid>
+                <Grid item>
+                  <Field name="photo3"
+                    component={renderDropzoneField}/>
+                </Grid>
+                <Grid item>
+                  <Field name="photo4"
+                    component={renderDropzoneField}/>
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Field name="photo2"
-                component={renderDropzoneField}/>
-            </Grid>
-            <Grid item>
-              <Field name="photo3"
-                component={renderDropzoneField}/>
-            </Grid>
-            <Grid item>
-              <Field name="photo4"
-                component={renderDropzoneField}/>
-            </Grid>
-           </Grid>
-          </Grid>
          </Grid>
         <NextButton/>
       </Form>
@@ -64,7 +64,7 @@ Contact = reduxForm({
   form: 'photoForm',
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
-    props.history.push(`type`)
+    console.log('FINISH AJOUTER LA PROCHAINE ETAPE CREATION DE MOT DE PASSE');
   },
 })(Contact)
 
