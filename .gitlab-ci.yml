@@ -1,0 +1,25 @@
+image: nikolaik/python-nodejs:latest
+
+stages:
+  - production
+  - develop
+
+before_script:
+  - pip install awscli
+  - npm install
+  - npm run build
+
+
+deploy_dev:
+  stage: develop
+  script:
+    - aws s3 sync build s3://$AWS_BUCKET_DEV --delete
+  only:
+    - develop
+
+deploy_prod:
+  stage: production
+  script:
+    - aws s3 sync build s3://$AWS_BUCKET_PROD --delete
+  only:
+    - master
