@@ -65,3 +65,14 @@ export const month = [
     value: 11
   },
 ]
+
+export const sex = [
+  {
+    name: 'Homme',
+    value: 'men'
+  },
+  {
+    name: 'Femme',
+    value: 'women'
+  }
+]

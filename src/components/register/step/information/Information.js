@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../utilis/renderTextField'
 import renderSelectField from '../../utilis/renderSelectField'
-import {getDay, getYears, month} from './dateSelectValue'
+import {getDay, getYears, month, sex} from './dateSelectValue'
 import validate from './validate'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
@@ -54,8 +54,18 @@ class Information extends Component {
             />
           </Grid>
         </Grid>
+        <Grid container item spacing={0} justify="center" >
+          <Grid item xs={11} md={3}>
+            <Field
+              style={{width: '100%'}}
+              name="sex"
+              label="Sexe"
+              datas={sex}
+              component={renderSelectField}/>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid container justify="center" style={{marginTop: '2%'}}>
+      <Grid container justify="center">
         <Grid container item md={3} xs={11} justify="space-between">
             <Grid item xs={3} md={3}>
             <Field

@@ -6,6 +6,9 @@ const validate = values => {
   if (!values.lastname) {
     errors.lastname = 'Champs requis'
   }
+  if (!values.sex) {
+    errors.sex = 'Champs requis'
+  }
   if (!values.day) {
     errors.day = 'Champs requis'
   }

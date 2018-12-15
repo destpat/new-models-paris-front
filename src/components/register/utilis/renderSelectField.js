@@ -12,9 +12,6 @@ const renderSelectField = ({ datas, input, label, meta, helperText, classes, sty
       <InputLabel>{label}</InputLabel>
       <Select {...input}
               error={displayError}>
-        <MenuItem value="">
-          <em>none</em>
-        </MenuItem>
         {
           datas.map((data, index) => {
             return <MenuItem key={index} value={data.value}>{data.name}</MenuItem>
