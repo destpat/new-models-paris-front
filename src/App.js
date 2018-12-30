@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import logo from './logo.png';
-import { Route, Link, Switch} from "react-router-dom";
-import Register from './components/register/Register';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import logo from './logo.png'
+import { Route, Link, Switch} from "react-router-dom"
+import Register from './components/register/Register'
+import { stack as Menu } from 'react-burger-menu'
+import  './burgerMenuStyle.css'
+import { withStyles } from '@material-ui/core/styles'
+
 
 const Header = styled.header`
   background-color: #fafafa;
@@ -25,17 +29,64 @@ const MenuLink = styled(Link)`
   margin-right: 35px;
 `;
 
+const MenuLinkResponsive = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1em;
+  margin-bottom: 15px;
+`;
+
 const Nav = styled.nav`
   justify-content: flex-end;
   margin-right: 100px;
 `;
 
+
+const styles = theme => ({
+  menu: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    }
+  },
+  burgerMenu: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    }
+  }
+});
+
+
 class App extends Component {
+  state = {
+    isOpen: false
+  }
+
+  handleMenu() {
+    this.setState({isOpen: !this.state.isOpen})
+  }
   render() {
+    const { classes } = this.props;
     return (
       <div>
+        <div className={classes.burgerMenu}>
+          <Menu classNames={styles} >
+            <MenuLinkResponsive to="/women">Women</MenuLinkResponsive>
+            <br/>
+            <MenuLinkResponsive to="/new">New</MenuLinkResponsive>
+            <br/>
+            <MenuLinkResponsive to="/men">Men</MenuLinkResponsive>
+            <br/>
+            <MenuLinkResponsive to="/video">Video</MenuLinkResponsive>
+            <br/>
+            <MenuLinkResponsive to="/candidatures">Become a model</MenuLinkResponsive>
+            <br/>
+            <MenuLinkResponsive to="/login">Login</MenuLinkResponsive>
+          </Menu>
+        </div>
         <Header>
-          <LogoLink to="/"><img src={logo} alt="logo new models paris" height="70"/></LogoLink>
+        <LogoLink to="/"><img src={logo} alt="logo new models paris" height="70"/></LogoLink>
+        <div className={classes.menu}>
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
             <MenuLink to="/new">New</MenuLink>
@@ -44,13 +95,14 @@ class App extends Component {
             <MenuLink to="/candidatures">Become a model</MenuLink>
             <MenuLink to="/login">Login</MenuLink>
           </Nav>
+        </div>
         </Header>
         <Switch>
-          <Route path="/candidatures" component={Register} />
+          <Route path="/candidatures" component={Register}/>
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
