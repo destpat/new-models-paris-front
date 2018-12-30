@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
+import { ValidateButtonContainer, StyledButton } from '../utilis/button/nextButtonStyle'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
 
@@ -16,31 +16,19 @@ const TitleHelper = styled.p`
   text-align: center
 `
 
-export const StyledButton = styled(Button)`
-  background: linear-gradient(45deg, #c13282 20%, #710c3c 90%);
-  border-radius: 10px;
-  border: 0;
-  color: white;
-  height: 48px;
-  padding: 0 30px;
-`;
-
-const ValidateButtonContainer = styled.div`
-  text-align: center;
-  margin-top: 5%;
-`
-
 class HomeRegistration extends Component {
   render() {
     const { history, match } = this.props
     return (
       <div>
-        <Title> Devenir modele </Title>
+        <Title> bienvenue </Title>
         <Grid container item justify="center">
         <Grid item md={6} xs={11}>
           <TitleHelper>
-            Hey bienvenue dans notre agence de modele, nous allons créer ton profile
-            afin que celui ci puisse être consulter par les productions
+            Nous allons remplir ton formulaire d'inscription ensemble afin que ton profil soit publié et gagne plus de visibilité.
+          <br/>
+          <br/>
+            En t'inscrivant, tu sera également informé(e) des dernières news et castings.
           </TitleHelper>
         </Grid>
         </Grid>
@@ -48,7 +36,7 @@ class HomeRegistration extends Component {
           <StyledButton
             type='submit'
             onClick={() => history.push(`${match.url}/information`)}>
-            C'est partie
+            Inscription
           </StyledButton>
         </ValidateButtonContainer>
       </div>

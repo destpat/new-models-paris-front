@@ -1,7 +1,11 @@
 export const getDay = () => {
   let day = [];
   for (let i = 1; i < 32; i++) {
-    day.push({name: i, value: i})
+    if (i < 10) {
+      day.push({name: i, value: `0${i}`})
+    } else {
+      day.push({name: i, value: i})
+    }
   }
   return day
 }
@@ -18,51 +22,51 @@ export const getYears = () => {
 export const month = [
   {
     name: 'Janvier',
-    value: 0
+    value: '01'
   },
   {
     name: 'Février',
-    value: 1
+    value: '02'
   },
   {
     name: 'Mars',
-    value: 2
+    value: '03'
   },
   {
     name: 'Avril',
-    value: 3
+    value: '04'
   },
   {
     name: 'Mai',
-    value: 4
+    value: '05'
   },
   {
     name: 'Juin',
-    value: 5
+    value: '06'
   },
   {
     name: 'Juillet',
-    value: 6
+    value: '07'
   },
   {
     name: 'Août',
-    value: 7
+    value: '08'
   },
   {
     name: 'Septembre',
-    value: 8
+    value: '09'
   },
   {
     name: 'Octobre',
-    value: 9
+    value: '10'
   },
   {
     name: 'Novembre',
-    value: 10
+    value: '11'
   },
   {
     name: 'Décembre',
-    value: 11
+    value: '12'
   },
 ]
 

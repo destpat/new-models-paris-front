@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const validate = values => {
   const errors = {};
   if (!values.firstname) {
@@ -17,6 +19,12 @@ const validate = values => {
   }
   if (!values.year) {
     errors.year = 'Champs requis'
+  }
+  if (values.day && values.month && values.year) {
+    let birthdate = `${values.year}-${values.month}-${values.day}`;
+    if (moment().diff(birthdate, 'years') < 18) {
+      errors.year = 'Seules les personnes majeures peuvent s\'inscrire dans notre agence.';
+    }
   }
   return errors;
 }

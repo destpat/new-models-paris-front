@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import logo from './logo.png';
 import { Route, Link, Switch} from "react-router-dom";
 import Register from './components/register/Register';
-import NoMatch from './components/NoMatch';
 
 const Header = styled.header`
   background-color: #fafafa;
@@ -48,7 +47,6 @@ class App extends Component {
         </Header>
         <Switch>
           <Route path="/candidatures" component={Register} />
-          <Route component={NoMatch} />
         </Switch>
       </div>
     );

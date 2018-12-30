@@ -1,0 +1,25 @@
+const validate = values => {
+  const errors = {};
+  if (!values.password) {
+    errors.password = 'Champs requis'
+  }
+  if (!values.passwordConfirmation) {
+    errors.passwordConfirmation = 'Champs requis'
+  }
+  if (values.password) {
+    if (values.password.length < 8) {
+      errors.password = 'Votre mot de passe doit contenir au moins 8 caractères'
+    }
+    if (!/\d/.test(values.password)) {
+      errors.password = 'Votre mot de passe doit contenir au moins un chiffre'
+    }
+  }
+  if (values.password && values.passwordConfirmation) {
+    if (values.passwordConfirmation !== values.password) {
+      errors.passwordConfirmation = 'Les mots de passe ne sont pas identique'
+    }
+  }
+  return errors;
+}
+
+export default validate;

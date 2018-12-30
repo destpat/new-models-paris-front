@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import renderDropzoneField from '../../utilis/renderDropzoneField'
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form'
+import RenderDropzoneField from './RenderDropzoneField'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
-import NextButton from '../../utilis/NextButton'
+import NextButton from '../../utilis/button/NextButton'
 import { withRouter } from 'react-router-dom'
 
 const Title = styled.h2`
@@ -15,48 +16,77 @@ const Title = styled.h2`
 const TitleHelper = styled.p`
   text-align: center;
   font-weight: 100;
+  margin: 0;
+`
+
+const SubTitle = styled.p`
+  text-align: center;
+  font-weight: 100;
+  font-size: 0.8em;
+  margin-top: 2px;
 `
 
 const Form = styled.form`
-  margin-top: 5%;
+  margin-top: 50px;
+`
+
+const PhotoContainer = styled.img`
+  height: 30vh;
+  object-fit: scale-down;
+  margin-bottom: 20px;
+`
+
+const FakePhoto = styled.div`
+  height: 30vh;
+  width: 300px;
+  margin-bottom: 20px;
 `
 
 class Contact extends Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, photos, photoFraming } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Inscription</Title>
+        <Title> Mes photos </Title>
         <Grid container item justify="center" >
-            <TitleHelper>
-              {"Envoie nous t'es plus belle photo"}
-            </TitleHelper>
+          <TitleHelper>
+            {"Envoie nous tes plus jolies photos"}
+          </TitleHelper>
         </Grid>
-        <Grid container spacing={16}>
-           <Grid item xs={12}>
-              <Grid container justify="center" spacing={32}>
-                <Grid item>
-                  <Field name="photo1"
-                    component={renderDropzoneField}/>
-                </Grid>
-                <Grid item>
-                  <Field name="photo2"
-                    component={renderDropzoneField}/>
-                </Grid>
-                <Grid item>
-                  <Field name="photo3"
-                    component={renderDropzoneField}/>
-                </Grid>
-                <Grid item>
-                  <Field name="photo4"
-                    component={renderDropzoneField}/>
-                </Grid>
-              </Grid>
-            </Grid>
-         </Grid>
+        <Grid container item justify="center" >
+          <SubTitle>
+            De préférence de shooting si tu en as
+          </SubTitle>
+        </Grid>
+        <Grid container direction="row" justify="center" alignItems="center">
+          {
+            !!photos.find(photo => photo.photoFraming === photoFraming).preview ?
+              <PhotoContainer src={photos.find(photo => photo.photoFraming === photoFraming).preview} alt="models"/>
+            :
+            <FakePhoto></FakePhoto>
+          }
+        </Grid>
+        <Grid container direction="row" justify="center" alignItems="center" spacing={32}>
+          <Grid item>
+            <RenderDropzoneField photoFraming="test1" label="Portrait"/>
+          </Grid>
+          <Grid item>
+            <RenderDropzoneField photoFraming="test2" label="Plain-pied"/>
+          </Grid>
+          <Grid item>
+            <RenderDropzoneField photoFraming="test3" label="Américain"/>
+          </Grid>
+        </Grid>
         <NextButton/>
       </Form>
     )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    photos: state.register.photos,
+    photoFraming: state.register.currentPhoto
   }
 }
 
@@ -64,8 +94,8 @@ Contact = reduxForm({
   form: 'photoForm',
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
-    console.log('FINISH AJOUTER LA PROCHAINE ETAPE CREATION DE MOT DE PASSE');
+    props.history.push(`password`)
   },
 })(Contact)
 
-export default withRouter(Contact);
+export default connect(mapStateToProps)(withRouter(Contact));

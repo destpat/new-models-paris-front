@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../utilis/renderTextField'
-import renderSelectField from '../../utilis/renderSelectField'
 import Grid from '@material-ui/core/Grid'
-import InputAdornment from '@material-ui/core/InputAdornment'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import validate from './validate'
 import { withRouter } from 'react-router-dom'
-import {eyesColors, hairsColors} from './descriptionSelectValue'
 
 const Title = styled.h2`
   text-align: center;
@@ -25,47 +22,36 @@ const Form = styled.form`
   margin-top: 50px;
 `
 
-class Contact extends Component {
+class Password extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Description </Title>
+        <Title> Mot de passe </Title>
         <Grid container item justify="center" >
-          <TitleHelper>
-            Une petite description pour les prodcutions
-          </TitleHelper>
+          <Grid item xs={12} md={3}>
+            <TitleHelper>
+              Merci de saisir un mot de passe, tu l'utiliseras pour accéder à ton compte modèle.
+            </TitleHelper>
+          </Grid>
         </Grid>
         <Grid container spacing={24} direction="column">
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={11} md={3}>
-              <Field name="height"
-                     label="Taille"
-                     type="number"
-                     inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment>}}
+              <Field name="password"
+                     label="Mot de passe"
                      style={{width:'100%'}}
+                     type="password"
                      component={renderTextField}/>
             </Grid>
           </Grid>
           <Grid container item spacing={0} justify="center">
             <Grid item xs={11} md={3}>
-              <Field
-                style={{width:'100%'}}
-                name="hairsColors"
-                label="Couleurs de cheveux"
-                datas={hairsColors}
-                component={renderSelectField}
-              />
-            </Grid>
-          </Grid>
-          <Grid container item spacing={0} justify="center">
-            <Grid item xs={11} md={3}>
-              <Field
-                style={{width:'100%'}}
-                name="eyesColors"
-                label="Couleur des yeux"
-                datas={eyesColors}
-                component={renderSelectField}
+              <Field name="passwordConfirmation"
+                     label="Confirmer votre mot de passe"
+                     type="password"
+                     style={{width:'100%'}}
+                     component={renderTextField}
               />
             </Grid>
           </Grid>
@@ -76,13 +62,13 @@ class Contact extends Component {
   }
 }
 
-Contact = reduxForm({
-  form: 'descriptionForm',
+Password = reduxForm({
+  form: 'contactForm',
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
-    props.history.push(`type`)
+    props.history.push(`confirmation`)
   },
-})(Contact)
+})(Password)
 
-export default withRouter(Contact);
+export default withRouter(Password);

@@ -12,7 +12,8 @@ const renderTextField = ({ input, label, meta, helperText, style, inputProps, ty
       InputProps={inputProps}
       type={type}
       {...input}
-    />)
+    />
+  )
 }
 
 export default renderTextField;

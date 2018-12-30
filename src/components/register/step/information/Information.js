@@ -6,7 +6,7 @@ import {getDay, getYears, month, sex} from './dateSelectValue'
 import validate from './validate'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
-import NextButton from '../../utilis/NextButton'
+import NextButton from '../../utilis/button/NextButton'
 import { withRouter } from 'react-router-dom'
 
 const Title = styled.h2`
@@ -21,7 +21,7 @@ const TitleHelper = styled.p`
 `
 
 const Form = styled.form`
-  margin-top: 5%;
+  margin-top: 50px;
 `
 
 class Information extends Component {
@@ -69,7 +69,7 @@ class Information extends Component {
         <Grid container item md={3} xs={11} justify="space-between">
             <Grid item xs={3} md={3}>
             <Field
-              style={{width: '100%'}}
+              style={{minWidth: '100%'}}
               name="day"
               label="Jour"
               datas={getDay()}
@@ -78,7 +78,7 @@ class Information extends Component {
 
             <Grid item xs={3} md={3}>
               <Field
-                style={{width: '100%'}}
+                style={{minWidth: '100%'}}
                 name="month"
                 label="Mois"
                 datas={month}
@@ -87,14 +87,14 @@ class Information extends Component {
             </Grid>
             <Grid item xs={3} md={3}>
               <Field
-                style={{width: '100%'}}
+                style={{minWidth: '100%'}}
                 name="year"
                 label="Année"
                 datas={getYears()}
                 component={renderSelectField}/>
             </Grid>
           </Grid>
-      </Grid>
+        </Grid>
       <NextButton/>
     </Form>
     )

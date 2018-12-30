@@ -4,11 +4,12 @@ import Grid from '@material-ui/core/Grid'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControl from '@material-ui/core/FormControl'
 import styled from 'styled-components'
-import NextButton from '../../utilis/NextButton'
+import NextButton from '../../utilis/button/NextButton'
 import validate from './validate'
 import renderCheckboxField from '../../utilis/renderCheckboxField'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const Title = styled.h2`
   text-align: center;
@@ -22,7 +23,7 @@ const TitleHelper = styled.p`
 `
 
 const Form = styled.form`
-  margin-top: 5%;
+  margin-top: 50px;
 `
 
 const styles = theme => ({
@@ -34,30 +35,30 @@ const styles = theme => ({
 
 class Type extends Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitFailed, valid } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Inscription</Title>
+        <Title> Conditions</Title>
         <Grid container item justify="center" >
           <TitleHelper>
             Pour quelle type de figuration est tu disponible
           </TitleHelper>
         </Grid>
         <Grid container item justify="center">
-          <FormControl style={{marginRight: 100}}>
+          <FormControl style={{marginRight: 100}} error={submitFailed && !valid ? true : false}>
             <FormGroup>
               <Field name="musicVideo"
-                     label="Music video"
+                     label="Clips vidéos musicaux"
                      component={renderCheckboxField}/>
                <Field name="photoShoot"
-                      label="Photo shoot"
+                      label="Shootings photos"
                       component={renderCheckboxField}/>
                 <Field name="bikini"
                        label="Bikini"
                        component={renderCheckboxField}/>
             </FormGroup>
           </FormControl>
-          <FormControl>
+          <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
               <Field name="underwear"
                      label="Lingerie"
@@ -66,9 +67,10 @@ class Type extends Component {
                      label="Vixen"
                      component={renderCheckboxField}/>
                <Field name="nude"
-                      label="Nude"
+                      label="Nu"
                       component={renderCheckboxField}/>
             </FormGroup>
+            <FormHelperText> Veuillez selectionner <br/> au moin une case </FormHelperText>
           </FormControl>
          </Grid>
         <NextButton/>
