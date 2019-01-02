@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import logo from './logo.png'
 import { Route, Link, Switch} from "react-router-dom"
 import Register from './components/register/Register'
+import Women from './components/women/Women'
 import { stack as Menu } from 'react-burger-menu'
 import  './burgerMenuStyle.css'
 import { withStyles } from '@material-ui/core/styles'
@@ -11,6 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
 const Header = styled.header`
   background-color: #fafafa;
   border-bottom: 1px solid #eeeeee;
+  margin-bottom: 30px;
   height: 80px;
   display: flex;
   align-items: center;
@@ -99,6 +101,7 @@ class App extends Component {
         </Header>
         <Switch>
           <Route path="/candidatures" component={Register}/>
+          <Route path="/women" component={Women}/>
         </Switch>
       </div>
     );
