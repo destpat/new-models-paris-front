@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import logo from './logo.png'
 import { Route, Link, Switch} from "react-router-dom"
-import Register from './components/register/Register'
-import Women from './components/women/Women'
 import { stack as Menu } from 'react-burger-menu'
-import  './burgerMenuStyle.css'
+
+import styled from 'styled-components'
+
 import { withStyles } from '@material-ui/core/styles'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+
+import Register from './components/register/Register'
+import Women from './components/women/Women'
+import Profile from './components/profile/Profile'
+
+import logo from './logo.png'
+import  './burgerMenuStyle.css'
 
 library.add(faInstagram, faTimesCircle)
 
@@ -112,7 +117,8 @@ class App extends Component {
         </Header>
         <Switch>
           <Route path="/candidatures" component={Register}/>
-          <Route path="/women" component={Women}/>
+          <Route exact path="/women" component={Women}/>
+          <Route path="/women/:id" component={Profile}/>
         </Switch>
       </div>
     );

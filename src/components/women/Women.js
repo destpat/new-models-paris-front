@@ -57,7 +57,7 @@ class Women extends Component {
           users.map((user, index) => {
             return (
             <div key={index}>
-              <PhotoContainer>
+              <PhotoContainer onClick={() =>  this.props.history.push(this.props.match.url + '/32')}>
                 <Photo imageUrl={user.photo[0]} alt="models"/>
                 <HoverText>
                   {user.surname}
