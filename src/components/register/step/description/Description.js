@@ -9,6 +9,7 @@ import NextButton from '../../utilis/button/NextButton'
 import validate from './validate'
 import { withRouter } from 'react-router-dom'
 import {eyesColors, hairsColors} from './descriptionSelectValue'
+import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
   text-align: center;
@@ -26,7 +27,9 @@ const Form = styled.form`
 `
 
 class Contact extends Component {
+
   render() {
+    console.log((this.props));
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
@@ -81,6 +84,7 @@ Contact = reduxForm({
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
+    dispatch(setNextStep(3))
     props.history.push(`type`)
   },
 })(Contact)

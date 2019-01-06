@@ -7,6 +7,7 @@ import validate from './validate'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
+import { setNextStep } from '../../registerAction'
 import { withRouter } from 'react-router-dom'
 
 const Title = styled.h2`
@@ -106,6 +107,7 @@ Information = reduxForm({
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
+    dispatch(setNextStep(1))
     props.history.push(`contact`)
   },
 })(Information)

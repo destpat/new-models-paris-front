@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import NextButton from '../../utilis/button/NextButton'
 import renderTextField from '../../utilis/renderTextField'
 import validate from './validate'
+import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
   text-align: center;
@@ -67,6 +68,7 @@ Password = reduxForm({
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
+    dispatch(setNextStep(6))
     props.history.push(`confirmation`)
   },
 })(Password)

@@ -1,10 +1,12 @@
 import {
   ADD_PHOTO,
   SET_CURRENT_PHOTO,
-  DELETE_PHOTO
+  DELETE_PHOTO,
+  SET_NEXT_STEP
 } from './registerAction';
 
 const initialState = {
+  currentStep: 0,
   isFetching: false,
   successSignUp: false,
   photos: [
@@ -26,10 +28,18 @@ const initialState = {
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_NEXT_STEP:
+      return {
+        ...state,
+        currentStep: action.payload.step
+      }
     case ADD_PHOTO:
       const updatedPhoto = state.photos.map(photo => {
          if (photo.photoFraming === action.payload.photoFraming) {
-           return { ...photo, ...action.payload }
+           return {
+             ...photo,
+             ...action.payload
+           }
          }
          return photo
        })
@@ -45,7 +55,10 @@ const registerReducer = (state = initialState, action) => {
     case DELETE_PHOTO:
       const deletedPhoto = state.photos.map(photo => {
          if (photo.photoFraming === action.payload.photoFraming) {
-           return { ...photo, preview: '' }
+           return {
+             ...photo,
+             preview: ''
+           }
          }
          return photo
        })

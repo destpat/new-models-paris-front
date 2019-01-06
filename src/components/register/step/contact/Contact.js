@@ -84,9 +84,6 @@ class Contact extends Component {
 Contact = reduxForm({
   form: 'contactForm',
   destroyOnUnmount: false,
-  onSubmit: (values, dispatch, props) => {
-    props.history.push(`description`)
-  },
 })(Contact)
 
 export default withRouter(Contact);

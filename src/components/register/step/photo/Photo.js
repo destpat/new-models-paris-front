@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import { withRouter } from 'react-router-dom'
+import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
   text-align: center;
@@ -94,6 +95,7 @@ Contact = reduxForm({
   form: 'photoForm',
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
+    dispatch(setNextStep(5))
     props.history.push(`password`)
   },
 })(Contact)

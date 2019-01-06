@@ -10,6 +10,7 @@ import renderCheckboxField from '../../utilis/renderCheckboxField'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
   text-align: center;
@@ -84,6 +85,7 @@ Type = reduxForm({
   destroyOnUnmount: false,
   validate,
   onSubmit: (values, dispatch, props) => {
+    dispatch(setNextStep(4))
     props.history.push(`photo`)
   },
 })(Type)

@@ -1,5 +1,6 @@
 import { SubmissionError } from 'redux-form'
 import { Auth } from 'aws-amplify';
+import { setNextStep } from '../../registerAction'
 
 /* eslint-disable */
 const validateEmail = (email) => {
@@ -55,9 +56,9 @@ const submit = (values, dispatch, props) => {
   }).then(data => console.log(data))
     .catch( err => {
       if (err.code === "UserNotFoundException") {
-        return props.history.push(`description`);
+        dispatch(setNextStep(2))
+        props.history.push(`description`)
       } else {
-        console.log('inside error submision');
         throw new SubmissionError({
           email: 'Adresse e-mail déjà utilisée'
         })
