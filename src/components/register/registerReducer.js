@@ -1,7 +1,4 @@
 import {
-  CREATE_USER_REQUEST,
-  CREATE_USER_SUCCESS,
-  CREATE_USER_FAILURE,
   ADD_PHOTO,
   SET_CURRENT_PHOTO,
   DELETE_PHOTO
@@ -9,7 +6,7 @@ import {
 
 const initialState = {
   isFetching: false,
-  successCreateUser: false,
+  successSignUp: false,
   photos: [
     {
       photoFraming: 'test1',
@@ -29,24 +26,6 @@ const initialState = {
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_USER_REQUEST:
-      return {
-        ...state,
-        isFetching: true
-      }
-    case CREATE_USER_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        successCreateUser: true
-      }
-    case CREATE_USER_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        successCreateUser: false,
-        errorMessage: action.data.errorMessage
-      }
     case ADD_PHOTO:
       const updatedPhoto = state.photos.map(photo => {
          if (photo.photoFraming === action.payload.photoFraming) {
@@ -64,7 +43,6 @@ const registerReducer = (state = initialState, action) => {
         currentPhoto: action.payload.photoFraming
       }
     case DELETE_PHOTO:
-    console.log('inside delete photo');
       const deletedPhoto = state.photos.map(photo => {
          if (photo.photoFraming === action.payload.photoFraming) {
            return { ...photo, preview: '' }

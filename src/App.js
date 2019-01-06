@@ -7,7 +7,11 @@ import Women from './components/women/Women'
 import { stack as Menu } from 'react-burger-menu'
 import  './burgerMenuStyle.css'
 import { withStyles } from '@material-ui/core/styles'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faInstagram, faTimesCircle)
 
 const Header = styled.header`
   background-color: #fafafa;

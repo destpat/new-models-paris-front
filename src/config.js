@@ -1,4 +1,13 @@
-const getApiUrl = () => {
+export const AmplifyConfig = {
+  Auth: {
+      region: 'eu-central-1',
+      userPoolId: 'eu-central-1_okA9ngTBf',
+      userPoolWebClientId: '1v9cv3mkdnko87ipan1hlte8un',
+      authenticationFlowType: 'USER_PASSWORD_AUTH'
+  }
+}
+
+export const getApiUrl = () => {
   const local = {
     // Postman mock url
     url: {
@@ -29,5 +38,3 @@ const getApiUrl = () => {
       console.log('No variable api provide, please tshek your node environement variable');
   }
 }
-
-export default getApiUrl;

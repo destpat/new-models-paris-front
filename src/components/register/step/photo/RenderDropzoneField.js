@@ -62,7 +62,6 @@ const Label = styled.div`
 class RenderDropzoneField extends Component {
   render() {
     const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label} = this.props;
-    console.log(photoFraming);
     return (
       <div>
       {
@@ -106,7 +105,6 @@ const mapStateToProps = (state) => {
     photos: state.register.photos
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

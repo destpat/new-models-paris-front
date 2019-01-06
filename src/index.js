@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './rootReducer';
-import { BrowserRouter } from 'react-router-dom';
-import { create } from "jss";
-import JssProvider from "react-jss/lib/JssProvider";
-import { createGenerateClassName, jssPreset } from "@material-ui/core/styles";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import rootReducer from './rootReducer'
+import { BrowserRouter } from 'react-router-dom'
+import { create } from "jss"
+import JssProvider from "react-jss/lib/JssProvider"
+
+import { createGenerateClassName, jssPreset } from "@material-ui/core/styles"
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
 import 'typeface-roboto';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import './index.css';
+import rootSaga from './saga'
+import Amplify from 'aws-amplify';
+import { AmplifyConfig } from './config';
+
+Amplify.configure(AmplifyConfig);
+
 
 const styleNode = document.createComment("insertion-point-jss");
 document.head.insertBefore(styleNode, document.head.firstChild);
@@ -27,16 +36,20 @@ const theme = createMuiTheme({
   }
 });
 
+const sagaMiddleware = createSagaMiddleware()
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 let store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancer(applyMiddleware(sagaMiddleware)),
 );
 
-ReactDOM.render(
+sagaMiddleware.run(rootSaga)
 
+ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
-    <BrowserRouter>
+      <BrowserRouter>
         <JssProvider jss={jss} generateClassName={generateClassName}>
           <App />
         </JssProvider>

@@ -13,6 +13,12 @@ const validate = values => {
     if (!/\d/.test(values.password)) {
       errors.password = 'Votre mot de passe doit contenir au moins un chiffre'
     }
+    if (!/.*[a-z].*/.test(values.password)) {
+      errors.password = 'Votre mot de passe doit contenir au moins une lettre minuscule'
+    }
+    if (!/.*[A-Z].*/.test(values.password)) {
+      errors.password = 'Votre mot de passe doit contenir au moins une lettre majuscule'
+    }
   }
   if (values.password && values.passwordConfirmation) {
     if (values.passwordConfirmation !== values.password) {

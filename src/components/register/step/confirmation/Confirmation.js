@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { formValueSelector } from 'redux-form'
+import { Auth } from 'aws-amplify';
 
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
@@ -28,9 +31,42 @@ const Form = styled.form`
   margin-top: 50px;
 `
 
+
 class Confirmation extends Component {
+  state = {
+    singnUpSuccess: false,
+    singnUpFailure: false,
+    singnUpLoading: true
+  }
+
+  componentWillMount() {
+    const { email, password } = this.props;
+      this.setState({
+        singnUpLoading: true
+      })
+      Auth.signUp({
+        username: email.toLowerCase(),
+        password: password,
+        attributes: {
+            email: email.toLowerCase()
+        }
+    })
+    .then(() => {
+      this.setState({
+        singnUpSuccess: true,
+        singnUpLoading: false
+      })
+    })
+    .catch((err) => {
+      this.setState({
+        singnUpFailure: true,
+        singnUpLoading: false
+      })
+    });
+  }
   render() {
     const { handleSubmit, history } = this.props;
+    const { singnUpSuccess, singnUpLoading } = this.state;
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Inscription réussie </Title>
@@ -43,8 +79,8 @@ class Confirmation extends Component {
           </Grid>
         </Grid>
         <div className="circle-loader-container">
-          <div className="circle-loader load-complete">
-            <div className="checkmark draw" style={{display: 'block'}}></div>
+          <div className={`circle-loader ${singnUpLoading ? '' : 'load-complete'}`}>
+            <div className="checkmark draw" style={{display: singnUpSuccess ? 'block' : 'none'}}></div>
           </div>
         </div>
         <ValidateButtonContainer>
@@ -58,4 +94,14 @@ class Confirmation extends Component {
   }
 }
 
-export default withRouter(Confirmation);
+const contactFormSelector = formValueSelector('contactForm')
+const passwordFormSelector = formValueSelector('passwordForm')
+
+const mapStateToProps = state => {
+  return {
+    email: contactFormSelector(state, 'email'),
+    password: passwordFormSelector(state, 'password')
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Confirmation));

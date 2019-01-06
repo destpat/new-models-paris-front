@@ -5,7 +5,7 @@ import renderPhoneField from '../../utilis/renderPhoneField'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
-import validate from './validate'
+import submit from './submit'
 import { withRouter } from 'react-router-dom'
 
 const Title = styled.h2`
@@ -27,7 +27,7 @@ class Contact extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit(submit)}>
         <Title> Contact </Title>
         <Grid container item justify="center" >
           <Grid item xs={12} md={3}>
@@ -50,7 +50,7 @@ class Contact extends Component {
           <Grid container item spacing={0} justify="center">
             <Grid item xs={11} md={3}>
               <Field
-                name="mail"
+                name="email"
                 label="Email"
                 style={{width:'100%'}}
                 component={renderTextField}/>
@@ -83,7 +83,6 @@ class Contact extends Component {
 
 Contact = reduxForm({
   form: 'contactForm',
-  validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
     props.history.push(`description`)

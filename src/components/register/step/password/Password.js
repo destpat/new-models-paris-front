@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderTextField from '../../utilis/renderTextField'
-import Grid from '@material-ui/core/Grid'
-import styled from 'styled-components'
-import NextButton from '../../utilis/button/NextButton'
-import validate from './validate'
 import { withRouter } from 'react-router-dom'
+import styled from 'styled-components'
+import Grid from '@material-ui/core/Grid'
+import NextButton from '../../utilis/button/NextButton'
+import renderTextField from '../../utilis/renderTextField'
+import validate from './validate'
 
 const Title = styled.h2`
   text-align: center;
@@ -28,7 +28,7 @@ class Password extends Component {
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Mot de passe </Title>
-        <Grid container item justify="center" >
+        <Grid container item justify="center">
           <Grid item xs={12} md={3}>
             <TitleHelper>
               Merci de saisir un mot de passe, tu l'utiliseras pour accéder à ton compte modèle.
@@ -63,7 +63,7 @@ class Password extends Component {
 }
 
 Password = reduxForm({
-  form: 'contactForm',
+  form: 'passwordForm',
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {

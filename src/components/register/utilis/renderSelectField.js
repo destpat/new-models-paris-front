@@ -5,11 +5,11 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import detectingMobileDivice from './detectingMobileDivice';
+import detectingMobileDevice from './detectingMobileDevice';
 
 const renderSelectField = ({ datas, input, label, meta, helperText, classes, style }) => {
   let displayError = meta.submitFailed && meta.error ? true : false;
-  if (detectingMobileDivice) {
+  if (detectingMobileDevice) {
     return (
       <FormControl error={displayError} style={style}>
         <InputLabel>{label}</InputLabel>
