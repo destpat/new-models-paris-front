@@ -40,6 +40,7 @@ class Information extends Component {
         <Grid container item spacing={0} justify="center" >
           <Grid item xs={11} md={3}>
             <Field name="firstname"
+                   id="firstname-field"
                    label="Prénom"
                    style={{width:'100%'}}
                    component={renderTextField}/>
@@ -49,6 +50,7 @@ class Information extends Component {
           <Grid item xs={11} md={3}>
             <Field
               name="lastname"
+              id="lastname-field"
               label="Nom"
               style={{width:'100%'}}
               component={renderTextField}
@@ -60,6 +62,7 @@ class Information extends Component {
             <Field
               style={{width: '100%'}}
               name="sex"
+              id="sex-field"
               label="Sexe"
               datas={sex}
               component={renderSelectField}/>
@@ -72,6 +75,7 @@ class Information extends Component {
             <Field
               style={{minWidth: '100%'}}
               name="day"
+              id="day-field"
               label="Jour"
               datas={getDay()}
               component={renderSelectField}/>
@@ -81,6 +85,7 @@ class Information extends Component {
               <Field
                 style={{minWidth: '100%'}}
                 name="month"
+                id="month-field"
                 label="Mois"
                 datas={month}
                 component={renderSelectField}
@@ -90,6 +95,7 @@ class Information extends Component {
               <Field
                 style={{minWidth: '100%'}}
                 name="year"
+                id="year-field"
                 label="Année"
                 datas={getYears()}
                 component={renderSelectField}/>

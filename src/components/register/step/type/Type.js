@@ -49,12 +49,15 @@ class Type extends Component {
           <FormControl style={{marginRight: 100}} error={submitFailed && !valid ? true : false}>
             <FormGroup>
               <Field name="musicVideo"
+                     id="music-video-field"
                      label="Clips vidéos musicaux"
                      component={renderCheckboxField}/>
                <Field name="photoShoot"
+                      id="photo-shoot-field"
                       label="Shootings photos"
                       component={renderCheckboxField}/>
                 <Field name="bikini"
+                       id="bikini-field"
                        label="Bikini"
                        component={renderCheckboxField}/>
             </FormGroup>
@@ -62,12 +65,15 @@ class Type extends Component {
           <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
               <Field name="underwear"
+                     id="underwear-field"
                      label="Lingerie"
                      component={renderCheckboxField}/>
               <Field name="vixen"
+                     id="vixen-field"
                      label="Vixen"
                      component={renderCheckboxField}/>
                <Field name="nude"
+                      id="nude-field"
                       label="Nu"
                       component={renderCheckboxField}/>
             </FormGroup>

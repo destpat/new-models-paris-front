@@ -1,31 +1,23 @@
 import {
-  SIGNUP_REQUEST
+  CREATE_USER,
+  CREATE_USER_SUCCESS
 } from './registerAction'
 
 // Our worker Saga: will perform the async increment task
-import { takeEvery } from 'redux-saga/effects'
-// import { user } from '../../api/api'
+import { call, put, takeEvery } from 'redux-saga/effects'
+import { user } from '../../api/api'
 
-export function* signUp(action) {
-//   console.log('inside signup saga');
-//   const { email, password } = action.payload;
-//   try {
-//     const signUp = yield call(Auth.signUp({
-//       username: email.toLowerCase(),
-//       password: password,
-//       attributes: {
-//           email
-//       },
-//     }))
-//     console.log(signUp);
-//     yield put({ type: SIGNUP_SUCCESS})
-//   } catch (error) {
-//     yield put({ type: SIGNUP_FAILURE, data: error})
-//   }
+export function* createUser(action) {
+  try {
+    yield call(user.createUser, action.payload.userInformation)
+    yield put({ type: CREATE_USER_SUCCESS})
+  } catch (error) {
+    console.log('error lors de la création de l utilisateur');
+  }
 }
 
 const registerSaga = [
-  takeEvery(SIGNUP_REQUEST, signUp),
+  takeEvery(CREATE_USER, createUser),
 ];
 
 export default registerSaga;

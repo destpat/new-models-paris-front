@@ -42,6 +42,7 @@ class Contact extends Component {
             <Grid item xs={11} md={3}>
               <Field
                   name="phone"
+                  id="phone-field"
                   label="Téléphone"
                   style={{width:'100%'}}
                   component={renderPhoneField}/>
@@ -51,6 +52,7 @@ class Contact extends Component {
             <Grid item xs={11} md={3}>
               <Field
                 name="email"
+                id="email-field"
                 label="Email"
                 style={{width:'100%'}}
                 component={renderTextField}/>
@@ -62,13 +64,15 @@ class Contact extends Component {
             <Grid item xs={5} md={5}>
               <Field
                 name="city"
+                id="city-field"
                 label="Ville"
                 style={{width:'100%'}}
                 component={renderTextField}/>
             </Grid>
             <Grid item xs={5} md={5}>
               <Field
-                name="postcode"
+                name="postCode"
+                id="post-code-field"
                 label="Code postal"
                 style={{width:'100%'}}
                 component={renderTextField}/>

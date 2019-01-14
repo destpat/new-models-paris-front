@@ -1,8 +1,8 @@
 export const AmplifyConfig = {
   Auth: {
       region: 'eu-central-1',
-      userPoolId: 'eu-central-1_okA9ngTBf',
-      userPoolWebClientId: '1v9cv3mkdnko87ipan1hlte8un',
+      userPoolId: 'eu-central-1_j3KxTsiir',
+      userPoolWebClientId: '4dac2ikcptciehmrs7ep2h6nrn',
       authenticationFlowType: 'USER_PASSWORD_AUTH'
   }
 }
@@ -17,7 +17,7 @@ export const getApiUrl = () => {
 
   const dev = {
     url: {
-      URL_NEW_MODELS_PARIS: '',
+      URL_NEW_MODELS_PARIS: 'https://m9ibbc1f11.execute-api.eu-central-1.amazonaws.com/dev',
     }
   };
 

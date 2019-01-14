@@ -1,10 +1,10 @@
 const validate = values => {
   const errors = {};
-  if (!values.hairsColors) {
-    errors.hairsColors = 'Champs requis'
+  if (!values.hairColor) {
+    errors.hairColor = 'Champs requis'
   }
-  if (!values.eyesColors) {
-    errors.eyesColors = 'Champs requis'
+  if (!values.eyesColor) {
+    errors.eyesColor = 'Champs requis'
   }
   if (!values.height) {
     errors.height = 'Champs requis'

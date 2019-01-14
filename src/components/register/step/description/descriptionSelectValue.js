@@ -1,4 +1,4 @@
-export const hairsColors = [
+export const hairColor = [
   {
     name: 'Blonds',
     value: 'blonds'
@@ -42,7 +42,7 @@ export const hairsColors = [
 ]
 
 
-export const eyesColors = [
+export const eyesColor = [
   {
     name: 'Noir',
     value: 'black'

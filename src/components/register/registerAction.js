@@ -1,4 +1,6 @@
-export const SIGNUP_REQUEST = 'SIGNUP_REQUEST' // TODO DELETE
+export const CREATE_USER = 'CREATE_USER'
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS'
+export const createUser = (userInformation) => ({type: CREATE_USER, payload: { userInformation }})
 
 export const SET_NEXT_STEP = 'SET_NEXT_STEP'
 export const setNextStep = (step) => ({type: SET_NEXT_STEP, payload: { step }})

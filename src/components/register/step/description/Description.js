@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import validate from './validate'
 import { withRouter } from 'react-router-dom'
-import {eyesColors, hairsColors} from './descriptionSelectValue'
+import {eyesColor, hairColor} from './descriptionSelectValue'
 import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
@@ -29,7 +29,6 @@ const Form = styled.form`
 class Contact extends Component {
 
   render() {
-    console.log((this.props));
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
@@ -43,6 +42,7 @@ class Contact extends Component {
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={11} md={3}>
               <Field name="height"
+                     id="height-field"
                      label="Taille"
                      type="number"
                      inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment>}}
@@ -54,9 +54,10 @@ class Contact extends Component {
             <Grid item xs={11} md={3}>
               <Field
                 style={{width:'100%'}}
-                name="hairsColors"
+                name="hairColor"
+                id="hair-color-field"
                 label="Couleurs de cheveux"
-                datas={hairsColors}
+                datas={hairColor}
                 component={renderSelectField}
               />
             </Grid>
@@ -65,9 +66,10 @@ class Contact extends Component {
             <Grid item xs={11} md={3}>
               <Field
                 style={{width:'100%'}}
-                name="eyesColors"
+                name="eyesColor"
+                id="eyes-color-field"
                 label="Couleur des yeux"
-                datas={eyesColors}
+                datas={eyesColor}
                 component={renderSelectField}
               />
             </Grid>

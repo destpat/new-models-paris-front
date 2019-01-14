@@ -41,9 +41,9 @@ const submit = (values, dispatch, props) => {
       city: 'Champs requis'
     })
   }
-  if (!values.postcode) {
+  if (!values.postCode) {
     throw new SubmissionError({
-      postcode: 'Champs requis'
+      postCode: 'Champs requis'
     })
   }
   // Vérfication de l'existance de l'adresse email chez cognito

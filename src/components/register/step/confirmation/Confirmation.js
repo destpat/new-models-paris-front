@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { createUser } from '../../registerAction'
 import { ValidateButtonContainer, StyledButton } from '../../utilis/button/nextButtonStyle'
 import './confirmation.css'
 
@@ -31,7 +32,6 @@ const Form = styled.form`
   margin-top: 50px;
 `
 
-
 class Confirmation extends Component {
   state = {
     singnUpSuccess: false,
@@ -51,7 +51,11 @@ class Confirmation extends Component {
             email: email.toLowerCase()
         }
     })
-    .then(() => {
+    .then((res) => {
+      this.props.createUser({
+        ...this.props.createUserInformation,
+        id: res.userSub
+      })
       this.setState({
         singnUpSuccess: true,
         singnUpLoading: false
@@ -97,11 +101,40 @@ class Confirmation extends Component {
 const contactFormSelector = formValueSelector('contactForm')
 const passwordFormSelector = formValueSelector('passwordForm')
 
+const descriptionFormSelector = formValueSelector('descriptionForm')
+const informationFormSelector = formValueSelector('informationForm')
+const typeFormSelector = formValueSelector('typeForm')
+
 const mapStateToProps = state => {
+  let { day, month, year } = informationFormSelector(state, 'day', 'month', 'year')
+  let extraTypeSeclection = typeFormSelector(state, 'musicVideo', 'photoShoot', 'underwear', 'vixen', 'nude')
+  let height = descriptionFormSelector(state, 'height')
+  let extraType = []
+
+  for (var key in extraTypeSeclection) {
+    if (extraTypeSeclection.hasOwnProperty(key) && extraTypeSeclection[key] === true) {
+      extraType.push(key);
+    }
+  }
+
+  let birthdate = `${month}-${day}-${year}`
+
   return {
     email: contactFormSelector(state, 'email'),
-    password: passwordFormSelector(state, 'password')
+    password: passwordFormSelector(state, 'password'),
+    createUserInformation: {
+      ...informationFormSelector(state, 'firstname', 'lastname', 'sex'),
+      ...descriptionFormSelector(state, 'hairColor', 'eyesColor'),
+      ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),
+      height: +height,
+      birthdate,
+      extraType
+    }
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Confirmation));
+const mapDispatchToProps = dispatch => ({
+  createUser: (data) => dispatch(createUser(data))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Confirmation));

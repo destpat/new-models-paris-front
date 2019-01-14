@@ -3,8 +3,7 @@ import { ValidateButtonContainer, StyledButton } from './nextButtonStyle'
 
 const NextButton = () => (
   <ValidateButtonContainer>
-    <StyledButton
-      type='submit'>
+    <StyledButton id="next-button" type='submit'>
       Valider
     </StyledButton>
   </ValidateButtonContainer>

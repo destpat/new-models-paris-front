@@ -40,6 +40,7 @@ class Password extends Component {
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={11} md={3}>
               <Field name="password"
+                     id="password-field"
                      label="Mot de passe"
                      style={{width:'100%'}}
                      type="password"
@@ -49,6 +50,7 @@ class Password extends Component {
           <Grid container item spacing={0} justify="center">
             <Grid item xs={11} md={3}>
               <Field name="passwordConfirmation"
+                     id="password-confirmation-field"
                      label="Confirmer votre mot de passe"
                      type="password"
                      style={{width:'100%'}}

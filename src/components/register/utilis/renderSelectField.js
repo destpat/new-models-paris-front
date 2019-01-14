@@ -7,13 +7,13 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import detectingMobileDevice from './detectingMobileDevice';
 
-const renderSelectField = ({ datas, input, label, meta, helperText, classes, style }) => {
+const renderSelectField = ({ datas, input, label, meta, helperText, classes, style, id }) => {
   let displayError = meta.submitFailed && meta.error ? true : false;
   if (detectingMobileDevice) {
     return (
       <FormControl error={displayError} style={style}>
         <InputLabel>{label}</InputLabel>
-        <NativeSelect {...input}>
+        <NativeSelect {...input} id={id}>
           <option value="" />
           {
             datas.map((data, index) => {
@@ -29,10 +29,11 @@ const renderSelectField = ({ datas, input, label, meta, helperText, classes, sty
       <FormControl error={displayError} style={style}>
         <InputLabel>{label}</InputLabel>
         <Select {...input}
+                data-cy={id}
                 error={displayError}>
           {
             datas.map((data, index) => {
-              return <MenuItem key={index} value={data.value}>{data.name}</MenuItem>
+              return <MenuItem key={index} value={data.value} data-cy={`${id}-${index}`}>{data.name}</MenuItem>
             })
           }
         </Select>

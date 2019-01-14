@@ -12,10 +12,11 @@ const PhoneMaskInput = (props) => {
   );
 }
 
-const renderPhoneField = ({ input, label, meta, helperText, style, inputProps, type }) => {
+const renderPhoneField = ({ input, label, meta, helperText, style, inputProps, type, id}) => {
   let displayError = meta.submitFailed && meta.error ? true : false;
   return (
     <TextField
+      id={id}
       label={label}
       helperText={displayError ? meta.error : helperText}
       style={style}
