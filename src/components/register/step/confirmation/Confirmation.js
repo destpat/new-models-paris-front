@@ -32,6 +32,11 @@ const Form = styled.form`
   margin-top: 50px;
 `
 
+/*
+*  @description Component
+*  Etape final du formulaire d'inscription
+*/
+
 class Confirmation extends Component {
   state = {
     singnUpSuccess: false,

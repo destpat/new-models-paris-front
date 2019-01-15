@@ -2,6 +2,13 @@ import React from 'react'
 import MaskedInput from 'react-text-mask'
 import TextField from '@material-ui/core/TextField'
 
+
+/*
+*  @description Component
+*  Ajout d'un mask pour les numéro de téléphone
+*  et affichage d'un clavier sur mobile
+*/
+
 const PhoneMaskInput = (props) => {
   const { inputRef, ...other } = props;
   return (

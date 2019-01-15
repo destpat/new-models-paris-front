@@ -33,6 +33,12 @@ const styles = theme => ({
   }
 });
 
+/*
+*  @description Component
+*  formulaire pour la création d'utilisateur, selection des type de figuration
+*  auquel l'utilisateur veux participer
+*/
+
 
 class Type extends Component {
   render() {

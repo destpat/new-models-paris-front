@@ -23,6 +23,11 @@ const Form = styled.form`
   margin-top: 50px;
 `
 
+/*
+*  @description Component
+*  formulaire pour la création d'utilisateur, demande d'information de contact
+*/
+
 class Contact extends Component {
   render() {
     const { handleSubmit } = this.props;

@@ -43,6 +43,11 @@ const FakePhoto = styled.div`
   margin-bottom: 20px;
 `
 
+/*
+*  @description Component
+*  Ajout des photo
+*/
+
 class Contact extends Component {
   render() {
     const { handleSubmit, photos, photoFraming } = this.props;

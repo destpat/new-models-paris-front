@@ -16,6 +16,11 @@ const TitleHelper = styled.p`
   text-align: center
 `
 
+/*
+*  @description Component
+*  Accueil de l'utilisateur pour la création de sont profil
+*/
+
 class HomeRegistration extends Component {
   render() {
     const { history, match } = this.props

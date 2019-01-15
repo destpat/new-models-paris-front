@@ -41,6 +41,11 @@ let users = [
   },
 ]
 
+/*
+*  @description Component
+*  Affichage en grille des profiles utilisateur
+*/
+
 class Women extends Component {
   render() {
     const { size: { width } } = this.props;

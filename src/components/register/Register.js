@@ -11,6 +11,11 @@ import HomeRegistration from './step/HomeRegistration'
 
 import RegisterRoute from './RegisterRoute'
 
+/*
+*  @description Component
+*  Déclaration des différentes route du formulaire
+*/
+
 const Register = ({match}) => {
   return (
     <Switch>

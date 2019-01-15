@@ -58,6 +58,11 @@ const Label = styled.div`
   text-align: center;
   margin-top: 15px;
 `
+/*
+*  @description Component
+*  Composant permettant à l'utilisateur d'ajouter des photos
+*/
+
 
 class RenderDropzoneField extends Component {
   render() {

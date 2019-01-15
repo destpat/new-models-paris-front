@@ -25,9 +25,13 @@ const TitleHelper = styled.p`
 const Form = styled.form`
   margin-top: 50px;
 `
+/*
+*  @description Component
+*  formulaire pour la création d'utilisateur, demande d'information sur la
+*  description physique de l'utilisateur
+*/
 
-class Contact extends Component {
-
+class Description extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -81,7 +85,7 @@ class Contact extends Component {
   }
 }
 
-Contact = reduxForm({
+Description = reduxForm({
   form: 'descriptionForm',
   validate,
   destroyOnUnmount: false,
@@ -89,6 +93,6 @@ Contact = reduxForm({
     dispatch(setNextStep(3))
     props.history.push(`type`)
   },
-})(Contact)
+})(Description)
 
-export default withRouter(Contact);
+export default withRouter(Description);

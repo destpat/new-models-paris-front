@@ -7,6 +7,12 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import detectingMobileDevice from './detectingMobileDevice';
 
+/*
+*  @description Component
+*  Gestion des select rendu différent pour les mobiles,
+*  afin d'optimiser l'intégration
+*/
+
 const renderSelectField = ({ datas, input, label, meta, helperText, classes, style, id }) => {
   let displayError = meta.submitFailed && meta.error ? true : false;
   if (detectingMobileDevice) {

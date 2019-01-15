@@ -22,6 +22,11 @@ const TitleHelper = styled.p`
 const Form = styled.form`
   margin-top: 50px;
 `
+/*
+*  @description Component
+*  formulaire pour la création d'utilisateur, demande du mot de passe
+*  de l'utilisateur
+*/
 
 class Password extends Component {
   render() {
