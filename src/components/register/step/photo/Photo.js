@@ -46,7 +46,7 @@ const FakePhoto = styled.div`
 
 /*
 *  @description Component
-*  Ajout des photo
+*  Ajout des photos
 */
 
 class Contact extends Component {

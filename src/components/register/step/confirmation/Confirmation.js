@@ -58,6 +58,7 @@ class Confirmation extends Component {
 
         // Login de l'utilisateur pour la récupération du token
         let user = await Auth.signIn(lowerCaseEmail, password)
+        let currentUserInfo = await Auth.currentUserInfo()
         let userId = user.signInUserSession.idToken.payload.sub
         // Création d'un tableau avec la key pour acceder au photo de l'utilisateur
         let userPhotos = []
@@ -73,7 +74,10 @@ class Confirmation extends Component {
                 level: 'protected',
                 contentType: 'image/jpg'
               })
-              userPhotos.push(updatePhoto)
+              userPhotos.push({
+                ...updatePhoto,
+                id: currentUserInfo.id
+              })
             } catch (error) {
               console.log(error)
             }
