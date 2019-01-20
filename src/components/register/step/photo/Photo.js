@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form'
 import RenderDropzoneField from './RenderDropzoneField'
 import Grid from '@material-ui/core/Grid'
+
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import { withRouter } from 'react-router-dom'
@@ -74,17 +75,17 @@ class Contact extends Component {
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center" spacing={32}>
           <Grid item>
-            <RenderDropzoneField photoFraming="test1" label="Portrait"/>
+            <RenderDropzoneField photoFraming="photo1" label="Portrait"/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="test2" label="Plain-pied"/>
+            <RenderDropzoneField photoFraming="photo2" label="Plain-pied"/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="test3" label="Américain"/>
+            <RenderDropzoneField photoFraming="photo3" label="Américain"/>
           </Grid>
         </Grid>
-        <NextButton/>
-      </Form>
+      <NextButton/>
+    </Form>
     )
   }
 }

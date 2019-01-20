@@ -26,7 +26,7 @@ context('Create user', () => {
 
     // contact step
     cy.get('#phone-field').type('0682474820')
-    cy.get('#email-field').type('yoan.ficadiere@gmail.com')
+    cy.get('#email-field').type(Math.random().toString(36).substring(2,11) + '@domain.com')
     cy.get('#city-field').type('Paris')
     cy.get('#post-code-field').type('75013')
     cy.get('#next-button').click()

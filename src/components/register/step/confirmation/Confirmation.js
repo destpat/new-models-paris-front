@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
-import { Auth } from 'aws-amplify';
+import { Auth, Storage } from 'aws-amplify'
+
+import axios from 'axios'
 
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { createUser } from '../../registerAction'
+import { createUser, setSignupLoading } from '../../registerAction'
 import { ValidateButtonContainer, StyledButton } from '../../utilis/button/nextButtonStyle'
 import './confirmation.css'
+
 
 const Title = styled.h2`
   text-align: center;
@@ -38,44 +41,59 @@ const Form = styled.form`
 */
 
 class Confirmation extends Component {
-  state = {
-    singnUpSuccess: false,
-    singnUpFailure: false,
-    singnUpLoading: true
-  }
+  async componentWillMount() {
+    const { email, password, photos, setSignupLoading, createUser} = this.props;
+      setSignupLoading(true)
+      try {
+        let lowerCaseEmail = email.toLowerCase();
 
-  componentWillMount() {
-    const { email, password } = this.props;
-      this.setState({
-        singnUpLoading: true
-      })
-      Auth.signUp({
-        username: email.toLowerCase(),
-        password: password,
-        attributes: {
-            email: email.toLowerCase()
+        // Inscription de l'utilisateur
+        await Auth.signUp({
+          username: lowerCaseEmail,
+          password: password,
+          attributes: {
+            email: lowerCaseEmail
+          }
+        })
+
+        // Login de l'utilisateur pour la récupération du token
+        let user = await Auth.signIn(lowerCaseEmail, password)
+        
+        axios.defaults.headers.common['Authorization'] = user.signInUserSession.idToken.payload.jwtToken;
+        // Création d'un tableau avec la key pour acceder au photo de l'utilisateur
+        let userPhotos = []
+        for (const photo of photos) {
+          if (photo.preview) {
+            try {
+              let response = await axios({
+                method: 'get',
+                url: photo.preview,
+                responseType: 'blob'
+              })
+              let updatePhoto = await Storage.put(`${Date.now().toString()}.jpg`, response.data, {
+                level: 'protected',
+                contentType: 'image/jpg'
+              })
+              userPhotos.push(updatePhoto)
+            } catch (error) {
+              console.log(error)
+            }
+          }
         }
-    })
-    .then((res) => {
-      this.props.createUser({
-        ...this.props.createUserInformation,
-        id: res.userSub
-      })
-      this.setState({
-        singnUpSuccess: true,
-        singnUpLoading: false
-      })
-    })
-    .catch((err) => {
-      this.setState({
-        singnUpFailure: true,
-        singnUpLoading: false
-      })
-    });
+
+        // Ajout des données de l'utilisateur en base de données
+        createUser({
+          ...this.props.createUserInformation,
+          id: user.signInUserSession.idToken.payload.sub,
+          photos: userPhotos
+        })
+      } catch (error) {
+        setSignupLoading(false)
+        console.log(error);
+      }
   }
   render() {
-    const { handleSubmit, history } = this.props;
-    const { singnUpSuccess, singnUpLoading } = this.state;
+    const { handleSubmit, history, singnupLoading, singnupSuccess } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Inscription réussie </Title>
@@ -88,8 +106,8 @@ class Confirmation extends Component {
           </Grid>
         </Grid>
         <div className="circle-loader-container">
-          <div className={`circle-loader ${singnUpLoading ? '' : 'load-complete'}`}>
-            <div className="checkmark draw" style={{display: singnUpSuccess ? 'block' : 'none'}}></div>
+          <div className={`circle-loader ${singnupLoading ? '' : 'load-complete'}`}>
+            <div className="checkmark draw" style={{display: singnupSuccess ? 'block' : 'none'}}></div>
           </div>
         </div>
         <ValidateButtonContainer>
@@ -126,6 +144,9 @@ const mapStateToProps = state => {
 
   return {
     email: contactFormSelector(state, 'email'),
+    singnupLoading: state.register.singnupLoading,
+    singnupSuccess: state.register.singnupSuccess,
+    photos: state.register.photos,
     password: passwordFormSelector(state, 'password'),
     createUserInformation: {
       ...informationFormSelector(state, 'firstname', 'lastname', 'sex'),
@@ -139,7 +160,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createUser: (data) => dispatch(createUser(data))
+  createUser: (data) => dispatch(createUser(data)),
+  setSignupLoading: (loading) => dispatch(setSignupLoading(loading))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Confirmation));

@@ -2,7 +2,9 @@ import {
   ADD_PHOTO,
   SET_CURRENT_PHOTO,
   DELETE_PHOTO,
-  SET_NEXT_STEP
+  SET_NEXT_STEP,
+  SINGNUP_LOADING,
+  CREATE_USER_SUCCESS
 } from './registerAction';
 
 const initialState = {
@@ -11,23 +13,36 @@ const initialState = {
   successSignUp: false,
   photos: [
     {
-      photoFraming: 'test1',
+      photoFraming: 'photo1',
       preview: ''
     },
     {
-      photoFraming: 'test2',
+      photoFraming: 'photo2',
       preview: ''
     },
     {
-      photoFraming: 'test3',
+      photoFraming: 'photo3',
       preview: ''
     }
   ],
-  currentPhoto: 'test1'
+  currentPhoto: 'photo1',
+  singnupLoading: true,
+  singnupSuccess: false
 }
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_USER_SUCCESS:
+      return {
+        ...state,
+        singnupLoading: false,
+        singnupSuccess: true
+      }
+    case SINGNUP_LOADING:
+      return {
+        ...state,
+        singnupLoading: action.payload.loading,
+      }
     case SET_NEXT_STEP:
       return {
         ...state,
