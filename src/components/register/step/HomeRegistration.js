@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import { ValidateButtonContainer, StyledButton } from '../utilis/button/nextButtonStyle'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
+
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;

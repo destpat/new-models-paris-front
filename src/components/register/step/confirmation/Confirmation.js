@@ -58,7 +58,7 @@ class Confirmation extends Component {
 
         // Login de l'utilisateur pour la récupération du token
         let user = await Auth.signIn(lowerCaseEmail, password)
-
+        let userId = user.signInUserSession.idToken.payload.sub
         // Création d'un tableau avec la key pour acceder au photo de l'utilisateur
         let userPhotos = []
         for (const photo of photos) {
@@ -69,7 +69,7 @@ class Confirmation extends Component {
                 url: photo.preview,
                 responseType: 'blob'
               })
-              let updatePhoto = await Storage.put(`${Date.now().toString()}.jpg`, response.data, {
+              let updatePhoto = await Storage.put(`${userId}-${Date.now().toString()}.jpg`, response.data, {
                 level: 'protected',
                 contentType: 'image/jpg'
               })
@@ -83,7 +83,7 @@ class Confirmation extends Component {
         // Ajout des données de l'utilisateur en base de données
         createUser({
           ...this.props.createUserInformation,
-          id: user.signInUserSession.idToken.payload.sub,
+          id: userId,
           photos: userPhotos
         })
       } catch (error) {
