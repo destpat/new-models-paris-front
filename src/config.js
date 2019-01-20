@@ -1,3 +1,26 @@
+import { Auth } from 'aws-amplify'
+
+export const getApiEndPoint = () => {
+  const dev = {
+      name: 'newModelsParisDevApi',
+      endpoint: 'https://m9ibbc1f11.execute-api.eu-central-1.amazonaws.com/dev'
+  };
+
+  const prod = {
+    name: 'newModelsParisProdApi',
+    endpoint: 'https://m9ibbc1f11.execute-api.eu-central-1.amazonaws.com/prod'
+  };
+
+  switch (process.env.REACT_APP_STAGE) {
+    case 'dev':
+      return dev;
+    case 'prod':
+      return prod;
+    default:
+      console.log('No variable api provide, please tshek your node environement variable');
+  }
+}
+
 export const AmplifyConfig = {
   Auth: {
       region: 'eu-central-1',
@@ -9,37 +32,17 @@ export const AmplifyConfig = {
   Storage: {
     bucket: 'new-models-paris-upload-photos',
     region: 'eu-central-1',
-  }
-}
-
-export const getApiUrl = () => {
-  const local = {
-    // Postman mock url
-    url: {
-      URL_NEW_MODELS_PARIS: 'https://7bca630a-a9ba-41b8-ae35-8237dad36fc1.mock.pstmn.io/'
-    }
-  };
-
-  const dev = {
-    url: {
-      URL_NEW_MODELS_PARIS: 'https://m9ibbc1f11.execute-api.eu-central-1.amazonaws.com/dev'
-    }
-  };
-
-  const prod = {
-    url: {
-      URL_NEW_MODELS_PARIS: ''
-    }
-  };
-
-  switch (process.env.REACT_APP_STAGE) {
-    case 'local':
-      return local.url.URL_NEW_MODELS_PARIS;
-    case 'dev':
-      return dev.url.URL_NEW_MODELS_PARIS;
-    case 'prod':
-      return prod.url.URL_NEW_MODELS_PARIS;
-    default:
-      console.log('No variable api provide, please tshek your node environement variable');
+  },
+  API: {
+    endpoints: [
+      {
+        ...getApiEndPoint(),
+        custom_header: async () => {
+          // Alternatively, with Cognito User Pools use this:
+          return {
+            Authorization: (await Auth.currentSession()).idToken.jwtToken }
+        }
+      }
+    ]
   }
 }

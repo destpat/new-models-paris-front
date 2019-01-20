@@ -9,6 +9,7 @@ import { user } from '../../api/api'
 
 export function* createUser(action) {
   try {
+    console.log(action.payload.userInformation);
     yield call(user.createUser, action.payload.userInformation)
     yield put({ type: CREATE_USER_SUCCESS})
   } catch (error) {

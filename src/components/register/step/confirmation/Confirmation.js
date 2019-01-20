@@ -58,8 +58,7 @@ class Confirmation extends Component {
 
         // Login de l'utilisateur pour la récupération du token
         let user = await Auth.signIn(lowerCaseEmail, password)
-        
-        axios.defaults.headers.common['Authorization'] = user.signInUserSession.idToken.payload.jwtToken;
+
         // Création d'un tableau avec la key pour acceder au photo de l'utilisateur
         let userPhotos = []
         for (const photo of photos) {

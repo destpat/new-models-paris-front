@@ -1,4 +1,7 @@
-import { axiosInstanceNewModelsParis } from './axiosConfig';
+import { getApiEndPoint } from '../config';
+import { API } from 'aws-amplify';
+
+const apiName = getApiEndPoint().name
 
 /*
 *  @description
@@ -6,5 +9,9 @@ import { axiosInstanceNewModelsParis } from './axiosConfig';
 *  vers l'api
 */
 export const user = {
-  createUser : (data) => (axiosInstanceNewModelsParis.post('/create-user', data))
+  createUser : (data) => (API.post(apiName, '/create-user', {
+    body: {
+      ...data
+    }
+  }))
 }
