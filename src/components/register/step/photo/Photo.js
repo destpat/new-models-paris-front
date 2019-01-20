@@ -51,7 +51,7 @@ const FakePhoto = styled.div`
 
 class Contact extends Component {
   render() {
-    const { handleSubmit, photos, photoFraming } = this.props;
+    const { handleSubmit, photos, photoFraming, submitSucceeded } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Mes photos </Title>
@@ -75,13 +75,13 @@ class Contact extends Component {
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center" spacing={32}>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo1" label="Portrait"/>
+            <RenderDropzoneField photoFraming="photo1" label="Portrait" submitSucceeded={submitSucceeded}/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo2" label="Plain-pied"/>
+            <RenderDropzoneField photoFraming="photo2" label="Plain-pied" submitSucceeded={submitSucceeded}/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo3" label="Américain"/>
+            <RenderDropzoneField photoFraming="photo3" label="Américain" submitSucceeded={submitSucceeded}/>
           </Grid>
         </Grid>
       <NextButton/>
@@ -101,8 +101,11 @@ Contact = reduxForm({
   form: 'photoForm',
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
-    dispatch(setNextStep(5))
-    props.history.push(`password`)
+    // Vérifie que toute les photos on bien étais ajouté
+    if (props.photos.every((photo) => photo.preview)) {
+      dispatch(setNextStep(5))
+      props.history.push(`password`)
+    }
   },
 })(Contact)
 

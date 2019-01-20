@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import AddAPhoto from '@material-ui/icons/AddAPhoto'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import styled from 'styled-components'
 import { addPhoto, setCurrentPhoto, deletePhoto } from '../../registerAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -58,48 +59,68 @@ const Label = styled.div`
   text-align: center;
   margin-top: 15px;
 `
+
+const HelperContainer = styled.div`
+  text-align: center;
+`
+
+const RequiredPhoto = styled(FormHelperText)`
+  display: inline;
+  color: #f44336;
+`
+
 /*
 *  @description Component
 *  Composant permettant à l'utilisateur d'ajouter des photos
 */
 
-
 class RenderDropzoneField extends Component {
   render() {
-    const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label} = this.props;
+    const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label, submitSucceeded } = this.props;
+    let photoContainPreview = !!photos.find(photo => photo.photoFraming === photoFraming).preview;
     return (
       <div>
-      {
-        !!photos.find(photo => photo.photoFraming === photoFraming).preview === false ?
-        <div>
-          <DropZoneContainer>
-            <Dropzone style={{}}
-                      maxSize={7340032}
-                      accept="image/*"
-                      multiple={false}
-                      name="photo"
-                      onDrop={( files ) => {
-                        const file = files.map(file => Object.assign(file, {
-                          preview: URL.createObjectURL(file)
-                        }))
-                        addPhoto(photoFraming, file[0].preview)
-                      }}>
-              <AddAPhotoCustom/>
-            </Dropzone>
-          </DropZoneContainer>
-        </div>
-        :
-        <PhotoContainer>
-          <CustomFontAwesomeIcon icon={['fas', 'times-circle']}
-                                 onClick={() => deletePhoto(photoFraming)}/>
-          <Photo src={photos.find(photo => photo.photoFraming === photoFraming).preview}
-                 alt="models"
-                 onClick={() => setCurrentPhoto(photoFraming)}/>
-        </PhotoContainer>
+       {
+          photoContainPreview ?
+          <PhotoContainer>
+            <CustomFontAwesomeIcon icon={['fas', 'times-circle']}
+                                   onClick={() => deletePhoto(photoFraming)}/>
+            <Photo src={photos.find(photo => photo.photoFraming === photoFraming).preview}
+                   alt="models"
+                   onClick={() => setCurrentPhoto(photoFraming)}/>
+          </PhotoContainer>
+          :
+          <div>
+            <DropZoneContainer>
+              <Dropzone style={{}}
+                        maxSize={7340032}
+                        accept="image/*"
+                        multiple={false}
+                        name="photo"
+                        onDrop={( files ) => {
+                          const file = files.map(file => Object.assign(file, {
+                            preview: URL.createObjectURL(file)
+                          }))
+                          addPhoto(photoFraming, file[0].preview)
+                        }}>
+                <AddAPhotoCustom/>
+              </Dropzone>
+            </DropZoneContainer>
+          </div>
         }
         <Label>
           <span>{label}</span>
         </Label>
+        {
+          // Affihcage du message d'erreur seulement si le formulaire est submit
+          photoContainPreview === false && submitSucceeded ?
+
+          <HelperContainer>
+            <RequiredPhoto>Photo requise</RequiredPhoto>
+          </HelperContainer>
+          :
+          ''
+        }
       </div>
     )
   }
