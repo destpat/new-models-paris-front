@@ -7,7 +7,7 @@ stages:
 before_script:
   - pip install awscli
   - npm install
-  - npm run build
+  - npm run build:dev
 
 deploy_dev:
   stage: develop
