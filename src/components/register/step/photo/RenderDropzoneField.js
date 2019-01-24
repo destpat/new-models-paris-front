@@ -6,6 +6,12 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import styled from 'styled-components'
 import { addPhoto, setCurrentPhoto, deletePhoto } from '../../registerAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Compress from 'client-compress'
+
+const options = {
+  quality: 0.75
+}
+const compress = new Compress(options)
 
 const DropZoneContainer = styled.div`
   width: 130px;
@@ -16,6 +22,15 @@ const DropZoneContainer = styled.div`
     width: 90px;
     height: 90px;
   }
+`
+
+const Label = styled.div`
+  text-align: center;
+  margin-top: 15px;
+`
+
+const HelperContainer = styled.div`
+  text-align: center;
 `
 
 const PhotoContainer = styled.div`
@@ -55,18 +70,10 @@ const AddAPhotoCustom = styled(AddAPhoto)`
   }
 `
 
-const Label = styled.div`
-  text-align: center;
-  margin-top: 15px;
-`
-
-const HelperContainer = styled.div`
-  text-align: center;
-`
-
 const RequiredPhoto = styled(FormHelperText)`
   display: inline;
   color: #f44336;
+  ${props => props.primary ? "white" : "palevioletred"};
 `
 
 /*
@@ -75,6 +82,9 @@ const RequiredPhoto = styled(FormHelperText)`
 */
 
 class RenderDropzoneField extends Component {
+  state = {
+    fileIsToBig: false
+  }
   render() {
     const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label, submitSucceeded } = this.props;
     let photoContainPreview = !!photos.find(photo => photo.photoFraming === photoFraming).preview;
@@ -93,15 +103,22 @@ class RenderDropzoneField extends Component {
           <div>
             <DropZoneContainer>
               <Dropzone style={{}}
-                        maxSize={7340032}
+                        maxSize={6000000}
                         accept="image/*"
                         multiple={false}
                         name="photo"
+                        onDropRejected={() => this.setState({fileIsToBig: true})}
                         onDrop={( files ) => {
-                          const file = files.map(file => Object.assign(file, {
-                            preview: URL.createObjectURL(file)
-                          }))
-                          addPhoto(photoFraming, file[0].preview)
+                          if (files.length) {
+                            this.setState({fileIsToBig: false})
+                            compress.compress(files).then((conversions) => {
+                              const { photo } = conversions[0]
+                              const file = files.map(file => Object.assign(file, {
+                                preview: URL.createObjectURL(photo.data)
+                              }))
+                              addPhoto(photoFraming, file[0].preview)
+                            })
+                          }
                         }}>
                 <AddAPhotoCustom/>
               </Dropzone>
@@ -113,13 +130,21 @@ class RenderDropzoneField extends Component {
         </Label>
         {
           // Affihcage du message d'erreur seulement si le formulaire est submit
-          photoContainPreview === false && submitSucceeded ?
+          photoContainPreview === false && submitSucceeded && this.state.fileIsToBig === false ?
 
           <HelperContainer>
             <RequiredPhoto>Photo requise</RequiredPhoto>
           </HelperContainer>
           :
-          ''
+          <div style={{height: 14}}></div>
+        }
+        {
+          this.state.fileIsToBig ?
+          <HelperContainer>
+            <RequiredPhoto>Taille maximum 5 mo</RequiredPhoto>
+          </HelperContainer>
+          :
+          <div style={{height: 14}}></div>
         }
       </div>
     )
