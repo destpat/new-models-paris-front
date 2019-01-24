@@ -65,29 +65,36 @@ const styles = theme => ({
 
 class App extends Component {
   state = {
-    isOpen: false
+    menuOpen: false
   }
 
-  handleMenu() {
-    this.setState({isOpen: !this.state.isOpen})
+  handleStateChange (state) {
+   this.setState({menuOpen: state.isOpen})
   }
+
+  closeMenu () {
+    this.setState({menuOpen: false})
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
         <div className={classes.burgerMenu}>
-          <Menu classNames={styles} >
-            <MenuLinkResponsive to="/women">Women</MenuLinkResponsive>
+          <Menu classNames={styles}
+                isOpen={this.state.menuOpen}
+                onStateChange={(state) => this.handleStateChange(state)}>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/women">Women</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive to="/new">New</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/new">New</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive to="/men">Men</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Men</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive to="/video">Video</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/video">Video</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive to="/candidatures">Become a model</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive to="/login">Login</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/login">Login</MenuLinkResponsive>
           </Menu>
         </div>
         <Header>
