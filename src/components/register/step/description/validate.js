@@ -9,6 +9,9 @@ const validate = values => {
   if (!values.height) {
     errors.height = 'Champs requis'
   }
+  if (+values.height > 250) {
+    errors.height = 'Ta taille nous semblent incorrect 🤔'
+  }
   return errors;
 }
 

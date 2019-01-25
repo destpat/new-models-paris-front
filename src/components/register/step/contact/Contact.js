@@ -80,6 +80,7 @@ class Contact extends Component {
                 id="post-code-field"
                 label="Code postal"
                 style={{width:'100%'}}
+                type="number"
                 component={renderTextField}/>
             </Grid>
           </Grid>

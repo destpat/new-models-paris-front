@@ -38,9 +38,7 @@ const styles = theme => ({
 *  formulaire pour la création d'utilisateur, selection des type de figuration
 *  auquel l'utilisateur veux participer
 */
-
-
-class Type extends Component {
+class ExtraType extends Component {
   render() {
     const { handleSubmit, submitFailed, valid } = this.props;
     return (
@@ -52,7 +50,7 @@ class Type extends Component {
           </TitleHelper>
         </Grid>
         <Grid container item justify="center">
-          <FormControl style={{marginRight: 100}} error={submitFailed && !valid ? true : false}>
+          <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
               <Field name="musicVideo"
                      id="music-video-field"
@@ -92,7 +90,7 @@ class Type extends Component {
   }
 }
 
-Type = reduxForm({
+ExtraType = reduxForm({
   form: 'typeForm',
   destroyOnUnmount: false,
   validate,
@@ -100,6 +98,6 @@ Type = reduxForm({
     dispatch(setNextStep(4))
     props.history.push(`photo`)
   },
-})(Type)
+})(ExtraType)
 
-export default withStyles(styles)(withRouter(Type));
+export default withStyles(styles)(withRouter(ExtraType));

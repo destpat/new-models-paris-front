@@ -49,7 +49,7 @@ const FakePhoto = styled.div`
 *  Ajout des photos
 */
 
-class Contact extends Component {
+class Photos extends Component {
   render() {
     const { handleSubmit, photos, photoFraming, submitSucceeded } = this.props;
     return (
@@ -97,7 +97,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-Contact = reduxForm({
+Photos = reduxForm({
   form: 'photoForm',
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
@@ -107,6 +107,6 @@ Contact = reduxForm({
       props.history.push(`password`)
     }
   },
-})(Contact)
+})(Photos)
 
-export default connect(mapStateToProps)(withRouter(Contact));
+export default connect(mapStateToProps)(withRouter(Photos));

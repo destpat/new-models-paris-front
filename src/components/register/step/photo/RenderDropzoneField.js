@@ -51,6 +51,7 @@ const Photo = styled.img`
 
 const CustomFontAwesomeIcon = styled(FontAwesomeIcon)`
   position: absolute;
+  padding: 2px;
   top: -10px;
   right: -10px;
   font-size: 1.5rem;

@@ -3,13 +3,13 @@ import { Route, Switch } from "react-router-dom"
 import Informations from './step/information/Information'
 import Contact from './step/contact/Contact'
 import Description from './step/description/Description'
-import Type from './step/type/Type'
-import Photo from './step/photo/Photo'
+import ExtraType from './step/type/ExtraType'
+import Photos from './step/photo/Photos'
 import Password from './step/password/Password'
 import Confirmation from './step/confirmation/Confirmation'
 import HomeRegistration from './step/HomeRegistration'
 
-import RegisterRoute from './RegisterRoute'
+// import RegisterRoute from './RegisterRoute'
 
 /*
 *  @description Component
@@ -20,13 +20,13 @@ const Register = ({match}) => {
   return (
     <Switch>
       <Route exact path={match.url} component={HomeRegistration} />
-      <RegisterRoute path={`${match.url}/information`} component={Informations} stepNumber={0}/>
-      <RegisterRoute path={`${match.url}/contact`} component={Contact} stepNumber={1}/>
-      <RegisterRoute path={`${match.url}/description`} component={Description} stepNumber={2}/>
-      <RegisterRoute path={`${match.url}/type`} component={Type} stepNumber={3}/>
-      <RegisterRoute path={`${match.url}/photo`} component={Photo} stepNumber={4}/>
-      <RegisterRoute path={`${match.url}/password`} component={Password} stepNumber={5}/>
-      <RegisterRoute path={`${match.url}/confirmation`} component={Confirmation} stepNumber={6}/>
+      <Route path={`${match.url}/information`} component={Informations} stepNumber={0}/>
+      <Route path={`${match.url}/contact`} component={Contact} stepNumber={1}/>
+      <Route path={`${match.url}/description`} component={Description} stepNumber={2}/>
+      <Route path={`${match.url}/type`} component={ExtraType} stepNumber={3}/>
+      <Route path={`${match.url}/photos`} component={Photos} stepNumber={4}/>
+      <Route path={`${match.url}/password`} component={Password} stepNumber={5}/>
+      <Route path={`${match.url}/confirmation`} component={Confirmation} stepNumber={6}/>
     </Switch>
   )
 }
