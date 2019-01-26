@@ -11,8 +11,15 @@ const Photo = styled.img`
 
 const PhotoContainer = styled(Grid)`
   padding: 5px 30px 10px 0px;
+  text-align: center;
+  @media (max-width: 959px) {
+    padding: 0 15px;
+  }
   ${Photo}:not(:first-child) {
     margin-top: 40px;
+  }
+  ${Photo}:last-child {
+    margin-bottom: 80px;
   }
 `
 const InformationContainer = styled.div`
@@ -21,6 +28,16 @@ const InformationContainer = styled.div`
   top: 30%;
   transform: translateX(-50%);
   text-align: center;
+  width: 50%;
+   @media (max-width: 959px) {
+     padding: 0 15px;
+     position: sticky;
+     left: 0;
+     top: 0;
+     transform: none;
+     text-align: center;
+     width: 100%;
+   }
 `
 
 const UserName = styled.h2`
@@ -28,7 +45,6 @@ const UserName = styled.h2`
   font-size: 2em;
   letter-spacing: 0.1em;
   font-weight: 200;
-  margin-right: 16px;
 `
 
 const UserInformationContainer = styled.div`
@@ -40,6 +56,7 @@ const UserInfomationTitle = styled.span`
   color: #808080;
   font-size: 0.9em;
   font-weight: 500;
+  white-space: pre;
 `
 
 const UserInformationValue = styled.span`
@@ -52,11 +69,14 @@ const UserInformationValue = styled.span`
 const ExtraType = styled.li`
   font-family: cursive;
   font-size: 1.1em;
-  display: inline;
-  margin: 20px;
+  display: inline-block;
+  margin: 10px;
 `
 
 const ExtraTypeContainer = styled.ul`
+  text-align: center;
+  padding: 0;
+  overflow-wrap: normal;
 `
 
 class Profile extends Component {
@@ -65,36 +85,30 @@ class Profile extends Component {
       <div>
         <Grid container>
           <Grid item md={6} xs={12}>
-            <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center">
-                <InformationContainer>
-                  <UserName>Vanessa</UserName>
-                  <UserInformationContainer>
-                    <UserInfomationTitle>Taille : </UserInfomationTitle>
-                    <UserInformationValue style={{marginRight: 20}}>176 cm</UserInformationValue>
-                    <UserInfomationTitle>Cheveux : </UserInfomationTitle>
-                    <UserInformationValue style={{marginRight: 20}}> Brun </UserInformationValue>
-                    <UserInfomationTitle>Yeux : </UserInfomationTitle>
-                    <UserInformationValue>Vert</UserInformationValue>
-                  </UserInformationContainer>
-                  <div style={{marginBottom: 20}}>
-                    <UserInfomationTitle>  Type de figuration : </UserInfomationTitle>
-                  </div>
-                  <ExtraTypeContainer>
-                    <ExtraType>Clips vidéos musicaux</ExtraType>
-                    <ExtraType>Bikini</ExtraType>
-                    <ExtraType>Shootings photos</ExtraType>
-                    <ExtraType>Lingerie</ExtraType>
-                    <ExtraType>Vixen</ExtraType>
-                    <ExtraType>Nu</ExtraType>
-                  </ExtraTypeContainer>
-                </InformationContainer>
+            <Grid container direction="row" justify="center" alignItems="center">
+              <InformationContainer>
+                <UserName>Vanessa</UserName>
+                <UserInformationContainer>
+                  <UserInfomationTitle>Taille : </UserInfomationTitle>
+                  <UserInformationValue style={{marginRight: 20}}>176 cm</UserInformationValue>
+                  <UserInfomationTitle>Cheveux : </UserInfomationTitle>
+                  <UserInformationValue style={{marginRight: 20}}> Brun </UserInformationValue>
+                  <UserInfomationTitle>Yeux : </UserInfomationTitle>
+                  <UserInformationValue>Vert</UserInformationValue>
+                </UserInformationContainer>
+                <div style={{marginBottom: 20}}>
+                  <UserInfomationTitle>  Type de figuration : </UserInfomationTitle>
+                </div>
+                <ExtraTypeContainer>
+                  <ExtraType>Clips vidéos musicaux</ExtraType>
+                  <ExtraType>Vixen</ExtraType>
+                  <ExtraType>Bikini</ExtraType>
+                  <ExtraType>Photos shootings</ExtraType>
+                </ExtraTypeContainer>
+              </InformationContainer>
             </Grid>
           </Grid>
-          <PhotoContainer item md={6} >
+          <PhotoContainer item md={6} xs={12}>
             <Photo alt="models"
                  src="http://media.benjamin-maxant.com/photos/photographe-fashion-mode-modele-nice-cannes-antibes-cote-d-azur-320.jpg"/>
 
@@ -103,7 +117,6 @@ class Profile extends Component {
 
             <Photo alt="models"
                  src="http://media.benjamin-maxant.com/photos/photographe-fashion-mode-modele-nice-cannes-antibes-cote-d-azur-95.jpg"/>
-
           </PhotoContainer>
         </Grid>
       </div>
