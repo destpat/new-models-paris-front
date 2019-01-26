@@ -96,7 +96,7 @@ ExtraType = reduxForm({
   validate,
   onSubmit: (values, dispatch, props) => {
     dispatch(setNextStep(4))
-    props.history.push(`photo`)
+    props.history.push(`photos`)
   },
 })(ExtraType)
 

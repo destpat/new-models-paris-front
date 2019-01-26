@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
 import { Auth, Storage } from 'aws-amplify'
@@ -12,8 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { createUser, setSignupLoading } from '../../registerAction'
 import { ValidateButtonContainer, StyledButton } from '../../utilis/button/nextButtonStyle'
-import './confirmation.css'
 
+import './confirmation.css'
 
 const Title = styled.h2`
   text-align: center;
@@ -39,8 +38,19 @@ const Form = styled.form`
 *  @description Component
 *  Etape final du formulaire d'inscription
 */
-
 class Confirmation extends Component {
+  redirectToInstagram() {
+    var destination = "https://www.instagram.com/newmodels.paris/"
+    if( navigator.userAgent.match(/Android/i) ) {
+      // use Android's redirect
+      document.location = destination
+    }
+    else {
+      // use iOS redirect
+      window.location.replace( destination )
+    }
+  }
+
   async componentWillMount() {
     const { email, password, photos, setSignupLoading, createUser} = this.props;
       setSignupLoading(true)
@@ -83,7 +93,6 @@ class Confirmation extends Component {
             }
           }
         }
-
         // Ajout des données de l'utilisateur en base de données
         createUser({
           ...this.props.createUserInformation,
@@ -93,19 +102,26 @@ class Confirmation extends Component {
       } catch (error) {
         setSignupLoading(false)
         console.log(error);
-      }
+    }
   }
   render() {
-    const { handleSubmit, history, singnupLoading, singnupSuccess } = this.props;
+    const { handleSubmit, singnupLoading, singnupSuccess } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Inscription réussie </Title>
-        <Grid container item justify="center" >
+        <Grid container item justify="center">
           <Grid item xs={12} md={3}>
-            <TitleHelper>
-              Ton profil va être étudier dans les prochains jours.
-              Nous te recontactons très prochainement.
-            </TitleHelper>
+            {
+              singnupLoading ?
+              <TitleHelper>
+                Chargement de t'es photos en cour
+              </TitleHelper>
+              :
+              <TitleHelper>
+                Ton profil va être étudier dans les prochains jours.
+                Nous te recontactons très prochainement.
+              </TitleHelper>
+            }
           </Grid>
         </Grid>
         <div className="circle-loader-container">
@@ -114,7 +130,7 @@ class Confirmation extends Component {
           </div>
         </div>
         <ValidateButtonContainer>
-          <StyledButton onClick={() => history.replace('/instagram')}>
+          <StyledButton onClick={() => this.redirectToInstagram()}>
             <CustomFontAwesomeIcon icon={['fab', 'instagram']}/>
             Instagram
           </StyledButton>
@@ -167,4 +183,4 @@ const mapDispatchToProps = dispatch => ({
   setSignupLoading: (loading) => dispatch(setSignupLoading(loading))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Confirmation));
+export default connect(mapStateToProps, mapDispatchToProps)(Confirmation)
