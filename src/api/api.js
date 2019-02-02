@@ -1,5 +1,5 @@
 import { getApiEndPoint } from '../config';
-import { API } from 'aws-amplify';
+import { API, Storage } from 'aws-amplify';
 
 const apiName = getApiEndPoint().name
 
@@ -13,5 +13,14 @@ export const user = {
     body: {
       ...data
     }
-  }))
+  })),
+  getPublicUsers : (data) => (API.get(apiName, '/get-public-user', {
+    queryStringParameters: {
+      'sex' : data
+    }
+  })),
+}
+
+export const s3 = {
+  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id }))
 }
