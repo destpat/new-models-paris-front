@@ -14,9 +14,7 @@ import { user as userCall, s3 } from '../../api/api'
 export function* getPublicUsers(action) {
   try {
     yield put({type: FETCHING_PUBLIC_USERS})
-
     let users = yield call(userCall.getPublicUsers, action.payload.sex)
-
     let photos =  yield all(users.map((user) => {
       return call(s3.getImage, user.photos[0])
     }))

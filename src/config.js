@@ -3,7 +3,7 @@ import { Auth } from 'aws-amplify'
 export const getApiEndPoint = () => {
   const dev = {
       name: 'newModelsParisDevApi',
-      endpoint: 'https://m9ibbc1f11.execute-api.eu-central-1.amazonaws.com/dev'
+      endpoint: 'https://api-dev.newmodelsparis.com'
   };
 
   const prod = {
@@ -38,10 +38,17 @@ export const AmplifyConfig = {
       {
         ...getApiEndPoint(),
         custom_header: async () => {
-          // Alternatively, with Cognito User Pools use this:
-          return {
-            Authorization: (await Auth.currentSession()).idToken.jwtToken }
+          let auth;
+          try {
+          auth = (await Auth.currentSession()).idToken.jwtToken
+            return {
+              Authorization: auth
+            }
+          } catch (e) {
+            auth = 'fakeToken'
+          }
         }
+
       }
     ]
   }
