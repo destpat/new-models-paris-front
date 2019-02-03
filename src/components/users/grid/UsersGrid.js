@@ -5,10 +5,6 @@ import StackGrid from "react-stack-grid";
 import sizeMe from 'react-sizeme';
 import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer } from './style'
 
-
-let users = [
-]
-
 /*
 *  @description Component
 *  Affichage en grille des profils utilisateurs

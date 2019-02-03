@@ -17,10 +17,11 @@ export function* getPublicUsers(action) {
     let photos =  yield all(users.map((user) => {
       return call(s3.getImage, user.photos[0])
     }))
+
     users = users.map((user,index) => {
       return {
         ...user,
-        photo: photos[index]
+        photo: photos[index].substring(0, photos[index].indexOf('?'))
       }
     })
     yield put({ type: GET_PUBLIC_USERS_SUCCESS, data: users })

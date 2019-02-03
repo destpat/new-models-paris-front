@@ -14,13 +14,14 @@ export const user = {
       ...data
     }
   })),
-  getPublicUsers : (data) => (API.get(apiName, '/get-public-user', {
+  getPublicUsers : (sex) => (API.get(apiName, '/get-public-users', {
     queryStringParameters: {
-      'sex' : data
+      sex
     }
   })),
+  getPublicUser : (id) => (API.get(apiName, `/get-public-users/${id}`)),
 }
 
 export const s3 = {
-  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id }))
+  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id, expires: 6000}))
 }
