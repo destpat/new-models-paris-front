@@ -11,7 +11,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 import Register from './components/register/Register'
 import Women from './components/women/Women'
-import Profile from './components/profile/Profile'
+import Profile from './components/users/profile/Profile'
 
 import logo from './logo.png'
 import  './burgerMenuStyle.css'

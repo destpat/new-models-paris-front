@@ -20,7 +20,7 @@ class UsersGrid extends Component {
           publicUsers.map((publicUser, index) => {
             return (
               <div key={index}>
-                <PhotoContainer onClick={() =>  this.props.history.push(this.props.match.url + '/32')}>
+                <PhotoContainer onClick={() =>  this.props.history.push(`${this.props.match.url}/${publicUser.id}`)}>
                   <Photo imageUrl={publicUser.photo} alt="models"/>
                   <HoverText>
                     {publicUser.firstname}

@@ -19,7 +19,7 @@ export const user = {
       sex
     }
   })),
-  getPublicUser : (id) => (API.get(apiName, `/get-public-users/${id}`)),
+  getPublicUser : (id) => (API.get(apiName, `/get-public-user/${id}`)),
 }
 
 export const s3 = {
