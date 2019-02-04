@@ -18,19 +18,22 @@ class UsersGrid extends Component {
                  columnWidth={width <= 480 ? 174 : 240}>
         {
           publicUsers.map((publicUser, index) => {
+            let { id, firstname, photo } = publicUser
             return (
               <div key={index}>
-                <PhotoContainer onClick={() =>  this.props.history.push(`${this.props.match.url}/${publicUser.id}`)}>
-                  <Photo imageUrl={publicUser.photo} alt="models"/>
+                <PhotoContainer onClick={() =>  this.props.history.push(`${this.props.match.url}/${id}`)}>
+                  <Photo imageUrl={photo} alt="models" />
                   <HoverText>
-                    {publicUser.firstname}
+                    {firstname}
                     <br/>
                     <br/>
                     Voir le portfolio
                   </HoverText>
                 </PhotoContainer>
                 <UserNameContainer>
-                  <UserName>{publicUser.firstname}</UserName>
+                  <UserName>
+                    {firstname}
+                  </UserName>
                 </UserNameContainer>
               </div>
             )
