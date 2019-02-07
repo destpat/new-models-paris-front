@@ -80,7 +80,7 @@ class Confirmation extends Component {
                 url: photo.preview,
                 responseType: 'blob'
               })
-              let updatePhoto = await Storage.put(`${userId}-${Date.now().toString()}.jpg`, response.data, {
+              let updatePhoto = await Storage.put(`${Date.now().toString()}.jpg`, response.data, {
                 level: 'protected',
                 contentType: 'image/jpg'
               })
@@ -101,9 +101,8 @@ class Confirmation extends Component {
         })
       } catch (error) {
         setSignupLoading(false)
-        console.log(error);
+      }
     }
-  }
   render() {
     const { handleSubmit, singnupLoading, singnupSuccess } = this.props;
     return (
