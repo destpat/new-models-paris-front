@@ -13,6 +13,7 @@ import { Photo,
          ExtraType,
          ExtraTypeContainer
        } from './style'
+import Loader from '../../utilis/loader/Loader'
 
 class Profile extends Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ class Profile extends Component {
       <div>
         {
           fetchingPublicUser ?
-          <h1>LOADING</h1>
+          <Loader />
           :
           <Grid container>
             <Grid item md={6} xs={12}>

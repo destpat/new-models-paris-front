@@ -22,7 +22,7 @@ const Header = styled.header`
   background-color: #fafafa;
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 30px;
-  height: 80px;
+  height: 95px;
   display: flex;
   align-items: center;
 `
@@ -103,7 +103,7 @@ class App extends Component {
           </Menu>
         </div>
         <Header>
-        <LogoLink to="/"><img src={logo} alt="logo new models paris" height="70"/></LogoLink>
+        <LogoLink to="/"><img src={logo} alt="logo new models paris" height="85"/></LogoLink>
         <div className={classes.menu}>
           <Nav>
             <MenuLink to="/women">Women</MenuLink>

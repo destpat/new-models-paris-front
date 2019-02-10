@@ -1,0 +1,51 @@
+.wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: #b0a9fd;
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 2em;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+}
+
+.bounceball {
+  position: relative;
+  display: inline-block;
+  height: 37px;
+  width: 30px;
+}
+.bounceball:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #b0a9fd;
+  transform-origin: 50%;
+  animation: bounce 500ms alternate infinite ease;
+}
+
+@keyframes bounce {
+  0% {
+    top: 30px;
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: 15px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 0;
+  }
+}
