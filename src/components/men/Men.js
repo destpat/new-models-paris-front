@@ -10,10 +10,10 @@ import Loader from '../utilis/loader/Loader'
 */
 class Women extends Component {
   componentDidMount() {
-    this.props.getPublicUsers('women')
+    this.props.getPublicUsers('men')
   }
   render() {
-    const { fetchingPublicUsers } = this.props
+    const { fetchingPublicUsers } = this.props;
     return (
       <div>
         {
@@ -38,4 +38,4 @@ const mapStateToProps = state => ({
   fetchingPublicUsers: state.users.fetchingPublicUsers
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Women);
+export default connect(mapStateToProps, mapDispatchToProps)(Women)

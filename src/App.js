@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Link, Switch} from "react-router-dom"
-import { stack as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 
 import styled from 'styled-components'
 
@@ -11,6 +11,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 import Register from './components/register/Register'
 import Women from './components/women/Women'
+import Men from './components/men/Men'
 import Profile from './components/users/profile/Profile'
 
 import logo from './logo.png'
@@ -91,8 +92,6 @@ class App extends Component {
                 onStateChange={(state) => this.handleStateChange(state)}>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/women">Women</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/new">New</MenuLinkResponsive>
-            <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Men</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/video">Video</MenuLinkResponsive>
@@ -107,7 +106,6 @@ class App extends Component {
         <div className={classes.menu}>
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
-            <MenuLink to="/new">New</MenuLink>
             <MenuLink to="/men">Men</MenuLink>
             <MenuLink to="/video">Video</MenuLink>
             <MenuLink to="/candidatures">Become a model</MenuLink>
@@ -118,7 +116,9 @@ class App extends Component {
         <Switch>
           <Route path="/candidatures" component={Register}/>
           <Route exact path="/women" component={Women}/>
+          <Route exact path="/men" component={Men}/>
           <Route path="/women/:id" component={Profile}/>
+          <Route path="/men/:id" component={Profile}/>
         </Switch>
       </div>
     );
