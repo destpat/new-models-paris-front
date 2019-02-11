@@ -41,7 +41,7 @@ class HomeRegistration extends Component {
         <ValidateButtonContainer>
           <StyledButton
             type='submit'
-            onClick={() => history.push(`${match.url}/information`)}>
+            onClick={() => history.push(`${match.url}/informations`)}>
             Inscription
           </StyledButton>
         </ValidateButtonContainer>

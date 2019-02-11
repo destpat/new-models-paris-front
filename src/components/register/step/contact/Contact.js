@@ -42,7 +42,7 @@ class Contact extends Component {
             </TitleHelper>
           </Grid>
         </Grid>
-        <Grid container spacing={24} direction="column">
+        <Grid container spacing={8} direction="column">
           <Grid container item spacing={0} justify="center" style={{paddingBottom: 0}}>
             <Grid item xs={11} md={3}>
               <Field
@@ -64,7 +64,7 @@ class Contact extends Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container justify="center" style={{paddingTop: 12}}>
+        <Grid container justify="center" spacing={8}>
           <Grid container item md={3} xs={11} justify="space-between">
             <Grid item xs={5} md={5}>
               <Field

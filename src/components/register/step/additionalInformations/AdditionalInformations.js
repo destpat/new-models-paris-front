@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
-import renderTextField from '../../utilis/renderTextField'
+
 import styled from 'styled-components'
 
-import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 import { setNextStep } from '../../registerAction'
 import NextButton from '../../utilis/button/NextButton'
+import renderCheckboxField from '../../utilis/renderCheckboxField'
+import renderTextField from '../../utilis/renderTextField'
+import validate from './validate'
 
 const Title = styled.h2`
   text-align: center;
@@ -39,19 +46,61 @@ const styles = theme => ({
 */
 class AdditionalInformations extends Component {
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, submitFailed, valid} = this.props
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Informations complémentaires </Title>
+         <TitleHelper>
+           En quelles tenues acceptes-tu de poser ?
+         </TitleHelper>
+        <Grid container item justify="center">
+          <FormControl>
+            <FormGroup>
+             <Field name="fashionMode"
+                    id="fashion-mode-outfit"
+                    label="Fashion / Mode"
+                    component={renderCheckboxField}/>
+
+             <Field name="fitness"
+                    id="fitness"
+                    label="Fitness"
+                    component={renderCheckboxField}/>
+
+             <Field name="bikini"
+                    id="bikini"
+                    label="Bikini"
+                    component={renderCheckboxField}/>
+            </FormGroup>
+          </FormControl>
+          <FormControl error={submitFailed && !valid ? true : false}>
+            <FormGroup>
+              <Field name="underwear"
+                     id="underwear"
+                     label="Sous-vêtements"
+                     component={renderCheckboxField}/>
+
+              <Field name="vixen"
+                     id="vixen"
+                     label="Vixen"
+                     component={renderCheckboxField}/>
+
+             <Field name="nude"
+                    id="nude"
+                    label="Nu"
+                    component={renderCheckboxField}/>
+            </FormGroup>
+            <FormHelperText>Veuillez sélectioner au <br/> moin une case</FormHelperText>
+          </FormControl>
+         </Grid>
         <Grid container item justify="center">
           <TitleHelper>
             As-tu plus de précisions à nous donner par rapports à t'es talents et conditions ?
           </TitleHelper>
-          <Grid container spacing={24} direction="column">
+          <Grid container spacing={8} direction="column">
             <Grid container item spacing={0} justify="center">
               <Grid item xs={11} md={3}>
-                <Field name="firstname"
-                       id="firstname-field"
+                <Field name="other"
+                       id="other-field"
                        label="Danse, instrument de musqiue, performances, sports ..."
                        multiline={true}
                        rows="4"
@@ -62,7 +111,6 @@ class AdditionalInformations extends Component {
             </Grid>
           </Grid>
         </Grid>
-
         <NextButton/>
       </Form>
     )
@@ -70,8 +118,9 @@ class AdditionalInformations extends Component {
 }
 
 AdditionalInformations = reduxForm({
-  form: 'typeForm',
+  form: 'AdditionalInformationsForm',
   destroyOnUnmount: false,
+  validate,
   onSubmit: (values, dispatch, props) => {
     dispatch(setNextStep(5))
     props.history.push(`photos`)

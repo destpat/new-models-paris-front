@@ -45,7 +45,7 @@ class Information extends Component {
           <TitleHelper> Afin de créer ton profil nous avons besoin de quelques informations </TitleHelper>
         </Grid>
       </Grid>
-      <Grid container spacing={24} direction="column">
+      <Grid container spacing={8} direction="column">
         <Grid container item spacing={0} justify="center" >
           <Grid item xs={11} md={3}>
             <Field name="firstname"
@@ -78,36 +78,37 @@ class Information extends Component {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container justify="center">
-        <Grid container item md={3} xs={11} justify="space-between">
-            <Grid item xs={3} md={3}>
-            <Field
-              style={{minWidth: '100%'}}
-              name="day"
-              id="day-field"
-              label="Jour"
-              datas={getDay()}
-              component={renderSelectField}/>
-            </Grid>
-
-            <Grid item xs={3} md={3}>
+      <Grid container spacing={8} direction="column" style={{marginTop: 10}}>
+        <Grid container justify="center">
+          <Grid container item md={3} xs={11} justify="space-between">
+              <Grid item xs={3} md={3}>
               <Field
                 style={{minWidth: '100%'}}
-                name="month"
-                id="month-field"
-                label="Mois"
-                datas={month}
-                component={renderSelectField}
-                />
-            </Grid>
-            <Grid item xs={3} md={3}>
-              <Field
-                style={{minWidth: '100%'}}
-                name="year"
-                id="year-field"
-                label="Année"
-                datas={getYears()}
+                name="day"
+                id="day-field"
+                label="Jour"
+                datas={getDay()}
                 component={renderSelectField}/>
+              </Grid>
+              <Grid item xs={3} md={3}>
+                <Field
+                  style={{minWidth: '100%'}}
+                  name="month"
+                  id="month-field"
+                  label="Mois"
+                  datas={month}
+                  component={renderSelectField}
+                  />
+              </Grid>
+              <Grid item xs={3} md={3}>
+                <Field
+                  style={{minWidth: '100%'}}
+                  name="year"
+                  id="year-field"
+                  label="Année"
+                  datas={getYears()}
+                  component={renderSelectField}/>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import  { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid'
 import { getPublicUser } from '../usersAction'
-import { hairsColorsBinding, extraTypeBinding, eyesColorsBinding } from '../../utilis/bindingValue'
+import { hairsColorsBinding, extraTypeBinding, clothesBinding, eyesColorsBinding } from '../../utilis/bindingValue'
 import { Photo,
          PhotoContainer,
          InformationContainer,
@@ -22,7 +22,7 @@ class Profile extends Component {
   }
   render() {
     const { fetchingPublicUser } = this.props;
-    const { firstname, height, hairColor, eyesColor, extraType, photos } = this.props.currentPublicUser
+    const { firstname, height, hairColor, eyesColor, extraType, photos, clothes } = this.props.currentPublicUser
     return (
 
       <div>
@@ -49,6 +49,14 @@ class Profile extends Component {
                   <ExtraTypeContainer>
                     {
                       extraType.map((type, index) => <ExtraType key={index}> { extraTypeBinding.find(o => o.value === type).name } </ExtraType>)
+                    }
+                  </ExtraTypeContainer>
+                  <div style={{marginBottom: 20}}>
+                    <UserInfomationTitle>  Type de tenue : </UserInfomationTitle>
+                  </div>
+                  <ExtraTypeContainer>
+                    {
+                      clothes.map((type, index) => <ExtraType key={index}> { clothesBinding.find(o => o.value === type).name } </ExtraType>)
                     }
                   </ExtraTypeContainer>
                 </InformationContainer>

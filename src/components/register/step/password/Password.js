@@ -41,7 +41,7 @@ class Password extends Component {
             </TitleHelper>
           </Grid>
         </Grid>
-        <Grid container spacing={24} direction="column">
+        <Grid container spacing={8} direction="column">
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={11} md={3}>
               <Field name="password"
@@ -75,7 +75,7 @@ Password = reduxForm({
   validate,
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
-    dispatch(setNextStep(6))
+    dispatch(setNextStep(7))
     props.history.push(`confirmation`)
   },
 })(Password)

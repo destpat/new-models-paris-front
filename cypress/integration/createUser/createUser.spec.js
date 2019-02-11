@@ -1,7 +1,7 @@
 /* eslint-disable */
 context('Create user', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/candidatures/information')
+    cy.visit('http://localhost:3000/candidatures/informations')
   })
 
   it('should create a new user', () => {

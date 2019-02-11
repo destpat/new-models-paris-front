@@ -103,7 +103,7 @@ Photos = reduxForm({
   onSubmit: (values, dispatch, props) => {
     // Vérifie que toute les photos on bien étais ajouté
     if (props.photos.every((photo) => photo.preview)) {
-      dispatch(setNextStep(5))
+      dispatch(setNextStep(6))
       props.history.push(`password`)
     }
   },

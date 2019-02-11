@@ -71,16 +71,39 @@ export const eyesColorsBinding = [
 
 export const extraTypeBinding = [
   {
-    name: 'Lingerie',
-    value: 'underwear'
+    name: 'Court métrage',
+    value: 'shortFilms'
   },
   {
-    name: 'Clips vidéos musicaux',
+    name: 'Clips vidéos',
     value: 'musicVideo'
   },
   {
     name: 'Shootings photos',
     value: 'photoShoot'
+  },
+  {
+    name: 'Défilé de mode',
+    value: 'fashionShow'
+  }
+]
+
+export const clothesBinding = [
+  {
+    name: 'Fashion',
+    value: 'fashionMode'
+  },
+  {
+    name: 'Fitness',
+    value: 'fitness'
+  },
+  {
+    name: 'Bikini',
+    value: 'bikini'
+  },
+  {
+    name: 'Sous-vêtement',
+    value: 'underwear'
   },
   {
     name: 'Vixen',
@@ -89,9 +112,5 @@ export const extraTypeBinding = [
   {
     name: 'Nu',
     value: 'nude'
-  },
-  {
-    name: 'Bikini',
-    value: 'bikini'
   }
 ]

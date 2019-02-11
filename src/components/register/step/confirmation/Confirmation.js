@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
 import { Auth, Storage } from 'aws-amplify'
-
-import axios from 'axios'
 
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
@@ -145,16 +144,25 @@ const passwordFormSelector = formValueSelector('passwordForm')
 const descriptionFormSelector = formValueSelector('descriptionForm')
 const informationFormSelector = formValueSelector('informationForm')
 const typeFormSelector = formValueSelector('typeForm')
+const AdditionalInformationsFormSelector = formValueSelector('AdditionalInformationsForm')
 
 const mapStateToProps = state => {
   let { day, month, year } = informationFormSelector(state, 'day', 'month', 'year')
-  let extraTypeSeclection = typeFormSelector(state, 'musicVideo', 'photoShoot', 'underwear', 'vixen', 'nude')
+  let extraTypeSeclection = typeFormSelector(state, 'shortFilms', 'photoShoot', 'musicVideo', 'fashionShow')
+  let additionalSelection = AdditionalInformationsFormSelector(state, 'fashionMode', 'fitness', 'bikini', 'underwear', 'vixen', 'nude')
   let height = descriptionFormSelector(state, 'height')
   let extraType = []
+  let clothes = []
 
-  for (var key in extraTypeSeclection) {
+  for (let key in extraTypeSeclection) {
     if (extraTypeSeclection.hasOwnProperty(key) && extraTypeSeclection[key] === true) {
       extraType.push(key);
+    }
+  }
+
+  for (let key in additionalSelection) {
+    if (additionalSelection.hasOwnProperty(key) && additionalSelection[key] === true) {
+      clothes.push(key);
     }
   }
 
@@ -170,9 +178,11 @@ const mapStateToProps = state => {
       ...informationFormSelector(state, 'firstname', 'lastname', 'sex'),
       ...descriptionFormSelector(state, 'hairColor', 'eyesColor'),
       ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),
+      other: AdditionalInformationsFormSelector(state, 'other'),
       height: +height,
       birthdate,
-      extraType
+      extraType,
+      clothes
     }
   }
 }

@@ -50,8 +50,6 @@ class ExtraType extends Component {
             Quels types de projets t’intéressent ?
           </TitleHelper>
         </Grid>
-
-
         <Grid container item justify="center">
           <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
@@ -73,57 +71,10 @@ class ExtraType extends Component {
                      id="music-video-field"
                      label="Clips vidéos"
                      component={renderCheckboxField}/>
-
               <Field name="fashionShow"
                      id="fashion-show"
                      label="Défilé de mode"
                      component={renderCheckboxField}/>
-            </FormGroup>
-          </FormControl>
-         </Grid>
-
-         <TitleHelper>
-           En quelles tenues acceptes-tu de poser ?
-         </TitleHelper>
-
-        <Grid container item justify="center">
-
-          <FormControl error={submitFailed && !valid ? true : false}>
-            <FormGroup>
-             <Field name="fashionModeOutfit"
-                    id="fashion-mode-outfit"
-                    label="Fashion / Mode"
-                    component={renderCheckboxField}/>
-
-             <Field name="fitnessOutfit"
-                    id="fitness"
-                    label="Fitness"
-                    component={renderCheckboxField}/>
-
-             <Field name="bikiniOutfit"
-                    id="bikini"
-                    label="Bikini"
-                    component={renderCheckboxField}/>
-
-            </FormGroup>
-          </FormControl>
-
-          <FormControl error={submitFailed && !valid ? true : false}>
-            <FormGroup>
-              <Field name="underwear"
-                     id="underwear"
-                     label="Sous-vêtements"
-                     component={renderCheckboxField}/>
-
-              <Field name="vixen"
-                     id="vixen"
-                     label="Vixen"
-                     component={renderCheckboxField}/>
-
-             <Field name="nude"
-                    id="nude"
-                    label="Nu"
-                    component={renderCheckboxField}/>
             </FormGroup>
             <FormHelperText>Veuillez sélectioner au <br/> moin une case</FormHelperText>
           </FormControl>
