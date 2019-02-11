@@ -14,17 +14,14 @@ import { setNextStep } from '../../registerAction'
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-weight: 300;
-`
-
-const TitleHelper = styled.p`
-  text-align: center;
   font-weight: 100;
+  font-size: 2em;
 `
 
 const Form = styled.form`
   margin-top: 50px;
 `
+
 /*
 *  @description Component
 *  formulaire pour la création d'utilisateur, demande d'information sur la
@@ -36,18 +33,15 @@ class Description extends Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Description </Title>
+        <Title> Description physique</Title>
         <Grid container item justify="center" >
-          <TitleHelper>
-            Une petite description pour les prodcutions
-          </TitleHelper>
         </Grid>
         <Grid container spacing={24} direction="column">
           <Grid container item spacing={0} justify="center" >
             <Grid item xs={11} md={3}>
               <Field name="height"
                      id="height-field"
-                     label="Taille"
+                     label="Hauteur"
                      type="number"
                      inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment>}}
                      style={{width:'100%'}}

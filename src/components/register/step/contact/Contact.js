@@ -11,7 +11,8 @@ import { withRouter } from 'react-router-dom'
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 100;
+  font-size: 2em;
 `
 
 const TitleHelper = styled.p`
@@ -37,13 +38,12 @@ class Contact extends Component {
         <Grid container item justify="center" >
           <Grid item xs={12} md={3}>
             <TitleHelper>
-              Nous avons besoin de ton contact afin que tu soit informer le plus
-              rapidement possible si nous avons une figuration a te proposer
+              Nous avons besoin de tes coordonnées afin de te joindre le plus rapidement possible lorsque nous auront un projet à te proposer.
             </TitleHelper>
           </Grid>
         </Grid>
         <Grid container spacing={24} direction="column">
-          <Grid container item spacing={0} justify="center" >
+          <Grid container item spacing={0} justify="center" style={{paddingBottom: 0}}>
             <Grid item xs={11} md={3}>
               <Field
                   name="phone"

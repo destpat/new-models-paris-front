@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+
 import renderTextField from '../../utilis/renderTextField'
 import renderSelectField from '../../utilis/renderSelectField'
 import {getDay, getYears, month, sex} from './dateSelectValue'
 import validate from './validate'
-import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import { setNextStep } from '../../registerAction'
+
 import { withRouter } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
 
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-weight: 300;
+  font-size: 2em;
+  font-weight: 100;
 `
 
 const TitleHelper = styled.p`
@@ -24,6 +27,7 @@ const TitleHelper = styled.p`
 const Form = styled.form`
   margin-top: 50px;
 `
+
 /*
 *  @description Component
 *  formulaire pour la création d'utilisateur, demande d'information basique,

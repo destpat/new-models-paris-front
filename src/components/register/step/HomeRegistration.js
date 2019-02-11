@@ -7,7 +7,8 @@ import { withRouter } from 'react-router'
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-weight: 300;
+  font-size: 2em;
+  font-weight: 100;
   margin-top: 20vh;
 `
 
@@ -30,7 +31,7 @@ class HomeRegistration extends Component {
         <Grid container item justify="center">
           <Grid item md={6} xs={11}>
             <TitleHelper>
-              Nous allons remplir ton formulaire d'inscription ensemble afin que ton profil soit publié et gagne plus de visibilité.
+              Nous allons remplir ton formulaire d'inscription ensemble afin que ton profil soit validé puis publié sur notre site.
             <br/>
             <br/>
               En t'inscrivant, tu sera également informé(e) des dernières news et castings.

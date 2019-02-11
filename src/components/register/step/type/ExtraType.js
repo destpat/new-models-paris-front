@@ -15,7 +15,8 @@ import { setNextStep } from '../../registerAction'
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 100;
+  font-size: 2em;
 `
 
 const TitleHelper = styled.p`
@@ -44,44 +45,87 @@ class ExtraType extends Component {
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Conditions</Title>
-        <Grid container item justify="center" >
+        <Grid container item justify="center">
           <TitleHelper>
-            Pour quelle type de figuration est tu disponible
+            Quels types de projets t’intéressent ?
           </TitleHelper>
         </Grid>
+
+
         <Grid container item justify="center">
           <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
-              <Field name="musicVideo"
-                     id="music-video-field"
-                     label="Clips vidéos musicaux"
+              <Field name="photoShoot"
+                     id="photo-shoot-field"
+                     label="Shootings photos"
                      component={renderCheckboxField}/>
-               <Field name="photoShoot"
-                      id="photo-shoot-field"
-                      label="Shootings photos"
-                      component={renderCheckboxField}/>
-                <Field name="bikini"
-                       id="bikini-field"
-                       label="Bikini"
-                       component={renderCheckboxField}/>
+
+              <Field name="shortFilms"
+                     id="short-film-field"
+                     label="Courts métrage"
+                     component={renderCheckboxField}/>
+
             </FormGroup>
           </FormControl>
           <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
-              <Field name="underwear"
-                     id="underwear-field"
-                     label="Lingerie"
+              <Field name="musicVideo"
+                     id="music-video-field"
+                     label="Clips vidéos"
                      component={renderCheckboxField}/>
+
+              <Field name="fashionShow"
+                     id="fashion-show"
+                     label="Défilé de mode"
+                     component={renderCheckboxField}/>
+            </FormGroup>
+          </FormControl>
+         </Grid>
+
+         <TitleHelper>
+           En quelles tenues acceptes-tu de poser ?
+         </TitleHelper>
+
+        <Grid container item justify="center">
+
+          <FormControl error={submitFailed && !valid ? true : false}>
+            <FormGroup>
+             <Field name="fashionModeOutfit"
+                    id="fashion-mode-outfit"
+                    label="Fashion / Mode"
+                    component={renderCheckboxField}/>
+
+             <Field name="fitnessOutfit"
+                    id="fitness"
+                    label="Fitness"
+                    component={renderCheckboxField}/>
+
+             <Field name="bikiniOutfit"
+                    id="bikini"
+                    label="Bikini"
+                    component={renderCheckboxField}/>
+
+            </FormGroup>
+          </FormControl>
+
+          <FormControl error={submitFailed && !valid ? true : false}>
+            <FormGroup>
+              <Field name="underwear"
+                     id="underwear"
+                     label="Sous-vêtements"
+                     component={renderCheckboxField}/>
+
               <Field name="vixen"
-                     id="vixen-field"
+                     id="vixen"
                      label="Vixen"
                      component={renderCheckboxField}/>
-               <Field name="nude"
-                      id="nude-field"
-                      label="Nu"
-                      component={renderCheckboxField}/>
+
+             <Field name="nude"
+                    id="nude"
+                    label="Nu"
+                    component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText> Veuillez selectionner <br/> au moin une case </FormHelperText>
+            <FormHelperText>Veuillez sélectioner au <br/> moin une case</FormHelperText>
           </FormControl>
          </Grid>
         <NextButton/>
@@ -96,7 +140,7 @@ ExtraType = reduxForm({
   validate,
   onSubmit: (values, dispatch, props) => {
     dispatch(setNextStep(4))
-    props.history.push(`photos`)
+    props.history.push(`additional-informations`)
   },
 })(ExtraType)
 
