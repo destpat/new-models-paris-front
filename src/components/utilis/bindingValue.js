@@ -102,6 +102,10 @@ export const clothesBinding = [
     value: 'bikini'
   },
   {
+    name: 'Lingerie',
+    value: 'lingerie'
+  },
+  {
     name: 'Sous-vêtement',
     value: 'underwear'
   },

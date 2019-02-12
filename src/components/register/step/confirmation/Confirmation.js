@@ -149,7 +149,7 @@ const AdditionalInformationsFormSelector = formValueSelector('AdditionalInformat
 const mapStateToProps = state => {
   let { day, month, year } = informationFormSelector(state, 'day', 'month', 'year')
   let extraTypeSeclection = typeFormSelector(state, 'shortFilms', 'photoShoot', 'musicVideo', 'fashionShow')
-  let additionalSelection = AdditionalInformationsFormSelector(state, 'fashionMode', 'fitness', 'bikini', 'underwear', 'vixen', 'nude')
+  let additionalSelection = AdditionalInformationsFormSelector(state, 'fashionMode', 'fitness', 'bikini', 'underwear', 'lingerie', 'vixen', 'nude')
   let height = descriptionFormSelector(state, 'height')
   let extraType = []
   let clothes = []

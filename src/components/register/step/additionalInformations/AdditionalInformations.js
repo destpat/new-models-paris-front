@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { Field, reduxForm, formValueSelector } from 'redux-form'
 
 import styled from 'styled-components'
 
@@ -9,7 +10,6 @@ import Grid from '@material-ui/core/Grid'
 import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText';
-
 
 import { setNextStep } from '../../registerAction'
 import NextButton from '../../utilis/button/NextButton'
@@ -36,7 +36,7 @@ const Form = styled.form`
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   }
 });
 
@@ -46,7 +46,7 @@ const styles = theme => ({
 */
 class AdditionalInformations extends Component {
   render() {
-    const { handleSubmit, submitFailed, valid} = this.props
+    const { handleSubmit, submitFailed, valid, sex } = this.props
     return (
       <Form onSubmit={handleSubmit}>
         <Title> Informations complémentaires </Title>
@@ -74,9 +74,9 @@ class AdditionalInformations extends Component {
           </FormControl>
           <FormControl error={submitFailed && !valid ? true : false}>
             <FormGroup>
-              <Field name="underwear"
+              <Field name={sex === 'men' ? 'underwear' : 'lingerie'}
                      id="underwear"
-                     label="Sous-vêtements"
+                     label={sex === 'men' ? 'Sous-vêtements' : 'Lingerie'}
                      component={renderCheckboxField}/>
 
               <Field name="vixen"
@@ -117,6 +117,11 @@ class AdditionalInformations extends Component {
   }
 }
 
+const selector = formValueSelector('informationForm')
+const mapStateToProsp = state => ({
+  sex: selector(state, 'sex')
+})
+
 AdditionalInformations = reduxForm({
   form: 'AdditionalInformationsForm',
   destroyOnUnmount: false,
@@ -127,4 +132,4 @@ AdditionalInformations = reduxForm({
   },
 })(AdditionalInformations)
 
-export default withStyles(styles)(withRouter(AdditionalInformations));
+export default withStyles(styles)(connect(mapStateToProsp)(withRouter(AdditionalInformations)));
