@@ -1,5 +1,9 @@
 image: nikolaik/python-nodejs:latest
 
+cache:
+  paths:
+    - node_modules/
+
 stages:
   - production
   - develop
@@ -13,6 +17,8 @@ deploy_dev:
   stage: develop
   script:
     - aws s3 sync build s3://$AWS_BUCKET_DEV --delete
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID_DEV --paths '/*'
+    - echo "DEPLOYED SUCCESSFULLY"
   only:
     - develop
 
