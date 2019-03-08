@@ -1,3 +1,14 @@
+export const sexBinding = [
+  {
+    name: 'Homme',
+    value: 'men'
+  },
+  {
+    name: 'Femme',
+    value: 'women'
+  }
+]
+
 export const hairsColorsBinding = [
   {
     name: 'Blonds',

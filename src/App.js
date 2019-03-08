@@ -12,6 +12,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import Register from './components/register/Register'
 import Women from './components/women/Women'
 import Men from './components/men/Men'
+import Search from './components/search/Search'
 import Profile from './components/users/profile/Profile'
 
 import logo from './logo.png'
@@ -22,11 +23,11 @@ library.add(faInstagram, faTimesCircle)
 const Header = styled.header`
   background-color: #fafafa;
   border-bottom: 1px solid #eeeeee;
-  margin-bottom: 30px;
   height: 95px;
   display: flex;
   align-items: center;
 `
+
 const LogoLink = styled(Link)`
   margin-top: 10px;
   margin-left: 20px;
@@ -94,7 +95,7 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Men</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/video">Video</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/search">Rechercher</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
             <br/>
@@ -107,7 +108,7 @@ class App extends Component {
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
             <MenuLink to="/men">Men</MenuLink>
-            <MenuLink to="/video">Video</MenuLink>
+            <MenuLink to="/search">Rechercher</MenuLink>
             <MenuLink to="/candidatures">Become a model</MenuLink>
             <MenuLink to="/login">Login</MenuLink>
           </Nav>
@@ -117,6 +118,7 @@ class App extends Component {
           <Route path="/candidatures" component={Register}/>
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
+          <Route exact path="/search" component={Search}/>
           <Route path="/women/:id" component={Profile}/>
           <Route path="/men/:id" component={Profile}/>
         </Switch>
