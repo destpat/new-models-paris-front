@@ -22,6 +22,13 @@ const FilterContainer = styled(Grid)`
   overflow: scroll;
 `
 
+const HitsContainer = styled(Grid)`
+  margin-top: 30px;
+  margin-bottom: 50px;
+  height: 90vh;
+  overflow: scroll;
+`
+
 /*
 *  @description Component
 *  Affichage des filtres et des résultat pour la recherche
@@ -34,9 +41,9 @@ class Search extends Component {
           <FilterContainer item md={3}>
             <Filter />
           </FilterContainer>
-          <Grid item md={9}>
+          <HitsContainer item md={9}>
             <CustomHits />
-          </Grid>
+          </HitsContainer>
         </Grid>
       </InstantSearch>
     )
