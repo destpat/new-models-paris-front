@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect }  from 'react-redux'
 import { InstantSearch } from 'react-instantsearch-dom'
+import CustomPagination from './filter/utilis/Pagination'
 import algoliasearch from 'algoliasearch/lite'
 import styled from 'styled-components'
 import Grid from '@material-ui/core/Grid'
@@ -18,15 +19,17 @@ const searchClient = algoliasearch(
 const FilterContainer = styled(Grid)`
   background-color: #ffffff;
   padding: 30px;
-  height: 90vh;
+  height: calc(100vh - 95px);
   overflow: scroll;
 `
 
 const HitsContainer = styled(Grid)`
   margin-top: 30px;
-  margin-bottom: 50px;
-  height: 90vh;
+  height: calc(100vh - 150px);
   overflow: scroll;
+`
+const PaginationContainer = styled(Grid)`
+  padding: 23px;
 `
 
 /*
@@ -41,8 +44,15 @@ class Search extends Component {
           <FilterContainer item md={3}>
             <Filter />
           </FilterContainer>
-          <HitsContainer item md={9}>
+          <HitsContainer item md={9} id="hits-container">
             <CustomHits />
+              <PaginationContainer
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="center">
+                <CustomPagination />
+            </PaginationContainer>
           </HitsContainer>
         </Grid>
       </InstantSearch>

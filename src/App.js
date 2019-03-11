@@ -21,7 +21,7 @@ import  './burgerMenuStyle.css'
 library.add(faInstagram, faTimesCircle)
 
 const Header = styled.header`
-  background-color: #fafafa;
+  background-color: #fff;
   border-bottom: 1px solid #eeeeee;
   height: 95px;
   display: flex;
@@ -103,7 +103,7 @@ class App extends Component {
           </Menu>
         </div>
         <Header>
-        <LogoLink to="/"><img src={logo} alt="logo new models paris" height="85"/></LogoLink>
+        <LogoLink to="/"><img src={logo} alt="logo New Models Paris" height="85"/></LogoLink>
         <div className={classes.menu}>
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
