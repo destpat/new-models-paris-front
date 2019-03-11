@@ -41,10 +41,10 @@ class Search extends Component {
     return (
       <InstantSearch indexName="dev_new_models_paris" searchClient={searchClient}>
         <Grid container>
-          <FilterContainer item md={3}>
+          <FilterContainer item md={3} xs={3}>
             <Filter />
           </FilterContainer>
-          <HitsContainer item md={9} id="hits-container">
+          <HitsContainer item md={9} xs={9} id="hits-container">
             <CustomHits />
               <PaginationContainer
                 container
