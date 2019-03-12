@@ -5,8 +5,8 @@ import sizeMe from 'react-sizeme'
 import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer } from '../users/grid/style'
 
 const Hits = ({ hits, size: { width }}) => (
-  <StackGrid gutterWidth={width <= 480 ? 10 : 25}
-             gutterHeight={5}
+  <StackGrid gutterWidth={width <= 480 ? 19 : 25}
+             gutterHeight={10}
              columnWidth={width <= 480 ? 174 : 240}>
     {
       hits.map((hit, index) => {

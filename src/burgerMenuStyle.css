@@ -35,6 +35,10 @@
   fill: #373a47;
 }
 
+.bm-menu-wrap {
+  z-index: 1305 !important;
+}
+
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;

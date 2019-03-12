@@ -5,6 +5,11 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import { connectRefinementList } from 'react-instantsearch-dom'
+import styled from 'styled-components';
+
+const FormGroupCustom = styled(FormGroup)`
+  margin-right: -14px;
+`
 
 const StaticRefinementList = connectRefinementList(
   ({ values, currentRefinement, items, refine, categoryLabel }) => (
@@ -19,8 +24,8 @@ const StaticRefinementList = connectRefinementList(
          isRefined: false,
         };
         return (
-          <FormGroup key={index}>
-            <FormControlLabel label={`${staticItem.label} (${count ? count : 0 })`}
+          <FormGroupCustom key={index}>
+            <FormControlLabel label={`${staticItem.label} (${count ? count : 0 })` }
               control={
                 <Checkbox checked={isRefined}
                           value={staticItem.value}
@@ -32,7 +37,7 @@ const StaticRefinementList = connectRefinementList(
                             refine(next);
                           }}/>
               }/>
-            </FormGroup>
+            </FormGroupCustom>
         );
       })}
       </FormControl>
