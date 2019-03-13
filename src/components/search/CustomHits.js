@@ -13,7 +13,7 @@ const Hits = ({ hits, size: { width }}) => (
         let { id, firstname } = hit
         return (
           <div key={index}>
-            <PhotoContainer onClick={() => this.props.history.push(`${this.props.match.url}/${id}`)}>
+            <PhotoContainer onClick={() => this.props.history.push(`profile/${id}`)}>
               <Photo imageUrl={'https://new-models-paris-upload-photos.s3.eu-central-1.amazonaws.com/protected/eu-central-1%3Adfc5a3d3-93dd-4626-81ae-676645a4db36/1551783689052.jpg'} alt="models" />
               <HoverText>
                 {firstname}

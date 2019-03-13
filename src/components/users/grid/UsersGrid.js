@@ -22,7 +22,7 @@ class UsersGrid extends Component {
               let { id, firstname, photo } = publicUser
               return (
                 <div key={index}>
-                  <PhotoContainer onClick={() =>  this.props.history.push(`${this.props.match.url}/${id}`)}>
+                  <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
                     <Photo imageUrl={photo} alt="models" />
                     <HoverText>
                       {firstname}

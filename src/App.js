@@ -119,8 +119,7 @@ class App extends Component {
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
           <Route exact path="/search" component={Search}/>
-          <Route path="/women/:id" component={Profile}/>
-          <Route path="/men/:id" component={Profile}/>
+          <Route path="/profile/:id" component={Profile}/>
         </Switch>
       </div>
     );
