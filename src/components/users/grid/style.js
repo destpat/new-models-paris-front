@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
+export const StackGridContainer = styled.div`
+  margin-top: 30px;
+  @media(max-width: 480px) {
+    margin-top: 15px;
+  }
+`
 export const HoverText = styled.div`
   font-size: 1.3em;
   font-weight: 200;

@@ -5,9 +5,9 @@ import sizeMe from 'react-sizeme'
 import Hit from './Hit';
 
 const Hits = ({ hits, size: { width }}) => (
-  <StackGrid gutterWidth={width <= 480 ? 19 : 25}
-             gutterHeight={10}
-             columnWidth={width <= 480 ? 174 : 240}>
+  <StackGrid gutterWidth={width <= 480 ? 10 : 15}
+             gutterHeight={5}
+             columnWidth={width <= 480 ? 160 : 240}>
     {
       hits.map((hit, index) => {
         return (

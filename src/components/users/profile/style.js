@@ -16,6 +16,11 @@ export const PhotoContainer = styled(Grid)`
   ${Photo}:not(:first-child) {
     margin-top: 40px;
   }
+  @media (min-width: 480px) {
+    ${Photo}:first-child {
+      margin-top: 30px;
+    }
+  }
   ${Photo}:last-child {
     margin-bottom: 80px;
   }

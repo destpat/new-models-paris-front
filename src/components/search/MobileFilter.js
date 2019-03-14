@@ -24,6 +24,8 @@ const FilterContainer = styled.div`
 
 const CustomAppBar = styled(AppBar)`
   position: sticky;
+  box-shadow: none;
+  border-bottom: 1px solid #e0e0e0;
 `
 const CustomToolbar = styled(Toolbar)`
   background-color: #fff;
@@ -34,14 +36,46 @@ const CustomFilterButton = styled(Button)`
  text-transform: none;
  color: #737373;
 `
-function Transition(props) {
+
+const Transition = (props) => {
   const duration = {
-    enteringScreen: 3000,
-    leavingScreen: 3000
+    enteringScreen: 250,
+    leavingScreen: 200
   }
-  return <Slide direction="right" timeout={{ enter: duration.enteringScreen, exit: duration.leavingScreen}} {...props} />;
+  return <Slide {...props} direction="up" timeout={{ enter: duration.enteringScreen, exit: duration.leavingScreen}}/>;
 }
 
+
+const Filters = ({handleMobileFilter}) => {
+  return (
+    <div>
+      <CustomAppBar >
+        <CustomToolbar>
+          <CustomFilterButton onClick={handleMobileFilter}>
+            Annuler
+          </CustomFilterButton>
+          <ClearRefinements/>
+        </CustomToolbar>
+      </CustomAppBar>
+      <FilterContainer>
+        <Sex/>
+        <Divider variant="middle"/>
+        <Age/>
+        <Divider variant="middle"/>
+        <Region/>
+        <Divider variant="middle"/>
+        <Clothe/>
+        <Divider variant="middle"/>
+        <Project/>
+        <Divider variant="middle"/>
+        <HairsColors/>
+        <Divider variant="middle"/>
+        <EyesColor/>
+        <Divider variant="middle"/>
+      </FilterContainer>
+    </div>
+  )
+}
 
 class MobileFilter extends Component {
   render() {
@@ -54,30 +88,7 @@ class MobileFilter extends Component {
           open={open}
           onClose={handleMobileFilter}
           TransitionComponent={Transition}>
-          <CustomAppBar >
-            <CustomToolbar>
-              <CustomFilterButton onClick={handleMobileFilter}>
-                Annuler
-              </CustomFilterButton>
-              <ClearRefinements/>
-            </CustomToolbar>
-          </CustomAppBar>
-          <FilterContainer>
-            <Sex/>
-            <Divider variant="middle"/>
-            <Age/>
-            <Divider variant="middle"/>
-            <Region/>
-            <Divider variant="middle"/>
-            <Clothe/>
-            <Divider variant="middle"/>
-            <Project/>
-            <Divider variant="middle"/>
-            <HairsColors/>
-            <Divider variant="middle"/>
-            <EyesColor/>
-            <Divider variant="middle"/>
-          </FilterContainer>
+          <Filters handleMobileFilter={handleMobileFilter}/>
         </Dialog>
       </div>
     );

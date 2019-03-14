@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import StackGrid from "react-stack-grid"
 import sizeMe from 'react-sizeme'
-import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer } from './style'
+import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer, StackGridContainer } from './style'
 
 /*
  *  @description Component
@@ -13,10 +13,10 @@ class UsersGrid extends Component {
   render() {
     const { size: { width }, publicUsers } = this.props
     return (
-      <div>
+      <StackGridContainer>
         <StackGrid gutterWidth={width <= 480 ? 10 : 40}
-          gutterHeight={5}
-          columnWidth={width <= 480 ? 174 : 240}>
+                   gutterHeight={5}
+                   columnWidth={width <= 480 ? 160 : 240}>
           {
             publicUsers.map((publicUser, index) => {
               let { id, firstname, photo } = publicUser
@@ -41,7 +41,7 @@ class UsersGrid extends Component {
             })
           }
         </StackGrid>
-      </div>
+      </StackGridContainer>
     )
   }
 }

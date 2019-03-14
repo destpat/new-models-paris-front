@@ -36,7 +36,6 @@ function* getPublicUser(action) {
   try {
     yield put({ type: FETCHING_PUBLIC_USER })
     let user = yield call(userCall.getPublicUser, action.payload.id)
-
     let photos =  yield all(user.photos.map((photo) => {
       return call(s3.getImage, photo)
     }))

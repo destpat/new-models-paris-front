@@ -28,17 +28,20 @@ const FilterContainer = styled(Grid)`
 
 const HitsContainer = styled(Grid)`
   margin-top: 30px;
+  @media(max-width: 480px) {
+    margin-top: 15px;
+  }
   height: calc(100vh - 150px);
   overflow: scroll;
 `
 const PaginationContainer = styled(Grid)`
-  padding: 23px;
+  padding: 0px 23px 50px 0px;
 `
 
 const ButtonOpenMobileFilter = styled(Button)`
   position: fixed;
   border-radius: 0px;
-  min-height: 42px;
+  min-height: 46px;
   bottom: 0;
   right: 0;
   width: 100%;
@@ -69,9 +72,9 @@ class Search extends Component {
             <MobileFilter open={this.state.mobileFilterOpen}
                           handleMobileFilter={this.handleMobileFilter}/>
             <ButtonOpenMobileFilter variant="contained"
-              color="primary"
-              onClick={this.handleMobileFilter}>
-              Filtres
+                                    color="primary"
+                                    onClick={this.handleMobileFilter}>
+              { this.state.mobileFilterOpen ? "Appliquer les filtres" : "Filtre" }
             </ButtonOpenMobileFilter>
           </div>
           :
