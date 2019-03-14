@@ -11,7 +11,7 @@ import Project from './filter/Project'
 import HairsColors from './filter/HairsColors'
 import EyesColor from './filter/EyesColor'
 
-import ClearRefinements from './filter/ClearRefinements'
+import ClearRefinements from './filter/utilis/ClearRefinements'
 
 import styled from 'styled-components'
 

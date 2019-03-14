@@ -10,10 +10,6 @@ class RangeSlider extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { currentRefinement, canRefine } = nextProps;
-    console.log(currentRefinement);
-    console.log(canRefine);
-
-
     if (
       canRefine &&
       (currentRefinement.min !== this.state.min ||

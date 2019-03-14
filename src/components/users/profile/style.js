@@ -5,6 +5,9 @@ export const Photo = styled.img`
   width: auto;
   max-height: 80vh;
   max-width: 100%;
+  @media screen and (orientation:landscape) {
+    max-height: 100%;
+  }
 `
 
 export const PhotoContainer = styled(Grid)`

@@ -24,6 +24,9 @@ const Header = styled.header`
   background-color: #fff;
   border-bottom: 1px solid #eeeeee;
   height: 95px;
+  @media (max-width: 480px) {
+    height: 66px;
+  }
   display: flex;
   align-items: center;
 `
@@ -55,6 +58,12 @@ const Nav = styled.nav`
   margin-right: 100px;
 `;
 
+const Logo = styled.img`
+  height: 85px;
+  @media (max-width: 480px) {
+    height: 65px;
+  }
+`
 
 const styles = theme => ({
   menu: {
@@ -103,7 +112,9 @@ class App extends Component {
           </Menu>
         </div>
         <Header>
-        <LogoLink to="/"><img src={logo} alt="logo New Models Paris" height="85"/></LogoLink>
+        <LogoLink to="/">
+          <Logo src={logo} alt="logo New Models Paris"/>
+        </LogoLink>
         <div className={classes.menu}>
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
