@@ -1,11 +1,11 @@
 import React from 'react';
 import { hairsColorsBinding } from '../../utilis/bindingValue'
-import StaticRefinementList from './utilis/StaticRefinementList';
+import CustomRefinementList from './utilis/CustomRefinementList';
 
 const HairsColors = () => {
   return (
     <div>
-      <StaticRefinementList
+      <CustomRefinementList
         attribute="hairColor"
         values={hairsColorsBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Couleur des cheveux"

@@ -45,10 +45,10 @@ export const Photo = styled.div`
       display: none;
     }
   }
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  -o-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: transform .5s;
+  -moz-transition: transform .5s;
+  -o-transition: transform .5s;
+  transition: transform .5s;
 `
 
 export const PhotoContainer = styled.div`

@@ -1,11 +1,11 @@
 import React from 'react';
-import StaticRefinementList from './utilis/StaticRefinementList';
+import CustomRefinementList from './utilis/CustomRefinementList';
 import { extraTypeBinding } from '../../utilis/bindingValue'
 
 const Project = () => {
   return (
     <div>
-      <StaticRefinementList
+      <CustomRefinementList
         attribute="extraType.S"
         values={extraTypeBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Type de project"

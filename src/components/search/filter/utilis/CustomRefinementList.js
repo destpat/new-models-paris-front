@@ -11,7 +11,7 @@ const FormGroupCustom = styled(FormGroup)`
   margin-right: -14px;
 `
 
-const StaticRefinementList = connectRefinementList(
+const CustomRefinementList = connectRefinementList(
   ({ values, currentRefinement, items, refine, categoryLabel }) => (
     <div>
       <Category>{categoryLabel}</Category>
@@ -21,23 +21,28 @@ const StaticRefinementList = connectRefinementList(
         const { isRefined, count } = items.find(
          item => item.label === staticItem.value
        ) || {
-         isRefined: false,
+         isRefined: false
         };
         return (
           <FormGroupCustom key={index}>
-            <FormControlLabel label={`${staticItem.label} (${count ? count : 0 })` }
-              control={
-                <Checkbox checked={isRefined}
-                          value={staticItem.value}
-                          onChange={event => {
-                            const value = event.currentTarget.value;
-                            const next = currentRefinement.includes(value)
-                              ? currentRefinement.filter(current => current !== value)
-                              : currentRefinement.concat(value);
-                            refine(next);
-                          }}/>
-              }/>
-            </FormGroupCustom>
+            {
+              count > 0 ?
+              <FormControlLabel label={`${staticItem.label} (${count ? count : 0 })` }
+                control={
+                  <Checkbox checked={isRefined}
+                    value={staticItem.value}
+                    onChange={event => {
+                      const value = event.currentTarget.value;
+                      const next = currentRefinement.includes(value)
+                      ? currentRefinement.filter(current => current !== value)
+                      : currentRefinement.concat(value);
+                      refine(next);
+                    }}/>
+                  }/>
+                :
+                ''
+            }
+          </FormGroupCustom>
         );
       })}
       </FormControl>
@@ -45,4 +50,4 @@ const StaticRefinementList = connectRefinementList(
   )
 );
 
-export default StaticRefinementList
+export default CustomRefinementList
