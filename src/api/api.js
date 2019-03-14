@@ -23,5 +23,5 @@ export const user = {
 }
 
 export const s3 = {
-  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id, expires: 6000}))
+  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id, expires: 6000 }))
 }
