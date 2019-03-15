@@ -24,6 +24,7 @@ const Title = styled.h2`
 const Container = styled.div`
   height: calc(100vh - 155px);
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 `
 
 const TitleContainer = styled.div`

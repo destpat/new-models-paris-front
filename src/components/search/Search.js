@@ -35,6 +35,7 @@ const HitsContainer = styled(Grid)`
   }
   height: calc(100vh - 150px);
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 `
 const PaginationContainer = styled(Grid)`
   padding: 0px 23px 50px 0px;
