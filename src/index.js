@@ -19,7 +19,6 @@ import rootSaga from './saga'
 import Amplify from 'aws-amplify';
 import { AmplifyConfig } from './config';
 
-
 Amplify.configure(AmplifyConfig);
 
 

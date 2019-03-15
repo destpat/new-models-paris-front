@@ -15,8 +15,11 @@ import HairsColors from './filter/HairsColors'
 import EyesColor from './filter/EyesColor'
 
 import ClearRefinements from './filter/utilis/ClearRefinements'
-
 import styled from 'styled-components'
+
+const CustomDialog = styled(Dialog)`
+  -webkit-overflow-scrolling: touch;
+`
 
 const FilterContainer = styled.div`
   padding: 0px 10px 40px 10px
@@ -46,12 +49,12 @@ const Transition = (props) => {
 }
 
 
-const Filters = ({handleMobileFilter}) => {
+const Filters = ({handleCloseMobileFilter}) => {
   return (
     <div>
       <CustomAppBar >
         <CustomToolbar>
-          <CustomFilterButton onClick={handleMobileFilter}>
+          <CustomFilterButton onClick={handleCloseMobileFilter}>
             Annuler
           </CustomFilterButton>
           <ClearRefinements/>
@@ -79,17 +82,18 @@ const Filters = ({handleMobileFilter}) => {
 
 class MobileFilter extends Component {
   render() {
-    const { handleMobileFilter, open} = this.props;
+    const { handleCloseMobileFilter, open } = this.props;
     return (
       <div>
-        <Dialog
+        <CustomDialog
+          id="targetElementId"
           fullScreen
           keepMounted={true}
           open={open}
-          onClose={handleMobileFilter}
+          onClose={handleCloseMobileFilter}
           TransitionComponent={Transition}>
-          <Filters handleMobileFilter={handleMobileFilter}/>
-        </Dialog>
+          <Filters handleCloseMobileFilter={handleCloseMobileFilter}/>
+        </CustomDialog>
       </div>
     );
   }

@@ -14,6 +14,8 @@ import Filter from './Filter'
 import MobileFilter from './MobileFilter'
 import CustomHits from './CustomHits'
 
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
 import qs from 'qs';
 
 const searchClient = algoliasearch(
@@ -71,8 +73,20 @@ class Search extends Component {
     searchState: urlToSearchState(this.props.location)
   };
 
+  targetElement = null;
+
+  componentDidMount() {
+    this.targetElement = document.querySelector('#targetElementId');
+  }
+
+  handleCloseMobileFilter = () => {
+    enableBodyScroll(this.targetElement);
+    this.setState({ mobileFilterOpen: false })
+  }
+
   handleMobileFilter = () => {
-    this.setState({ mobileFilterOpen: !this.state.mobileFilterOpen });
+    disableBodyScroll(this.targetElement);
+    this.setState({ mobileFilterOpen: true })
   };
 
   componentWillReceiveProps(props) {
@@ -81,16 +95,20 @@ class Search extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearAllBodyScrollLocks()
+  }
+
   onSearchStateChange = searchState => {
-    clearTimeout(this.debouncedSetState);
+    clearTimeout(this.debouncedSetState)
     this.debouncedSetState = setTimeout(() => {
       this.props.history.push(
         searchStateToUrl(this.props, searchState),
         searchState
-      );
-    }, updateAfter);
-    this.setState({ searchState });
-  };
+      )
+    }, updateAfter)
+    this.setState({ searchState })
+  }
 
   render() {
     const { size: { width } } = this.props;
@@ -105,12 +123,11 @@ class Search extends Component {
           width < 780 ?
           <div>
             <MobileFilter open={this.state.mobileFilterOpen}
-                          handleMobileFilter={this.handleMobileFilter}
+                          handleCloseMobileFilter={this.handleCloseMobileFilter}
                           />
-
             <ButtonOpenMobileFilter variant="contained"
                                     color="primary"
-                                    onClick={this.handleMobileFilter}>
+                                    onClick={this.state.mobileFilterOpen ? this.handleCloseMobileFilter : this.handleMobileFilter}>
               { this.state.mobileFilterOpen ? "Appliquer les filtres" : "Filtre" }
             </ButtonOpenMobileFilter>
           </div>
@@ -120,7 +137,7 @@ class Search extends Component {
           </FilterContainer>
         }
           <HitsContainer item md={9} xs={12} id="hits-container">
-            <CustomHits />
+            <CustomHits id="test" />
             <PaginationContainer
               container
               direction="row"
