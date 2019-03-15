@@ -14,6 +14,8 @@ import Filter from './Filter'
 import MobileFilter from './MobileFilter'
 import CustomHits from './CustomHits'
 
+import qs from 'qs';
+
 const searchClient = algoliasearch(
   'PQMXJIQ0WY', // Application ID
   'e126b6cbf529f89108d52ad7af583a02' // Key for search query only
@@ -50,27 +52,61 @@ const ButtonOpenMobileFilter = styled(Button)`
 
 /*
 *  @description Component
+*  Ajout des filtres dans l'url
+*/
+const updateAfter = 400;
+const createURL = state => `?${qs.stringify(state)}`;
+const searchStateToUrl = (props, searchState) =>
+  searchState ? `${props.location.pathname}${createURL(searchState)}` : '';
+const urlToSearchState = location => qs.parse(location.search.slice(1));
+
+/*
+*  @description Component
 *  Affichage des filtres et des résultat pour la recherche
 */
 class Search extends Component {
   state = {
     mobileFilterOpen: false,
+    searchState: urlToSearchState(this.props.location)
   };
 
   handleMobileFilter = () => {
     this.setState({ mobileFilterOpen: !this.state.mobileFilterOpen });
   };
 
+  componentWillReceiveProps(props) {
+    if (props.location !== this.props.location) {
+      this.setState({ searchState: urlToSearchState(props.location) });
+    }
+  }
+
+  onSearchStateChange = searchState => {
+    clearTimeout(this.debouncedSetState);
+    this.debouncedSetState = setTimeout(() => {
+      this.props.history.push(
+        searchStateToUrl(this.props, searchState),
+        searchState
+      );
+    }, updateAfter);
+    this.setState({ searchState });
+  };
+
   render() {
     const { size: { width } } = this.props;
     return (
-      <InstantSearch indexName="dev_new_models_paris" searchClient={searchClient}>
+      <InstantSearch indexName="dev_new_models_paris"
+                     searchClient={searchClient}
+                     searchState={this.state.searchState}
+                     onSearchStateChange={this.onSearchStateChange}
+                     createURL={createURL}>
         <Grid container>
         {
           width < 780 ?
           <div>
             <MobileFilter open={this.state.mobileFilterOpen}
-                          handleMobileFilter={this.handleMobileFilter}/>
+                          handleMobileFilter={this.handleMobileFilter}
+                          />
+
             <ButtonOpenMobileFilter variant="contained"
                                     color="primary"
                                     onClick={this.handleMobileFilter}>
