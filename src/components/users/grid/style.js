@@ -1,5 +1,18 @@
 import styled from 'styled-components'
 
+
+export let getWidth = (width) => {
+  if (width <= 480) {
+    return 170
+  } else if (width <= 800) {
+    return 220
+  } else if (width <= 1024){
+    return 200
+  } else {
+    return 240
+  }
+}
+
 export const StackGridContainer = styled.div`
   margin-top: 30px;
   @media(max-width: 480px) {

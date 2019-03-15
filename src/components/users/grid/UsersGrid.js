@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import StackGrid from "react-stack-grid"
 import sizeMe from 'react-sizeme'
-import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer, StackGridContainer } from './style'
+import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer, StackGridContainer, getWidth } from './style'
 
 /*
  *  @description Component
@@ -16,14 +16,14 @@ class UsersGrid extends Component {
       <StackGridContainer>
         <StackGrid gutterWidth={width <= 480 ? 10 : 40}
                    gutterHeight={5}
-                   columnWidth={width <= 480 ? 160 : 240}>
+                   columnWidth={getWidth(width)}>
           {
             publicUsers.map((publicUser, index) => {
               let { id, firstname, photo } = publicUser
               return (
                 <div key={index}>
                   <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
-                    <Photo imageUrl={photo} alt="models" />
+                    <Photo imageUrl={photo} alt="models"/>
                     <HoverText>
                       {firstname}
                       <br/>
