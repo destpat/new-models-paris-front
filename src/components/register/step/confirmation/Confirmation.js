@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
-import { Auth, Storage } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
@@ -51,7 +50,7 @@ class Confirmation extends Component {
   }
 
   async componentWillMount() {
-    const { email, password, photos, setSignupLoading, createUser} = this.props;
+    const { email, password, setSignupLoading, createUser} = this.props;
       setSignupLoading(true)
       try {
         let lowerCaseEmail = email.toLowerCase();
@@ -67,37 +66,13 @@ class Confirmation extends Component {
 
         // Login de l'utilisateur pour la récupération du token
         let user = await Auth.signIn(lowerCaseEmail, password)
-        let currentUserInfo = await Auth.currentUserInfo()
         let userId = user.signInUserSession.idToken.payload.sub
-        // Création d'un tableau avec la key pour acceder au photo de l'utilisateur
-        let userPhotos = []
-        for (const photo of photos) {
-          if (photo.preview) {
-            try {
-              let response = await axios({
-                method: 'get',
-                url: photo.preview,
-                responseType: 'blob'
-              })
-              let updatePhoto = await Storage.put(`${Date.now().toString()}.jpg`, response.data, {
-                level: 'protected',
-                contentType: 'image/jpg'
-              })
-              userPhotos.push({
-                ...updatePhoto,
-                id: currentUserInfo.id
-              })
-            } catch (error) {
-              console.log(error)
-            }
-          }
-        }
         // Ajout des données de l'utilisateur en base de données
         createUser({
           ...this.props.createUserInformation,
-          id: userId,
-          photos: userPhotos
+          id: userId
         })
+
       } catch (error) {
         setSignupLoading(false)
       }
@@ -172,9 +147,9 @@ const mapStateToProps = state => {
     email: contactFormSelector(state, 'email'),
     singnupLoading: state.register.singnupLoading,
     singnupSuccess: state.register.singnupSuccess,
-    photos: state.register.photos,
     password: passwordFormSelector(state, 'password'),
     createUserInformation: {
+      photos: state.register.photos,
       ...informationFormSelector(state, 'firstname', 'lastname', 'sex'),
       ...descriptionFormSelector(state, 'hairColor', 'eyesColor'),
       ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),

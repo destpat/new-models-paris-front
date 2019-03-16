@@ -14,15 +14,18 @@ const initialState = {
   photos: [
     {
       photoFraming: 'photo1',
-      preview: ''
+      preview: '',
+      base64: ''
     },
     {
       photoFraming: 'photo2',
-      preview: ''
+      preview: '',
+      base64: ''
     },
     {
       photoFraming: 'photo3',
-      preview: ''
+      preview: '',
+      base64: ''
     }
   ],
   currentPhoto: 'photo1',
@@ -72,7 +75,8 @@ const registerReducer = (state = initialState, action) => {
          if (photo.photoFraming === action.payload.photoFraming) {
            return {
              ...photo,
-             preview: ''
+             preview: '',
+             base64: ''
            }
          }
          return photo

@@ -20,6 +20,11 @@ export const user = {
     }
   })),
   getPublicUser : (id) => (API.get(apiName, `/get-public-user/${id}`)),
+  uploadPhoto: (data) => (API.post(apiName, `/upload-photo`, {
+    body: {
+      ...data
+    }
+  })),
 }
 
 export const s3 = {

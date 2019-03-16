@@ -114,10 +114,14 @@ class RenderDropzoneField extends Component {
                             this.setState({fileIsToBig: false})
                             compress.compress(files).then((conversions) => {
                               const { photo } = conversions[0]
+                               const reader = new FileReader();
+                               reader.onload = (event) => {
+                                 addPhoto(photoFraming, file[0].preview, event.target.result)
+                               };
+                              reader.readAsDataURL(photo.data);
                               const file = files.map(file => Object.assign(file, {
                                 preview: URL.createObjectURL(photo.data)
                               }))
-                              addPhoto(photoFraming, file[0].preview)
                             })
                           }
                         }}>
@@ -160,8 +164,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPhoto: (photoFraming, preview) => {
-      dispatch(addPhoto(photoFraming, preview))
+    addPhoto: (photoFraming, preview, base64) => {
+      dispatch(addPhoto(photoFraming, preview, base64))
     },
     setCurrentPhoto: (photoFraming) => {
       dispatch(setCurrentPhoto(photoFraming))

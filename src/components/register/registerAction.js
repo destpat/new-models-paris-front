@@ -6,7 +6,7 @@ export const SET_NEXT_STEP = 'SET_NEXT_STEP'
 export const setNextStep = (step) => ({type: SET_NEXT_STEP, payload: { step }})
 
 export const ADD_PHOTO = 'ADD_PHOTO'
-export const addPhoto = (photoFraming, preview, files) => ({ type: ADD_PHOTO, payload: { photoFraming, preview } })
+export const addPhoto = (photoFraming, preview, base64) => ({ type: ADD_PHOTO, payload: { photoFraming, preview, base64 }})
 
 export const SET_CURRENT_PHOTO = 'SET_CURRENT_PHOTO'
 export const setCurrentPhoto = (photoFraming) => ({ type: SET_CURRENT_PHOTO, payload: { photoFraming } })

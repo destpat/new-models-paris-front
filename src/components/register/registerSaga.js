@@ -4,12 +4,22 @@ import {
 } from './registerAction'
 
 // Our worker Saga: will perform the async increment task
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeEvery, all } from 'redux-saga/effects'
 import { user } from '../../api/api'
 
 export function* createUser(action) {
   try {
-    yield call(user.createUser, action.payload.userInformation)
+    console.log(action.payload.userInformation.photos);
+    let photos =  yield all(action.payload.userInformation.photos.map((photo) => {
+      console.log(photo);
+      return call(user.uploadPhoto, {base64: photo.base64, id: action.payload.userInformation.id})
+    }))
+    console.log(photos);
+
+    yield call(user.createUser, {
+      ...action.payload.userInformation,
+      photos
+    })
     yield put({ type: CREATE_USER_SUCCESS})
   } catch (error) {
     console.log('error lors de la création de l utilisateur');
