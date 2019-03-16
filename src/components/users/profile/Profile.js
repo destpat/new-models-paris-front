@@ -68,7 +68,7 @@ class Profile extends Component {
             </Grid>
             <PhotoContainer item md={6} xs={12}>
               {
-                photos.map((photo, index) => <Photo key={index} alt="models" src={photo}/>)
+                photos.map((photo, index) => <Photo key={index} alt="models" src={photo.url}/>)
               }
             </PhotoContainer>
           </Grid>

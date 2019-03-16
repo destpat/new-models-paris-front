@@ -137,7 +137,7 @@ class Search extends Component {
           </FilterContainer>
         }
           <HitsContainer item md={9} xs={12} id="hits-container">
-            <CustomHits id="test" />
+            <CustomHits />
             <PaginationContainer
               container
               direction="row"

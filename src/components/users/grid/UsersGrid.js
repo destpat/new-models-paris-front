@@ -19,11 +19,11 @@ class UsersGrid extends Component {
                    columnWidth={getWidth(width)}>
           {
             publicUsers.map((publicUser, index) => {
-              let { id, firstname, photo } = publicUser
+              let { id, firstname, photos } = publicUser
               return (
                 <div key={index}>
                   <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
-                    <Photo imageUrl={photo} alt="models"/>
+                    <Photo imageUrl={photos[0].url} alt="models"/>
                     <HoverText>
                       {firstname}
                       <br/>
