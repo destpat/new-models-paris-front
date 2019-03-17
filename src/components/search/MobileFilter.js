@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Slide from '@material-ui/core/Slide';
 
 import Sex from './filter/Sex'
-import Age from './filter/Age'
+import Height from './filter/Height'
 import Region from './filter/Region'
 import Clothe from './filter/Clothe'
 import Project from './filter/Project'
@@ -63,7 +63,7 @@ const Filters = ({handleCloseMobileFilter}) => {
       <FilterContainer>
         <Sex/>
         <Divider variant="middle"/>
-        <Age/>
+        <Height/>
         <Divider variant="middle"/>
         <Region/>
         <Divider variant="middle"/>

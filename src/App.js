@@ -104,7 +104,7 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Men</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/search">Rechercher</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/search">Search</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
             <br/>
@@ -119,7 +119,7 @@ class App extends Component {
           <Nav>
             <MenuLink to="/women">Women</MenuLink>
             <MenuLink to="/men">Men</MenuLink>
-            <MenuLink to="/search">Rechercher</MenuLink>
+            <MenuLink to="/search">Search</MenuLink>
             <MenuLink to="/candidatures">Become a model</MenuLink>
             <MenuLink to="/login">Login</MenuLink>
           </Nav>

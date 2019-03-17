@@ -6,7 +6,7 @@ const Project = () => {
   return (
     <div>
       <CustomRefinementList
-        attribute="extraType.S"
+        attribute="extraType"
         values={extraTypeBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Type de project"
       />

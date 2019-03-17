@@ -6,7 +6,7 @@ const Clothe = () => {
   return (
     <div>
       <CustomRefinementList
-        attribute="clothes.S"
+        attribute="clothes"
         values={clothesBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Type de tenu"
       />

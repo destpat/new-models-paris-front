@@ -4,7 +4,7 @@ import { connect }  from 'react-redux'
 import Divider from '@material-ui/core/Divider'
 
 import Sex from './filter/Sex'
-import Age from './filter/Age'
+import Height from './filter/Height'
 import Region from './filter/Region'
 import Clothe from './filter/Clothe'
 import Project from './filter/Project'
@@ -47,7 +47,7 @@ class Search extends Component {
         <Container>
           <Sex />
           <Divider variant="middle"/>
-          <Age />
+          <Height />
           <Divider variant="middle"/>
           <Region/>
           <Divider variant="middle"/>

@@ -8,7 +8,7 @@ class Hit extends Component {
     return (
       <div>
         <PhotoContainer onClick={() => history.push(`profile/${id}`)}>
-          <Photo imageUrl={photos[0].M.url.S} alt="models" />
+          <Photo imageUrl={photos[0].url} alt="models" />
           <HoverText>
             {firstname}
             <br/>

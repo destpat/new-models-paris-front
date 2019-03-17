@@ -1,15 +1,29 @@
-import React, { Component } from 'react'
+// ⚠️ This example only works with the version 2.x of Rheostat
+import React, { Component } from 'react';
 import Rheostat from 'rheostat';
 import { connectRange } from 'react-instantsearch-dom';
+import styled from 'styled-components';
+import './rangeSlider.css'
+
+const ValueContainer = styled.div`
+  text-align: center;
+  margin-bottom: 15px;
+`
+
+const Value = styled.span`
+  padding: 10px;
+  font-size: 1.1em
+`
 
 class RangeSlider extends Component {
   state = {
-    min: this.props.min,
-    max: this.props.max,
+    min: 100,
+    max: 200
   };
 
   componentWillReceiveProps(nextProps) {
     const { currentRefinement, canRefine } = nextProps;
+
     if (
       canRefine &&
       (currentRefinement.min !== this.state.min ||
@@ -40,35 +54,31 @@ class RangeSlider extends Component {
   };
 
   render() {
-    const { min, max, currentRefinement } = this.props;
+    const { min, max, currentRefinement, unit } = this.props;
 
     if (min === max) {
       return null;
     }
 
     return (
-      <Rheostat
-        className="ais-RangeSlider"
-        min={min}
-        max={max}
-        values={[currentRefinement.min, currentRefinement.max]}
-        onChange={this.onChange}
-        onValuesUpdated={this.onValuesUpdated}
-      >
-        <div
-          className="rheostat-marker rheostat-marker--large"
-          style={{ left: 0 }}
-        >
-          <div className="rheostat-value">{this.state.min}</div>
-        </div>
-
-        <div
-          className="rheostat-marker rheostat-marker--large"
-          style={{ right: 0 }}
-        >
-          <div className="rheostat-value">{this.state.max}</div>
-        </div>
-      </Rheostat>
+      <div>
+        <Rheostat
+          min={min}
+          max={max}
+          values={[currentRefinement.min, currentRefinement.max]}
+          onChange={this.onChange}
+          onValuesUpdated={this.onValuesUpdated}>
+        </Rheostat>
+        <ValueContainer>
+          <Value>
+            {this.state.min} {unit}
+          </Value>
+          <span> - </span>
+          <Value>
+            {this.state.max} {unit}
+          </Value>
+        </ValueContainer>
+      </div>
     );
   }
 }
