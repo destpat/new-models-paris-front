@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider'
 
 import Sex from './filter/Sex'
 import Height from './filter/Height'
+import Age from './filter/Age'
 import Region from './filter/Region'
 import Clothe from './filter/Clothe'
 import Project from './filter/Project'
@@ -46,6 +47,8 @@ class Search extends Component {
         <Divider/>
         <Container>
           <Sex />
+          <Divider variant="middle"/>
+          <Age />
           <Divider variant="middle"/>
           <Height />
           <Divider variant="middle"/>

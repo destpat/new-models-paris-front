@@ -27,7 +27,7 @@ const searchClient = algoliasearch(
 
 const FilterContainer = styled(Grid)`
   background-color: #ffffff;
-  padding: 5px 30px 10px 30px;
+  padding: 5px 20px 10px 20px;
 `
 
 const HitsContainer = styled(Grid)`

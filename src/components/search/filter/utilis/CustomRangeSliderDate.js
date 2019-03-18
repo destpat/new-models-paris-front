@@ -1,8 +1,8 @@
-// ⚠️ This example only works with the version 2.x of Rheostat
-import React, { Component } from 'react';
-import Rheostat from 'rheostat';
-import { connectRange } from 'react-instantsearch-dom';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import Rheostat from 'rheostat'
+import moment from 'moment'
+import { connectRange } from 'react-instantsearch-dom'
+import styled from 'styled-components'
 import './rangeSlider.css'
 
 const ValueContainer = styled.div`
@@ -14,6 +14,10 @@ const Value = styled.span`
   padding: 10px;
   font-size: 1.1em
 `
+
+const unixToAge = (unixDate) => {
+  return moment().diff(unixDate * 1000, 'years', false);
+}
 
 class RangeSlider extends Component {
   state = {
@@ -52,12 +56,10 @@ class RangeSlider extends Component {
   };
 
   render() {
-    const { min, max, currentRefinement, unit } = this.props;
-
+    let { min, max, currentRefinement, unit } = this.props;
     if (min === max) {
       return null;
     }
-
     return (
       <div>
         <Rheostat
@@ -69,11 +71,11 @@ class RangeSlider extends Component {
         </Rheostat>
         <ValueContainer>
           <Value>
-            {this.state.min} {unit}
+            {unixToAge(this.state.min)} {unit}
           </Value>
           <span> - </span>
           <Value>
-            {this.state.max} {unit}
+            {unixToAge(this.state.max)} {unit}
           </Value>
         </ValueContainer>
       </div>
