@@ -4,17 +4,16 @@ import { ValidateButtonContainer, StyledButton } from '../utilis/button/nextButt
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
 
-const Title = styled.h2`
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2em;
-  font-weight: 100;
-  margin-top: 20vh;
-`
-
 const TitleHelper = styled.p`
   font-weight: 200;
   text-align: center
+`
+const Title = styled.h2`
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 2em;
+  margin-top: 20vh;
 `
 
 /*
@@ -27,14 +26,14 @@ class HomeRegistration extends Component {
     const { history, match } = this.props
     return (
       <div>
-        <Title> bienvenue </Title>
         <Grid container item justify="center">
           <Grid item md={6} xs={11}>
+            <Title> Become a model</Title>
             <TitleHelper>
-              Nous allons remplir ton formulaire d'inscription ensemble afin que ton profil soit validé puis publié sur notre site.
-            <br/>
-            <br/>
-              En t'inscrivant, tu sera également informé(e) des dernières news et castings.
+              Tu souhaites devenir modèle ou continuer ta carrière en intégrant une agence ?
+              <br/>
+              <br/>
+              Tu es bien tombé(e) car nous recherchons actuellement de nouveaux modèles !
             </TitleHelper>
           </Grid>
         </Grid>

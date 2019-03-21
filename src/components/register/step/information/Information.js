@@ -11,6 +11,7 @@ import { setNextStep } from '../../registerAction'
 
 import { withRouter } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
 const Title = styled.h2`
   text-align: center;
@@ -34,7 +35,7 @@ class Information extends Component {
     const { handleSubmit } = this.props;
     return (
     <Form onSubmit={handleSubmit}>
-      <Title> Informations personelles</Title>
+      <Title> Informations personnelles</Title>
       <Grid container spacing={8} direction="column">
         <Grid container item spacing={0} justify="center" >
           <Grid item xs={11} md={3}>
@@ -54,6 +55,17 @@ class Information extends Component {
               style={{width:'100%'}}
               component={renderTextField}
             />
+          </Grid>
+        </Grid>
+        <Grid container item spacing={0} justify="center">
+          <Grid item xs={11} md={3}>
+            <Field
+              name="instagram"
+              id="instagram-field"
+              label="Page Instagram"
+              style={{width:'100%'}}
+              inputProps={{startAdornment: <InputAdornment position="start">@</InputAdornment>}}
+              component={renderTextField}/>
           </Grid>
         </Grid>
         <Grid container item spacing={0} justify="center" >

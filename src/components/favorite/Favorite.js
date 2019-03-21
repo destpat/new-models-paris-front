@@ -49,7 +49,7 @@ const FavoriteContainer = styled.div`
 
 /*
 *  @description Component
-*  Affiche les utilisateurs qui sont choisie comme favorie
+*  Affiche les utilisateurs qui sont choisie comme favoris
 */
 class Favorite extends Component {
   render() {
@@ -59,11 +59,11 @@ class Favorite extends Component {
         {
           favoriteUsers.length < 1 ?
           <div>
-            <Title> Vous n'avez pas encore de favorie </Title>
+            <Title> Vous n'avez pas encore de favoris </Title>
             <Grid container item justify="center">
               <Grid item md={6} xs={11}>
                 <TitleHelper>
-                  Pour ajouter des favories cliquer sur le coeur à coté des modeles,
+                  Pour ajouter des favoris cliquer sur le coeur à coté des modeles,
                   <br/>
                   cela vous permettra de faire une demande de renseignement
                 </TitleHelper>

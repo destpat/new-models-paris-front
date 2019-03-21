@@ -27,7 +27,14 @@ const renderSelectField = ({ datas, input, label, meta, helperText, classes, sty
             })
           }
         </NativeSelect>
-        <FormHelperText>{displayError ? meta.error : null}</FormHelperText>
+        <div>
+          {
+            displayError ?
+            <FormHelperText>{meta.error}</FormHelperText>
+            :
+            ''
+          }
+        </div>
       </FormControl>
     )
   } else {

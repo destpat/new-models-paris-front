@@ -154,7 +154,7 @@ const mapStateToProps = state => {
     password: passwordFormSelector(state, 'password'),
     createUserInformation: {
       photos: state.register.photos,
-      ...informationFormSelector(state, 'firstname', 'lastname', 'sex'),
+      ...informationFormSelector(state, 'firstname', 'lastname', 'sex', 'instagram'),
       ...descriptionFormSelector(state, 'hairColor', 'eyesColor'),
       ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),
       other: AdditionalInformationsFormSelector(state, 'other'),

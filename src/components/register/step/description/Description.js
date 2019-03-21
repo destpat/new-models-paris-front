@@ -54,7 +54,7 @@ class Description extends Component {
                 style={{width:'100%'}}
                 name="hairColor"
                 id="hair-color-field"
-                label="Couleurs de cheveux"
+                label="Couleur de cheveux"
                 datas={hairColor}
                 component={renderSelectField}
               />
