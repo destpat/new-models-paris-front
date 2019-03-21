@@ -127,7 +127,7 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorite">
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorites">
               Favorite <FavoriteIcon className={classes.iconBurger}/>
             </MenuLinkResponsive>
           </Menu>
@@ -142,8 +142,8 @@ class App extends Component {
             <MenuLink to="/men">Men</MenuLink>
             <MenuLink to="/search">Search</MenuLink>
             <MenuLink to="/candidatures">Become a model</MenuLink>
-            <MenuLink to="/favorite">
-              Favorite <FavoriteIcon className={classes.icon}/>
+            <MenuLink to="/favorites">
+              Favorites <FavoriteIcon className={classes.icon}/>
             </MenuLink>
           </Nav>
         </div>
@@ -153,7 +153,7 @@ class App extends Component {
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
           <Route exact path="/search" component={Search}/>
-          <Route exact path="/favorite" component={Favorite}/>
+          <Route exact path="/favorites" component={Favorite}/>
           <Route path="/profile/:id" component={Profile}/>
         </Switch>
       </div>

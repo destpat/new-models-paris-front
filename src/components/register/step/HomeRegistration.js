@@ -38,7 +38,6 @@ class HomeRegistration extends Component {
             </TitleHelper>
           </Grid>
         </Grid>
-
         <ValidateButtonContainer>
           <StyledButton
             type='submit'

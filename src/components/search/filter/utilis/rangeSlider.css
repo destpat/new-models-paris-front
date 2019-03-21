@@ -1,7 +1,7 @@
 .rheostat {
   overflow: visible;
-  width: 90%;
-  margin-left: 4%;
+  width: 85%;
+  margin-left: 6%;
   margin-top: 30px;
 }
 
@@ -17,6 +17,7 @@
 }
 
 .rheostat-handle {
+  padding:0;
   background-color: #fff;
   border: 1px solid #d8d8d8;
   border-radius: 50%;
