@@ -81,18 +81,22 @@ class Confirmation extends Component {
     const { handleSubmit, singnupLoading, singnupSuccess } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Inscription réussie </Title>
+        {
+          singnupLoading ?
+          <TitleHelper>
+            Envoi des informations en cours
+          </TitleHelper>
+          :
+          <Title> Candidature envoyée </Title>
+        }
         <Grid container item justify="center">
           <Grid item xs={12} md={3}>
             {
               singnupLoading ?
-              <TitleHelper>
-                Chargement de t'es photos en cour
-              </TitleHelper>
+              ''
               :
               <TitleHelper>
-                Ton profil va être étudier dans les prochains jours.
-                Nous te recontactons très prochainement.
+                Ta candidature à bien été transmise, tu recevras une réponse d’ici 48 heures afin de savoir si elle à été validée
               </TitleHelper>
             }
           </Grid>

@@ -19,11 +19,6 @@ const Title = styled.h2`
   font-weight: 100;
 `
 
-const TitleHelper = styled.p`
-  text-align: center;
-  font-weight: 200;
-`
-
 const Form = styled.form`
   margin-top: 50px;
 `
@@ -39,12 +34,7 @@ class Information extends Component {
     const { handleSubmit } = this.props;
     return (
     <Form onSubmit={handleSubmit}>
-      <Title> Informations </Title>
-      <Grid container item justify="center" >
-        <Grid item xs={12} md={3}>
-          <TitleHelper> Afin de créer ton profil nous avons besoin de quelques informations </TitleHelper>
-        </Grid>
-      </Grid>
+      <Title> Informations personelles</Title>
       <Grid container spacing={8} direction="column">
         <Grid container item spacing={0} justify="center" >
           <Grid item xs={11} md={3}>

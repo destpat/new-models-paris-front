@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../utilis/renderTextField'
 import renderPhoneField from '../../utilis/renderPhoneField'
 import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
 import submit from './submit'
@@ -63,17 +64,20 @@ class Contact extends Component {
                 component={renderTextField}/>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid container justify="center" spacing={8}>
-          <Grid container item md={3} xs={11} justify="space-between">
-            <Grid item xs={5} md={5}>
+          <Grid container item spacing={0} justify="center">
+            <Grid item xs={11} md={3}>
               <Field
-                name="city"
-                id="city-field"
-                label="Ville"
+                name="instagram"
+                id="instagram-field"
+                label="Page Instagram"
                 style={{width:'100%'}}
+                inputProps={{startAdornment: <InputAdornment position="start">@</InputAdornment>}}
                 component={renderTextField}/>
             </Grid>
+          </Grid>
+        </Grid>
+        <Grid container justify="center">
+          <Grid container item md={3} xs={11} justify="space-between">
             <Grid item xs={5} md={5}>
               <Field
                 name="postCode"
@@ -81,6 +85,14 @@ class Contact extends Component {
                 label="Code postal"
                 style={{width:'100%'}}
                 type="number"
+                component={renderTextField}/>
+            </Grid>
+            <Grid item xs={5} md={5}>
+              <Field
+                name="city"
+                id="city-field"
+                label="Ville"
+                style={{width:'100%'}}
                 component={renderTextField}/>
             </Grid>
           </Grid>

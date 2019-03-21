@@ -49,7 +49,7 @@ class AdditionalInformations extends Component {
     const { handleSubmit, submitFailed, valid, sex } = this.props
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Informations complémentaires </Title>
+        <Title> Conditions </Title>
          <TitleHelper>
            En quelles tenues acceptes-tu de poser ?
          </TitleHelper>
@@ -89,12 +89,12 @@ class AdditionalInformations extends Component {
                     label="Nu"
                     component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moin une case</FormHelperText>
+            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
           </FormControl>
          </Grid>
         <Grid container item justify="center">
           <TitleHelper>
-            As-tu plus de précisions à nous donner par rapports à t'es talents et conditions ?
+            As-tu d’autres talents comme la danse, un sport, etc.. ? (Factultatif)
           </TitleHelper>
           <Grid container spacing={8} direction="column">
             <Grid container item spacing={0} justify="center">

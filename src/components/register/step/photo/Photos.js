@@ -25,7 +25,7 @@ const SubTitle = styled.p`
   text-align: center;
   font-weight: 100;
   font-size: 0.8em;
-  margin-top: 2px;
+  margin-top: 5px;
 `
 
 const Form = styled.form`
@@ -57,12 +57,12 @@ class Photos extends Component {
         <Title> Mes photos </Title>
         <Grid container item justify="center" >
           <TitleHelper>
-            {"Envoie nous tes plus jolies photos"}
+            Merci de nous transmettre quelques photos de toi
           </TitleHelper>
         </Grid>
         <Grid container item justify="center" >
           <SubTitle>
-            De préférence de shooting si tu en as
+            De préférence professionnelles si tu en as
           </SubTitle>
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center">

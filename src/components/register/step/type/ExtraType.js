@@ -44,7 +44,7 @@ class ExtraType extends Component {
     const { handleSubmit, submitFailed, valid } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Title> Conditions</Title>
+        <Title> Type de projets </Title>
         <Grid container item justify="center">
           <TitleHelper>
             Quels types de projets t’intéressent ?
@@ -76,7 +76,7 @@ class ExtraType extends Component {
                      label="Défilé de mode"
                      component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moin une case</FormHelperText>
+            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
           </FormControl>
          </Grid>
         <NextButton/>
