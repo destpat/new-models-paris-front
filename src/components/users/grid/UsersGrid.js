@@ -3,23 +3,38 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import StackGrid from "react-stack-grid"
 import sizeMe from 'react-sizeme'
-import { HoverText, UserNameContainer, UserName, Photo, PhotoContainer, StackGridContainer, getWidth } from './style'
+import { HoverText,
+         UserNameContainer,
+         UserName,
+         Photo,
+         PhotoContainer,
+         StackGridContainer,
+         getWidth,
+         getGutterWidth,
+         FavoriteBorderCustom,
+         FavoriteCustom
+       } from './style'
+import { setFavoriteUser, removeFavoriteUser } from '../../favorite/favoriteAction'
 
 /*
  *  @description Component
  *  Affichage en grille des profils utilisateurs
 */
 class UsersGrid extends Component {
+  checkIfUserIsFavorite = (id) => {
+    const { favoriteUsers } = this.props
+    return favoriteUsers[favoriteUsers.findIndex(user => user.id === id)]
+  }
   render() {
-    const { size: { width }, publicUsers } = this.props
+    const { size: { width }, users, setFavoriteUser, removeFavoriteUser, type } = this.props
     return (
       <StackGridContainer>
-        <StackGrid gutterWidth={width <= 480 ? 10 : 40}
+        <StackGrid gutterWidth={getGutterWidth(width, type)}
                    gutterHeight={5}
                    columnWidth={getWidth(width)}>
           {
-            publicUsers.map((publicUser, index) => {
-              let { id, firstname, photos } = publicUser
+            users.map((user, index) => {
+              let { id, firstname, photos } = user
               return (
                 <div key={index}>
                   <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
@@ -32,6 +47,12 @@ class UsersGrid extends Component {
                     </HoverText>
                   </PhotoContainer>
                   <UserNameContainer>
+                    {
+                      this.checkIfUserIsFavorite(id) ?
+                      <FavoriteCustom onClick={() => { removeFavoriteUser(id) }}/>
+                      :
+                      <FavoriteBorderCustom onClick={() => { setFavoriteUser(user) }}/>
+                    }
                     <UserName>
                       {firstname}
                     </UserName>
@@ -46,10 +67,15 @@ class UsersGrid extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    publicUsers: state.users.publicUsers
-  }
-}
+const mapStateToProps = state => ({
+  favoriteUsers: state.favorites.favoriteUsers
+})
 
-export default withRouter(sizeMe()(connect(mapStateToProps)(UsersGrid)));
+const mapDispatchToProps = dispatch => ({
+  setFavoriteUser: (user) =>
+    dispatch(setFavoriteUser(user)),
+  removeFavoriteUser: (id) =>
+    dispatch(removeFavoriteUser(id))
+})
+
+export default withRouter(sizeMe()(connect(mapStateToProps, mapDispatchToProps)(UsersGrid)));

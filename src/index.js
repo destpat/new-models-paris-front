@@ -4,6 +4,9 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from './rootReducer'
 import { BrowserRouter } from 'react-router-dom'
@@ -20,7 +23,6 @@ import Amplify from 'aws-amplify';
 import { AmplifyConfig } from './config';
 
 Amplify.configure(AmplifyConfig);
-
 
 const styleNode = document.createComment('insertion-point-jss');
 document.head.insertBefore(styleNode, document.head.firstChild);
@@ -39,10 +41,19 @@ const theme = createMuiTheme({
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let store = createStore(
-  rootReducer,
+const persistConfig = {
+ key: 'root',
+ storage: storage,
+ whitelist: ['favorites']
+};
+
+const pReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(
+  pReducer,
   composeEnhancer(applyMiddleware(sagaMiddleware)),
 );
+persistStore(store);
 
 sagaMiddleware.run(rootSaga)
 

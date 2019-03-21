@@ -5,6 +5,8 @@ import { slide as Menu } from 'react-burger-menu'
 import styled from 'styled-components'
 
 import { withStyles } from '@material-ui/core/styles'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +16,7 @@ import Women from './components/women/Women'
 import Men from './components/men/Men'
 import Search from './components/search/Search'
 import Profile from './components/users/profile/Profile'
+import Favorite from './components/favorite/Favorite'
 
 import logo from './logo.png'
 import  './burgerMenuStyle.css'
@@ -75,6 +78,22 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     }
+  },
+  icon: {
+    position: 'relative',
+    top: 5,
+    left: 5,
+    width: 20,
+    height: 20,
+    color: '#ac99ff'
+  },
+  iconBurger: {
+    position: 'relative',
+    top: 5,
+    left: 5,
+    width: 25,
+    height: 25,
+    color: '#ac99ff'
   }
 });
 
@@ -108,7 +127,9 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/login">Login</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorite">
+              Favorite <FavoriteIcon className={classes.iconBurger}/>
+            </MenuLinkResponsive>
           </Menu>
         </div>
         <Header>
@@ -121,7 +142,9 @@ class App extends Component {
             <MenuLink to="/men">Men</MenuLink>
             <MenuLink to="/search">Search</MenuLink>
             <MenuLink to="/candidatures">Become a model</MenuLink>
-            <MenuLink to="/login">Login</MenuLink>
+            <MenuLink to="/favorite">
+              Favorite <FavoriteIcon className={classes.icon}/>
+            </MenuLink>
           </Nav>
         </div>
         </Header>
@@ -130,6 +153,7 @@ class App extends Component {
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
           <Route exact path="/search" component={Search}/>
+          <Route exact path="/favorite" component={Favorite}/>
           <Route path="/profile/:id" component={Profile}/>
         </Switch>
       </div>

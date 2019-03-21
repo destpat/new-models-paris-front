@@ -1,7 +1,16 @@
 import styled from 'styled-components'
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import Favorite from '@material-ui/icons/Favorite'
 
+export const getGutterWidth = (width, type) => {
+  if (type === 'search') {
+    return width <= 480 ? 10 : 15
+  } else {
+    return width <= 480 ? 10 : 40
+  }
+}
 
-export let getWidth = (width) => {
+export const getWidth = (width) => {
   if (width <= 480) {
     return 170
   } else if (width <= 800) {
@@ -12,6 +21,21 @@ export let getWidth = (width) => {
     return 240
   }
 }
+
+export const FavoriteBorderCustom = styled(FavoriteBorder)`
+  &:hover {
+    color: #ac99ff;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color;
+    transition-property: color;
+  }
+`
+export const FavoriteCustom = styled(Favorite)`
+  color: #ac99ff;
+  cursor: pointer;
+`
 
 export const StackGridContainer = styled.div`
   margin-top: 30px;
@@ -32,10 +56,13 @@ export const HoverText = styled.div`
 `
 
 export const UserNameContainer = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 15px;
 `
 
-export const UserName = styled.h2`
+export const UserName = styled.div`
   font-size: 1.3em;
   text-transform: uppercase;
   font-weight: 300;

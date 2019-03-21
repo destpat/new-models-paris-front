@@ -13,14 +13,14 @@ class Women extends Component {
     this.props.getPublicUsers('women')
   }
   render() {
-    const { fetchingPublicUsers } = this.props
+    const { fetchingPublicUsers, publicUsers } = this.props
     return (
       <div>
         {
           fetchingPublicUsers ?
           <Loader />
           :
-          <UsersGrid/>
+          <UsersGrid users={publicUsers}/>
         }
       </div>
     )
@@ -35,7 +35,8 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => ({
-  fetchingPublicUsers: state.users.fetchingPublicUsers
+  fetchingPublicUsers: state.users.fetchingPublicUsers,
+  publicUsers: state.users.publicUsers
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Women);
