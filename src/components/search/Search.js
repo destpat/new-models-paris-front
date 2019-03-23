@@ -28,6 +28,11 @@ const searchClient = algoliasearch(
 const FilterContainer = styled(Grid)`
   background-color: #ffffff;
   padding: 5px 20px 10px 20px;
+  display: ${props => props.width > 780 ? 'block' : 'none'}
+`
+
+const MobileFilterContainer = styled(Grid)`
+  display: ${props => props.width < 780 ? 'block' : 'none'}
 `
 
 const HitsContainer = styled(Grid)`
@@ -119,9 +124,8 @@ class Search extends Component {
                      onSearchStateChange={this.onSearchStateChange}
                      createURL={createURL}>
         <Grid container>
-        {
-          width < 780 ?
-          <div>
+          
+          <MobileFilterContainer width={width}>
             <MobileFilter open={this.state.mobileFilterOpen}
                           handleCloseMobileFilter={this.handleCloseMobileFilter}
                           />
@@ -130,12 +134,12 @@ class Search extends Component {
                                     onClick={this.state.mobileFilterOpen ? this.handleCloseMobileFilter : this.handleMobileFilter}>
               { this.state.mobileFilterOpen ? "Appliquer les filtres" : "Filtre" }
             </ButtonOpenMobileFilter>
-          </div>
-          :
-          <FilterContainer item md={3} xs={3}>
+          </MobileFilterContainer>
+
+          <FilterContainer item md={3} xs={3} width={width}>
             <Filter />
           </FilterContainer>
-        }
+
           <HitsContainer item md={9} xs={12} id="hits-container">
             <CustomHits />
             <PaginationContainer
