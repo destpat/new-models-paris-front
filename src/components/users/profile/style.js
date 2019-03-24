@@ -36,7 +36,7 @@ export const PhotoContainer = styled(Grid)`
 export const InformationContainer = styled.div`
   position: fixed;
   left: 25%;
-  top: 30%;
+  top: 23%;
   transform: translateX(-50%);
   text-align: center;
   width: 50%;
@@ -88,4 +88,10 @@ export const ExtraTypeContainer = styled.ul`
   text-align: center;
   padding: 0;
   overflow-wrap: normal;
+`
+
+export const AddToFavorite = styled.div`
+  margin-bottom: 10px
+  font-size: 1.1em
+  font-weight: 300
 `

@@ -11,9 +11,11 @@ import { Photo,
          UserInfomationTitle,
          UserInformationValue,
          ExtraType,
-         ExtraTypeContainer
+         ExtraTypeContainer,
+         AddToFavorite
        } from './style'
 import Loader from '../../utilis/loader/Loader'
+import Favorite from '../utilis/Favorite'
 
 class Profile extends Component {
   componentDidMount() {
@@ -21,8 +23,7 @@ class Profile extends Component {
     getPublicUser(match.params.id)
   }
   render() {
-    const { fetchingPublicUser } = this.props;
-    const { firstname, height, hairColor, eyesColor, extraType, photos, clothes } = this.props.currentPublicUser
+    const { currentPublicUser: { firstname, height, hairColor, eyesColor, extraType, photos, clothes, id }, fetchingPublicUser, favoriteUsers, currentPublicUser } = this.props;
     return (
 
       <div>
@@ -63,6 +64,8 @@ class Profile extends Component {
                       clothes.map((type, index) => <ExtraType key={index}> { clothesBinding.find(o => o.value === type).name } </ExtraType>)
                     }
                   </ExtraTypeContainer>
+                  <AddToFavorite>Ajouter au favoris</AddToFavorite>
+                  <Favorite user={currentPublicUser} id={id} favoriteUsers={favoriteUsers}/>
                 </InformationContainer>
               </Grid>
             </Grid>
@@ -85,7 +88,8 @@ const mapDispatchToPros = dispatch => ({
 
 const mapStateToProps = state => ({
   currentPublicUser: state.users.currentPublicUser,
-  fetchingPublicUser: state.users.fetchingPublicUser
+  fetchingPublicUser: state.users.fetchingPublicUser,
+  favoriteUsers: state.favorites.favoriteUsers
 })
 
 export default connect(mapStateToProps, mapDispatchToPros)(Profile);

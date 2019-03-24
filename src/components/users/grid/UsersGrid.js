@@ -10,23 +10,17 @@ import { HoverText,
          PhotoContainer,
          StackGridContainer,
          getWidth,
-         getGutterWidth,
-         FavoriteBorderCustom,
-         FavoriteCustom
+         getGutterWidth
        } from './style'
 import { setFavoriteUser, removeFavoriteUser } from '../../favorite/favoriteAction'
-
+import Favorite from '../utilis/Favorite'
 /*
  *  @description Component
  *  Affichage en grille des profils utilisateurs
 */
 class UsersGrid extends Component {
-  checkIfUserIsFavorite = (id) => {
-    const { favoriteUsers } = this.props
-    return favoriteUsers[favoriteUsers.findIndex(user => user.id === id)]
-  }
   render() {
-    const { size: { width }, users, setFavoriteUser, removeFavoriteUser, type } = this.props
+    const { size: { width }, users, type, favoriteUsers } = this.props
     return (
       <StackGridContainer>
         <StackGrid gutterWidth={getGutterWidth(width, type)}
@@ -47,12 +41,7 @@ class UsersGrid extends Component {
                     </HoverText>
                   </PhotoContainer>
                   <UserNameContainer>
-                    {
-                      this.checkIfUserIsFavorite(id) ?
-                      <FavoriteCustom onClick={() => { removeFavoriteUser(id) }}/>
-                      :
-                      <FavoriteBorderCustom onClick={() => { setFavoriteUser(user) }}/>
-                    }
+                    <Favorite user={user} id={id} favoriteUsers={favoriteUsers}/>
                     <UserName>
                       {firstname}
                     </UserName>

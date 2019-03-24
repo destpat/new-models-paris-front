@@ -16,11 +16,11 @@ import JssProvider from 'react-jss/lib/JssProvider'
 import { createGenerateClassName, jssPreset } from '@material-ui/core/styles'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
-import 'typeface-roboto';
-import './index.css';
+import 'typeface-roboto'
+import './index.css'
 import rootSaga from './saga'
-import Amplify from 'aws-amplify';
-import { AmplifyConfig } from './config';
+import Amplify from 'aws-amplify'
+import { AmplifyConfig } from './config'
 
 Amplify.configure(AmplifyConfig);
 
@@ -49,7 +49,7 @@ const persistConfig = {
 
 const pReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(
+export const store = createStore(
   pReducer,
   composeEnhancer(applyMiddleware(sagaMiddleware)),
 );
