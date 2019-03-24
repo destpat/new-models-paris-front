@@ -46,9 +46,9 @@ class Search extends Component {
         </TitleContainer>
         <Divider/>
         <Container>
-          <Sex />
+          <Sex/>
           <Divider variant="middle"/>
-          <Height />
+          <Height/>
           <Divider variant="middle"/>
           <Region/>
           <Divider variant="middle"/>

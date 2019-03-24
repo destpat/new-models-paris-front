@@ -53,7 +53,7 @@ const renderSelectField = ({ datas, input, label, meta, helperText, classes, sty
         {
           displayError ?
             <FormHelperText>{ meta.error }</FormHelperText>
-          : null
+          : ''
         }
       </FormControl>
       )

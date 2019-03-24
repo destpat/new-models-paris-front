@@ -8,8 +8,8 @@ import NextButton from '../../utilis/button/NextButton'
 import validate from './validate'
 import renderCheckboxField from '../../utilis/renderCheckboxField'
 import { withRouter } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles';
-import FormHelperText from '@material-ui/core/FormHelperText';
+import { withStyles } from '@material-ui/core/styles'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import { setNextStep } from '../../registerAction'
 
 const Title = styled.h2`
