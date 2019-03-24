@@ -81,7 +81,7 @@ class ContactInformationForm extends Component {
           </Grid>
         </Grid>
         <Grid container item justify="center">
-          <Button style={{width: 150, position: 'absolute', bottom: 0}} color="primary" variant="outlined" type="submit"> Suivant </Button>
+          <Button style={{width: 150, marginTop: 80}} color="primary" variant="outlined" type="submit"> Suivant </Button>
         </Grid>
       </Form>
     )

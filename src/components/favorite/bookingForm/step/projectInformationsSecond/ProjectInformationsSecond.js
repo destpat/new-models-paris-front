@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderTextField from '../../../../register/utilis/renderTextField'
 import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import validate from './validate'
 
 /*
 *  @description Component
@@ -16,9 +18,9 @@ const Title = styled.span`
   margin: 15px;
 `
 
-class ProjectInformationFirst extends Component {
+class ProjectInformationSecond extends Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, previousStep } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <Grid container direction="column" spacing={32}>
@@ -26,7 +28,7 @@ class ProjectInformationFirst extends Component {
           <Grid item md={8}>
             <Field name="numberOfModels"
               id="number-of-models"
-              label="Nombre de figurant(e)s"
+              label="Nombre de figurant(e)s *"
               type="number"
               style={{width:'100%'}}
               component={renderTextField}/>
@@ -36,7 +38,7 @@ class ProjectInformationFirst extends Component {
           <Grid item md={8}>
             <Field name="dateOfProject"
               id="date-of-project"
-              label="Date du projet"
+              label="Date du projet *"
               type="date"
               InputLabelProps={{
                 shrink: true
@@ -50,7 +52,7 @@ class ProjectInformationFirst extends Component {
               <Grid item md={6}>
               <Field name="startTime"
                      id="start-time"
-                     label="Heure de début"
+                     label="Heure de début *"
                      type="time"
                      InputLabelProps={{
                        shrink: true
@@ -61,7 +63,7 @@ class ProjectInformationFirst extends Component {
               <Grid item md={6}>
               <Field name="endTime"
                      id="end-time"
-                     label="Heure de fin"
+                     label="Heure de fin *"
                      type="time"
                      InputLabelProps={{
                        shrink: true
@@ -80,7 +82,7 @@ class ProjectInformationFirst extends Component {
                 <Grid item md={8}>
                   <Field name="other"
                          id="other-field"
-                         label="Scénario ..."
+                         label="Scénario ... *"
                          multiline={true}
                          rows="4"
                          variant="outlined"
@@ -91,16 +93,31 @@ class ProjectInformationFirst extends Component {
             </Grid>
           </Grid>
         </Grid>
+        <Grid container item justify="center">
+          <Button style={{width: 150, marginTop: 20}}
+                  color="primary"
+                  variant="outlined"
+                  onClick={previousStep}>
+            Précédent
+          </Button>
+          <Button style={{width: 150, marginTop: 20, marginLeft: 10}}
+                  color="primary"
+                  variant="outlined"
+                  type="submit">
+            Terminer
+          </Button>
+        </Grid>
       </form>
     )
   }
 }
 
-ProjectInformationFirst = reduxForm({
-  form: 'projectInformationFirst',
+ProjectInformationSecond = reduxForm({
+  form: 'projectInformationSecond',
+  validate: validate,
   onSubmit: (values, dispatch, props) => {
-    console.log('hello');
+    console.log('Envoie des donnée au serveur et validation');
   }
-})(ProjectInformationFirst)
+})(ProjectInformationSecond)
 
-export default withRouter(ProjectInformationFirst);
+export default withRouter(ProjectInformationSecond);

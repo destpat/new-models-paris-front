@@ -12,7 +12,8 @@ import { Photo,
          UserInformationValue,
          ExtraType,
          ExtraTypeContainer,
-         AddToFavorite
+         AddToFavorite,
+         FavoriteContainer
        } from './style'
 import Loader from '../../utilis/loader/Loader'
 import Favorite from '../utilis/Favorite'
@@ -38,7 +39,7 @@ class Profile extends Component {
                   <UserName>{ firstname }</UserName>
                   <UserInformationContainer>
                     <UserInfomationTitle>Taille : </UserInfomationTitle>
-                    <UserInformationValue style={{marginRight: 20}}>{ height } cm</UserInformationValue>
+                    <UserInformationValue style={{marginRight: 20}}>{height} cm</UserInformationValue>
                     <UserInfomationTitle>Cheveux : </UserInfomationTitle>
                     <UserInformationValue style={{marginRight: 20}}>
                       { hairsColorsBinding.find(o => o.value === hairColor).name  }
@@ -64,8 +65,10 @@ class Profile extends Component {
                       clothes.map((type, index) => <ExtraType key={index}> { clothesBinding.find(o => o.value === type).name } </ExtraType>)
                     }
                   </ExtraTypeContainer>
-                  <AddToFavorite>Ajouter au favoris</AddToFavorite>
-                  <Favorite user={currentPublicUser} id={id} favoriteUsers={favoriteUsers}/>
+                  <FavoriteContainer>
+                    <Favorite user={currentPublicUser} id={id} favoriteUsers={favoriteUsers}/>
+                    <AddToFavorite>Ajouter au favoris</AddToFavorite>
+                  </FavoriteContainer>
                 </InformationContainer>
               </Grid>
             </Grid>

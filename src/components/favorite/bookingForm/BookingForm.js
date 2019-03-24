@@ -20,7 +20,7 @@ const Title = styled.h1`
 
 class BookingForm extends Component {
   state = {
-    index: 1
+    index: 0
   }
   nextStep = () => {
     this.setState({index: this.state.index + 1})
@@ -38,7 +38,7 @@ class BookingForm extends Component {
         <SwipeableViews animateHeight={false} index={index} slideStyle={{overflow: 'hidden'}}>
           <ContactInformation nextStep={this.nextStep}/>
           <ProjectInformationsFirst nextStep={this.nextStep} previousStep={this.previousStep}/>
-          <ProjectInformationsSecond/>
+          <ProjectInformationsSecond  nextStep={this.nextStep} previousStep={this.previousStep}/>
         </SwipeableViews>
     </div>
     )

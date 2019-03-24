@@ -91,7 +91,12 @@ export const ExtraTypeContainer = styled.ul`
 `
 
 export const AddToFavorite = styled.div`
-  margin-bottom: 10px
-  font-size: 1.1em
-  font-weight: 300
+  margin-left: 20px;
+  font-size: 1.1em;
+  font-weight: 300;
+`
+
+export const FavoriteContainer = styled.div`
+  display: inline-flex;
+  margin-bottom: 30px;
 `

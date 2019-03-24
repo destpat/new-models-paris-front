@@ -23,8 +23,7 @@ const Title = styled.span`
 
 class ProjectInformationFirst extends Component {
   render() {
-    const { handleSubmit, submitFailed, valid } = this.props;
-    console.log(this.props);
+    const { handleSubmit, submitFailed, valid, previousStep } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <Grid container item justify="center">
@@ -101,7 +100,13 @@ class ProjectInformationFirst extends Component {
           </FormControl>
         </Grid>
         <Grid container item justify="center">
-          <Button style={{width: 150, marginTop: 10}} color="primary" variant="outlined" type="submit">
+          <Button style={{width: 150, marginTop: 20}}
+                  color="primary"
+                  variant="outlined"
+                  onClick={previousStep}>
+            Précédent
+          </Button>
+          <Button style={{width: 150, marginTop: 20, marginLeft: 10}} color="primary" variant="outlined" type="submit">
             Suivant
           </Button>
         </Grid>

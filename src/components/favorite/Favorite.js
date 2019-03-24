@@ -81,7 +81,7 @@ const EnquireButton = styled(Button)`
 */
 class Favorite extends Component {
   state = {
-    enquireMode: true
+    enquireMode: false
   }
 
   handleEnquireMode = () => {
