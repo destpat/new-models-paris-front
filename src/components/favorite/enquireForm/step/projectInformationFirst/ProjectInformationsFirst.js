@@ -20,7 +20,6 @@ const Title = styled.span`
 *  @description Component
 *  formulaire pour la création d'utilisateur, demande d'information de contact
 */
-
 class ProjectInformationFirst extends Component {
   render() {
     const { handleSubmit, submitFailed, valid, previousStep } = this.props;

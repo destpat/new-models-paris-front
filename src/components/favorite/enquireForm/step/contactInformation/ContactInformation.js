@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import validate from './validate'
 
 const Form = styled.form`
-  margin-top: 8%
+  margin-top: 5%
 `
 
 /*
@@ -22,10 +22,28 @@ class ContactInformationForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
-        <Grid container direction="column" spacing={32}>
-          <Grid container justify="center">
-            <Grid container item md={8} spacing={24}>
-              <Grid item md={6}>
+        <Grid container direction="column">
+          <Grid container justify="center" spacing={16}>
+            <Grid container item md={8} xs={10} spacing={16}>
+              <Grid item md={6} xs={12}>
+                <Field
+                    name="email"
+                    id="email"
+                    label="Email *"
+                    style={{width:'100%'}}
+                    component={renderTextField}/>
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <Field
+                    name="phone"
+                    id="phone-field"
+                    label="Téléphone *"
+                    style={{width:'100%'}}
+                    component={renderPhoneField}/>
+              </Grid>
+            </Grid>
+            <Grid container item md={8} xs={10} spacing={16}>
+              <Grid item md={6} xs={12}>
                 <Field
                     name="lastname"
                     id="lastname"
@@ -33,7 +51,7 @@ class ContactInformationForm extends Component {
                     style={{width:'100%'}}
                     component={renderTextField}/>
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={6} xs={12}>
                   <Field
                       name="firstname"
                       id="firstname"
@@ -42,26 +60,8 @@ class ContactInformationForm extends Component {
                       component={renderTextField}/>
                 </Grid>
               </Grid>
-              <Grid container item md={8} spacing={24}>
-                  <Grid item md={6}>
-                    <Field
-                        name="email"
-                        id="email"
-                        label="Email *"
-                        style={{width:'100%'}}
-                        component={renderTextField}/>
-                  </Grid>
-                  <Grid item md={6}>
-                    <Field
-                        name="phone"
-                        id="phone-field"
-                        label="Téléphone *"
-                        style={{width:'100%'}}
-                        component={renderPhoneField}/>
-                  </Grid>
-                </Grid>
-              <Grid container item md={8} spacing={24}>
-                  <Grid item md={6}>
+              <Grid container item md={8} xs={10} spacing={16}>
+                  <Grid item md={6} xs={12}>
                     <Field
                         name="productionName"
                         id="production"
@@ -69,7 +69,7 @@ class ContactInformationForm extends Component {
                         style={{width:'100%'}}
                         component={renderTextField}/>
                   </Grid>
-                  <Grid item md={6}>
+                  <Grid item md={6} xs={12}>
                     <Field
                         name="artistName"
                         id="artiste-name"

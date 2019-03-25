@@ -28,11 +28,17 @@ const searchClient = algoliasearch(
 const FilterContainer = styled(Grid)`
   background-color: #ffffff;
   padding: 5px 20px 10px 20px;
-  display: ${props => props.width > 780 ? 'block' : 'none'}
+  display: block;
+  @media(max-width: 959px) {
+    display: none
+  }
 `
 
 const MobileFilterContainer = styled(Grid)`
-  display: ${props => props.width < 780 ? 'block' : 'none'}
+  display: none
+  @media(max-width: 959px) {
+    display: block;
+  }
 `
 
 const HitsContainer = styled(Grid)`
@@ -124,7 +130,7 @@ class Search extends Component {
                      onSearchStateChange={this.onSearchStateChange}
                      createURL={createURL}>
         <Grid container>
-          
+
           <MobileFilterContainer width={width}>
             <MobileFilter open={this.state.mobileFilterOpen}
                           handleCloseMobileFilter={this.handleCloseMobileFilter}
