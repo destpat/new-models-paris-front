@@ -80,8 +80,8 @@ class ProjectInformationSecond extends Component {
               <Grid container spacing={8} direction="column">
                 <Grid container item spacing={0} justify="center">
                   <Grid item md={8} xs={10}>
-                    <Field name="other"
-                           id="other-field"
+                    <Field name="description"
+                           id="description-field"
                            label="Scénario ... *"
                            multiline={true}
                            rows="4"

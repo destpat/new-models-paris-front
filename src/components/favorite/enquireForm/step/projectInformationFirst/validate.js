@@ -8,7 +8,6 @@ const validate = values => {
   if (Object.keys(values).every((k) => !values[k])) {
     errors.vixen = 'Veuillez sélectionner au moins une valeur'
   }
-  console.log(errors);
   return errors;
 }
 
