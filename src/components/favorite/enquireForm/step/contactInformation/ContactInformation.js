@@ -4,7 +4,6 @@ import renderTextField from '../../../../register/utilis/renderTextField'
 import renderPhoneField from '../../../../register/utilis/renderPhoneField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import validate from './validate'
 
@@ -92,9 +91,8 @@ ContactInformationForm = reduxForm({
   form: 'contactInformationForm',
   validate: validate,
   onSubmit: (values, dispatch, props) => {
-    console.log('inside');
     props.nextStep()
   },
 })(ContactInformationForm)
 
-export default withRouter(ContactInformationForm);
+export default ContactInformationForm;

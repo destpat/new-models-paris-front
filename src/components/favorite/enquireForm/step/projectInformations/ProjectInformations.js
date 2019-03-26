@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 import renderTextField from '../../../../register/utilis/renderTextField'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import validate from './validate'
-
+import { formValueSelector } from 'redux-form';
+import { createEnquire } from '../../../favoriteAction'
 /*
 *  @description Component
 *  formulaire pour la création d'utilisateur, demande d'information de contact
@@ -112,12 +113,57 @@ class ProjectInformationSecond extends Component {
   }
 }
 
+const selectorContactInformationForm = formValueSelector('contactInformationForm')
+const selectorProjectClothe = formValueSelector('projectClothe')
+const selectorExtraType = formValueSelector('projectType')
+
+const mapStateToProps = state => {
+  let clothes = []
+  let extraType = []
+  // Object contenant la partie 2 du formulaire de demande de rensignement
+  let selectedClothes = selectorProjectClothe(state, 'fashionMode', 'fitness', 'bikini', 'underwear', 'lingerie', 'vixen', 'nude')
+  for (let key in selectedClothes) {
+    if (selectedClothes.hasOwnProperty(key) && selectedClothes[key] === true) {
+      clothes.push(key);
+    }
+  }
+
+  let selectedExtraType = selectorExtraType(state, 'shortFilms', 'photoShoot', 'musicVideo', 'fashionShow')
+  for (let key in selectedExtraType) {
+    if (selectedExtraType.hasOwnProperty(key) && selectedExtraType[key] === true) {
+      extraType.push(key);
+    }
+  }
+
+  return {
+  enquire: {
+    ...selectorContactInformationForm(state, 'email', 'phone', 'lastname', 'firstname', 'productionName', 'artistName'),
+    clothes,
+    extraType
+  },
+  usersId: state.favorites.favoriteUsers.map(favoriteUser => favoriteUser.id)
+  }
+}
+
 ProjectInformationSecond = reduxForm({
   form: 'projectInformationSecond',
   validate: validate,
   onSubmit: (values, dispatch, props) => {
+    // Cast du nombre de models en number
+    values.numberOfModels = +values.numberOfModels
+    console.log({
+      ...values,
+      ...props.enquire
+    });
+    dispatch(createEnquire({
+      usersId: props.usersId,
+      enquire: {
+        ...values,
+        ...props.enquire
+      }
+    }))
     console.log('Envoie des données au serveur et validation');
   }
 })(ProjectInformationSecond)
 
-export default withRouter(ProjectInformationSecond);
+export default connect(mapStateToProps)(ProjectInformationSecond);

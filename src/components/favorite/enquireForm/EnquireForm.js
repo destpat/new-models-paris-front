@@ -3,8 +3,9 @@ import { withRouter } from 'react-router-dom'
 import SwipeableViews from 'react-swipeable-views';
 
 import ContactInformation from './step/contactInformation/ContactInformation'
-import ProjectInformationsFirst from './step/projectInformationFirst/ProjectInformationsFirst'
-import ProjectInformationsSecond from './step/projectInformationsSecond/ProjectInformationsSecond'
+import ProjectType from './step/projectType/ProjectType'
+import ProjectClothe from './step/projectClothe/ProjectClothe'
+import ProjectInformations from './step/projectInformations/ProjectInformations'
 
 /*
 *  @description Component
@@ -24,10 +25,15 @@ class EnquireForm extends Component {
   render() {
     const { index } = this.state
     return (
-      <SwipeableViews animateHeight={false} index={index} slideStyle={{overflow: 'hidden'}}>
+      <SwipeableViews
+        animateHeight={false}
+        index={index}
+        slideStyle={{overflow: 'hidden'}}
+        disabled={true}>
         <ContactInformation nextStep={this.nextStep}/>
-        <ProjectInformationsFirst nextStep={this.nextStep} previousStep={this.previousStep}/>
-        <ProjectInformationsSecond  nextStep={this.nextStep} previousStep={this.previousStep}/>
+        <ProjectType nextStep={this.nextStep} previousStep={this.previousStep}/>
+        <ProjectClothe nextStep={this.nextStep} previousStep={this.previousStep}/>
+        <ProjectInformations  nextStep={this.nextStep} previousStep={this.previousStep}/>
       </SwipeableViews>
     )
   }

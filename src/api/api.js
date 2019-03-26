@@ -27,6 +27,14 @@ export const user = {
   })),
 }
 
+export const enquire = {
+  request : (data) => (API.post(apiName, '/enquire', {
+    body: {
+      ...data
+    }
+  })),
+}
+
 export const s3 = {
   getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id, expires: 6000 }))
 }

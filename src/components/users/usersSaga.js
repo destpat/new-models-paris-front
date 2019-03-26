@@ -34,9 +34,9 @@ function* getPublicUser(action) {
   }
 }
 
-const registerSaga = [
+const usersSaga = [
   takeEvery(GET_PUBLIC_USERS, getPublicUsers),
   takeEvery(GET_PUBLIC_USER, getPublicUser),
 ];
 
-export default registerSaga;
+export default usersSaga;

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid'
 import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import validate from './validate'
 
@@ -20,7 +19,7 @@ const Title = styled.span`
 *  @description Component
 *  formulaire pour la création d'utilisateur, demande d'information de contact
 */
-class ProjectInformationFirst extends Component {
+class ProjectTypeInformation extends Component {
   render() {
     const { handleSubmit, submitFailed, valid, previousStep } = this.props;
     return (
@@ -43,7 +42,7 @@ class ProjectInformationFirst extends Component {
                      component={renderCheckboxField}/>
               </FormGroup>
             </FormControl>
-            <FormControl>
+            <FormControl error={submitFailed && !valid ? true : false}>
               <FormGroup>
                 <Field name="musicVideo"
                        id="music-video-field"
@@ -54,49 +53,8 @@ class ProjectInformationFirst extends Component {
                        label="Défilé de mode"
                        component={renderCheckboxField}/>
               </FormGroup>
+              <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
             </FormControl>
-        </Grid>
-        <Grid container item justify="center">
-          <Title>
-            Quelle tenue devrons porter les figurant(e)s ?
-          </Title>
-        </Grid>
-        <Grid container item justify="center">
-          <FormControl>
-            <FormGroup>
-              <Field name="fashionMode"
-                     id="fashion-mode-outfit"
-                     label="Fashion / Mode"
-                     component={renderCheckboxField}/>
-
-              <Field name="fitness"
-                     id="fitness"
-                     label="Fitness"
-                     component={renderCheckboxField}/>
-             <Field name="underwear"
-                    id="underwear"
-                    label="Lingerie / Sous-vêtements"
-                    component={renderCheckboxField}/>
-
-            </FormGroup>
-          </FormControl>
-          <FormControl error={submitFailed && !valid ? true : false}>
-            <FormGroup>
-              <Field name="bikini"
-                     id="bikini"
-                     label="Bikini"
-                     component={renderCheckboxField}/>
-              <Field name="vixen"
-                     id="vixen"
-                     label="Vixen"
-                     component={renderCheckboxField}/>
-             <Field name="nude"
-                    id="nude"
-                    label="Nu"
-                    component={renderCheckboxField}/>
-            </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
-          </FormControl>
         </Grid>
         <Grid container item justify="center">
           <Button style={{width: 150, marginTop: 20}}
@@ -114,12 +72,12 @@ class ProjectInformationFirst extends Component {
   }
 }
 
-ProjectInformationFirst = reduxForm({
-  form: 'projectInformationFirst',
+ProjectTypeInformation = reduxForm({
+  form: 'projectType',
   validate: validate,
   onSubmit: (values, dispatch, props) => {
     props.nextStep()
   }
-})(ProjectInformationFirst)
+})(ProjectTypeInformation)
 
-export default withRouter(ProjectInformationFirst);
+export default ProjectTypeInformation;

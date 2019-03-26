@@ -9,12 +9,9 @@ import { user } from '../../api/api'
 
 export function* createUser(action) {
   try {
-    console.log(action.payload.userInformation.photos);
     let photos =  yield all(action.payload.userInformation.photos.map((photo) => {
-      console.log(photo);
       return call(user.uploadPhoto, {base64: photo.base64, id: action.payload.userInformation.id})
     }))
-    console.log(photos);
 
     yield call(user.createUser, {
       ...action.payload.userInformation,
