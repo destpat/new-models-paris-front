@@ -9,7 +9,6 @@ import { enquire } from '../../api/api'
 
 export function* createEnquire(action) {
   try {
-    console.log(action.payload.enquireInformations);
     yield call(enquire.request, action.payload.enquireInformations)
     yield put({ type: CREATE_ENQUIRE_SUCCESS})
   } catch (error) {

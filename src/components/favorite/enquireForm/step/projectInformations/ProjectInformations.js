@@ -21,7 +21,7 @@ const Title = styled.span`
 
 class ProjectInformationSecond extends Component {
   render() {
-    const { handleSubmit, previousStep } = this.props;
+    const { handleSubmit, setStep } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <Grid container direction="column" spacing={24}>
@@ -98,7 +98,7 @@ class ProjectInformationSecond extends Component {
           <Button style={{width: 150, marginTop: 20}}
                   color="primary"
                   variant="outlined"
-                  onClick={previousStep}>
+                  onClick={() => setStep(2)}>
             Précédent
           </Button>
           <Button style={{width: 150, marginTop: 20, marginLeft: 10}}
@@ -151,10 +151,6 @@ ProjectInformationSecond = reduxForm({
   onSubmit: (values, dispatch, props) => {
     // Cast du nombre de models en number
     values.numberOfModels = +values.numberOfModels
-    console.log({
-      ...values,
-      ...props.enquire
-    });
     dispatch(createEnquire({
       usersId: props.usersId,
       enquire: {
@@ -162,7 +158,7 @@ ProjectInformationSecond = reduxForm({
         ...props.enquire
       }
     }))
-    console.log('Envoie des données au serveur et validation');
+    props.setStep(4)
   }
 })(ProjectInformationSecond)
 

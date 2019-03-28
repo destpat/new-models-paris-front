@@ -91,7 +91,7 @@ ContactInformationForm = reduxForm({
   form: 'contactInformationForm',
   validate: validate,
   onSubmit: (values, dispatch, props) => {
-    props.nextStep()
+    props.setStep(1)
   },
 })(ContactInformationForm)
 

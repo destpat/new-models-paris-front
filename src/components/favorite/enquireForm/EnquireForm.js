@@ -6,6 +6,7 @@ import ContactInformation from './step/contactInformation/ContactInformation'
 import ProjectType from './step/projectType/ProjectType'
 import ProjectClothe from './step/projectClothe/ProjectClothe'
 import ProjectInformations from './step/projectInformations/ProjectInformations'
+import SuccessFeedback from './step/successFeedback/SuccessFeedback'
 
 /*
 *  @description Component
@@ -16,11 +17,11 @@ class EnquireForm extends Component {
   state = {
     index: 0
   }
-  nextStep = () => {
-    this.setState({index: this.state.index + 1})
+  setStep = (index) => {
+    this.setState({index})
   }
-  previousStep = () => {
-    this.setState({index: this.state.index - 1})
+  resetIndex = () => {
+    this.setState({index: 0})
   }
   render() {
     const { index } = this.state
@@ -30,10 +31,11 @@ class EnquireForm extends Component {
         index={index}
         slideStyle={{overflow: 'hidden'}}
         disabled={true}>
-        <ContactInformation nextStep={this.nextStep}/>
-        <ProjectType nextStep={this.nextStep} previousStep={this.previousStep}/>
-        <ProjectClothe nextStep={this.nextStep} previousStep={this.previousStep}/>
-        <ProjectInformations  nextStep={this.nextStep} previousStep={this.previousStep}/>
+        <ContactInformation setStep={this.setStep}/>
+        <ProjectType setStep={this.setStep} />
+        <ProjectClothe setStep={this.setStep} />
+        <ProjectInformations  setStep={this.setStep} />
+        <SuccessFeedback resetIndex={this.resetIndex}/>
       </SwipeableViews>
     )
   }

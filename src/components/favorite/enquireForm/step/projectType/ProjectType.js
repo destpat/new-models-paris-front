@@ -21,7 +21,7 @@ const Title = styled.span`
 */
 class ProjectTypeInformation extends Component {
   render() {
-    const { handleSubmit, submitFailed, valid, previousStep } = this.props;
+    const { handleSubmit, submitFailed, valid, setStep } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <Grid container item justify="center">
@@ -60,7 +60,7 @@ class ProjectTypeInformation extends Component {
           <Button style={{width: 150, marginTop: 20}}
                   color="primary"
                   variant="outlined"
-                  onClick={previousStep}>
+                  onClick={() => setStep(0)}>
             Précédent
           </Button>
           <Button style={{width: 150, marginTop: 20, marginLeft: 10}} color="primary" variant="outlined" type="submit">
@@ -76,7 +76,7 @@ ProjectTypeInformation = reduxForm({
   form: 'projectType',
   validate: validate,
   onSubmit: (values, dispatch, props) => {
-    props.nextStep()
+    props.setStep(2)
   }
 })(ProjectTypeInformation)
 

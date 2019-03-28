@@ -1,14 +1,21 @@
 import {
   SET_FAVORITE_USER,
-  REMOVE_FAVORITE_USER
+  REMOVE_FAVORITE_USER,
+  CREATE_ENQUIRE_SUCCESS,
 } from './favoriteAction';
 
 const initialState = {
-  favoriteUsers: []
+  favoriteUsers: [],
+  createEnquireSuccess: false
 }
 
-const usersReducer = (state = initialState, action) => {
+const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_ENQUIRE_SUCCESS:
+      return {
+        ...state,
+        createEnquireSuccess: true
+      }
     case SET_FAVORITE_USER:
       return {
         ...state,
@@ -27,4 +34,4 @@ const usersReducer = (state = initialState, action) => {
   }
 }
 
-export default usersReducer
+export default favoriteReducer

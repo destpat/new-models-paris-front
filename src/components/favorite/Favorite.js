@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import EnquireForm from './enquireForm/EnquireForm'
 import MobileEnquireForm from './enquireForm/MobileEnquireForm'
 import sizeMe from 'react-sizeme'
+import { setEnquireMode, setMobileEnquireMode } from './favoriteAction'
 import {
   Title,
   EnquireTitle,
@@ -24,32 +25,27 @@ import {
 *  Affiche les utilisateurs qui sont choisis comme favoris
 */
 class Favorite extends Component {
-  state = {
-    enquireMode: false,
-    mobileEnquireFormOpen: false
-  }
-
   handleEnquireMode = () => {
-    this.setState({enquireMode: !this.state.enquireMode})
+    this.props.setEnquireMode(!this.props.enquireMode)
   }
 
   handleCloseMobileEnquireForm = () => {
-    this.setState({mobileEnquireFormOpen: false})
+    console.log(this.props.mobileEnquireMode);
+    this.props.setMobileEnquireMode(false)
   }
 
   handleOpenMobileEnquireForm = () => {
-    this.setState({mobileEnquireFormOpen: true})
+    this.props.setMobileEnquireMode(true)
   }
 
   componentDidUpdate() {
-    if (this.props.size.width < 959 && this.state.enquireMode) {
-      this.setState({enquireMode: false})
+    if (this.props.size.width < 959 && this.props.enquireMode) {
+      this.props.setEnquireMode(false)
     }
   }
 
   render() {
-    const { enquireMode, mobileEnquireFormOpen } = this.state
-    const { favoriteUsers, size: { width } } = this.props
+    const { favoriteUsers, size: { width }, enquireMode, mobileEnquireMode } = this.props
     return (
       <div>
         {
@@ -104,21 +100,20 @@ class Favorite extends Component {
 
             <MobileEnquireFormContainer>
               <MobileEnquireForm
-                open={this.state.mobileEnquireFormOpen}
+                open={mobileEnquireMode}
                 handleCloseMobileEnquireForm={this.handleCloseMobileEnquireForm}/>
               {
-                mobileEnquireFormOpen ?
+                mobileEnquireMode ?
                 ''
                 :
                 <ButtonOpenBookingForm
                   variant="contained"
                   color="primary"
-                  onClick={mobileEnquireFormOpen ? this.handleCloseMobileEnquireForm : this.handleOpenMobileEnquireForm}>
+                  onClick={mobileEnquireMode ? this.handleCloseMobileEnquireForm : this.handleOpenMobileEnquireForm}>
                   Demande de booking
                 </ButtonOpenBookingForm>
               }
             </MobileEnquireFormContainer>
-
           </div>
         }
       </div>
@@ -127,7 +122,16 @@ class Favorite extends Component {
 }
 
 const mapStateToProps = state => ({
-  favoriteUsers: state.favorites.favoriteUsers
+  favoriteUsers: state.favorites.favoriteUsers,
+  enquireMode: state.enquire.enquireMode,
+  mobileEnquireMode: state.enquire.mobileEnquireMode
 })
 
-export default sizeMe()(connect(mapStateToProps)(Favorite));
+const mapDispatchToProps = dispatch => ({
+  setEnquireMode: (enquire) =>
+    dispatch(setEnquireMode(enquire)),
+  setMobileEnquireMode: (enquire) =>
+    dispatch(setMobileEnquireMode(enquire))
+})
+
+export default sizeMe()(connect(mapStateToProps, mapDispatchToProps)(Favorite));
