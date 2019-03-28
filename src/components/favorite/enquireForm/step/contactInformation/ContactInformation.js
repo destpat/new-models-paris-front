@@ -4,12 +4,7 @@ import renderTextField from '../../../../register/utilis/renderTextField'
 import renderPhoneField from '../../../../register/utilis/renderPhoneField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import styled from 'styled-components'
 import validate from './validate'
-
-const Form = styled.form`
-  margin-top: 5%
-`
 
 /*
 *  @description Component
@@ -20,7 +15,7 @@ class ContactInformationForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Grid container direction="column">
           <Grid container justify="center" spacing={16}>
             <Grid container item md={8} xs={10} spacing={16}>
@@ -82,7 +77,7 @@ class ContactInformationForm extends Component {
         <Grid container item justify="center">
           <Button style={{width: 150, marginTop: 80}} color="primary" variant="outlined" type="submit"> Suivant </Button>
         </Grid>
-      </Form>
+      </form>
     )
   }
 }

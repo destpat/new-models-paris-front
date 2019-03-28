@@ -27,6 +27,10 @@ const CustomFilterButton = styled(Button)`
  color: #737373;
 `
 
+const Test = styled.div`
+  margin-top: 6%;
+`
+
 const Transition = (props) => {
   const duration = {
     enteringScreen: 250,
@@ -55,7 +59,9 @@ class MobileEnquireForm extends Component {
               </CustomFilterButton>
             </CustomToolbar>
           </CustomAppBar>
-          <EnquireForm />
+          <Test>
+            <EnquireForm />
+          </Test>
         </CustomDialog>
       </div>
     );
