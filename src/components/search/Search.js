@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button'
 import Filter from './Filter'
 import MobileFilter from './MobileFilter'
 import CustomHits from './CustomHits'
+import CustomStateResults from './CustomStateResults'
 
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
@@ -138,7 +139,7 @@ class Search extends Component {
             <ButtonOpenMobileFilter variant="contained"
                                     color="primary"
                                     onClick={this.state.mobileFilterOpen ? this.handleCloseMobileFilter : this.handleMobileFilter}>
-              { this.state.mobileFilterOpen ? "Appliquer les filtres" : "Filtre" }
+              { this.state.mobileFilterOpen ? <CustomStateResults/> : "Filtre" }
             </ButtonOpenMobileFilter>
           </MobileFilterContainer>
 

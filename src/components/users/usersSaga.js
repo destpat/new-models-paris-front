@@ -15,7 +15,6 @@ export function* getPublicUsers(action) {
   try {
     yield put({type: FETCHING_PUBLIC_USERS})
     let users = yield call(userCall.getPublicUsers, action.payload.sex)
-    console.log(users);
     yield put({ type: GET_PUBLIC_USERS_SUCCESS, data: users })
   } catch (error) {
     console.log(error);

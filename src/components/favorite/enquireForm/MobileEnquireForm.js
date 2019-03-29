@@ -27,7 +27,7 @@ const CustomFilterButton = styled(Button)`
  color: #737373;
 `
 
-const Test = styled.div`
+const EnquireContainer = styled.div`
   margin-top: 6%;
 `
 
@@ -59,9 +59,9 @@ class MobileEnquireForm extends Component {
               </CustomFilterButton>
             </CustomToolbar>
           </CustomAppBar>
-          <Test>
+          <EnquireContainer>
             <EnquireForm />
-          </Test>
+          </EnquireContainer>
         </CustomDialog>
       </div>
     );
