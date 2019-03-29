@@ -26,6 +26,21 @@ const initialState = {
       photoFraming: 'photo3',
       preview: '',
       base64: ''
+    },
+    {
+      photoFraming: 'photoSup1',
+      preview: '',
+      base64: ''
+    },
+    {
+      photoFraming: 'photoSup2',
+      preview: '',
+      base64: ''
+    },
+    {
+      photoFraming: 'photoSup3',
+      preview: '',
+      base64: ''
     }
   ],
   currentPhoto: 'photo1',

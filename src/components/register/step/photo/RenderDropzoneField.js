@@ -14,8 +14,8 @@ const options = {
 const compress = new Compress(options)
 
 const DropZoneContainer = styled.div`
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   border: 1px solid #000;
   cursor: pointer;
   @media (max-width: 480px) {
@@ -38,8 +38,8 @@ const PhotoContainer = styled.div`
 `
 
 const Photo = styled.img`
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   object-fit: scale-down;
   cursor: pointer;
   background-color: #eeeeee;
@@ -62,8 +62,8 @@ const CustomFontAwesomeIcon = styled(FontAwesomeIcon)`
 
 const AddAPhotoCustom = styled(AddAPhoto)`
   font-size: 40px;
-  margin-top: 44px;
-  margin-left: 44px;
+  margin-top: 28px;
+  margin-left: 28px;
   @media (max-width: 480px) {
     font-size: 32px;
     margin-top: 30px;
@@ -87,7 +87,7 @@ class RenderDropzoneField extends Component {
     fileIsToBig: false
   }
   render() {
-    const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label, submitSucceeded } = this.props;
+    const { addPhoto, photoFraming, photos, setCurrentPhoto, deletePhoto, label, submitSucceeded, required} = this.props;
     let photoContainPreview = !!photos.find(photo => photo.photoFraming === photoFraming).preview;
     return (
       <div>
@@ -135,7 +135,7 @@ class RenderDropzoneField extends Component {
         </Label>
         {
           // Affihcage du message d'erreur seulement si le formulaire est submit
-          photoContainPreview === false && submitSucceeded && this.state.fileIsToBig === false ?
+          photoContainPreview === false && required && submitSucceeded && this.state.fileIsToBig === false ?
 
           <HelperContainer>
             <RequiredPhoto>Photo requise</RequiredPhoto>

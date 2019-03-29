@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form'
 import RenderDropzoneField from './RenderDropzoneField'
 import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 
 import styled from 'styled-components'
 import NextButton from '../../utilis/button/NextButton'
@@ -50,7 +51,11 @@ const FakePhoto = styled.div`
 */
 
 class Photos extends Component {
+  state = {
+    addMorePhotos: false
+  }
   render() {
+    const { addMorePhotos } = this.state;
     const { handleSubmit, photos, photoFraming, submitSucceeded } = this.props;
     return (
       <Form onSubmit={handleSubmit}>
@@ -75,14 +80,39 @@ class Photos extends Component {
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center" spacing={32}>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo1" label="Portrait" submitSucceeded={submitSucceeded}/>
+            <RenderDropzoneField photoFraming="photo1" label="Portrait" required={true} submitSucceeded={submitSucceeded}/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo2" label="Plain-pied" submitSucceeded={submitSucceeded}/>
+            <RenderDropzoneField photoFraming="photo2" label="Plain-pied" required={true} submitSucceeded={submitSucceeded}/>
           </Grid>
           <Grid item>
-            <RenderDropzoneField photoFraming="photo3" label="Américain" submitSucceeded={submitSucceeded}/>
+            <RenderDropzoneField photoFraming="photo3" label="Américain" required={true} submitSucceeded={submitSucceeded}/>
           </Grid>
+          <Grid item hidden={!addMorePhotos}>
+            <RenderDropzoneField photoFraming="photoSup1" label="( Facultatif )" submitSucceeded={submitSucceeded}/>
+          </Grid>
+          <Grid item hidden={!addMorePhotos}>
+            <RenderDropzoneField photoFraming="photoSup2" label="( Facultatif )" submitSucceeded={submitSucceeded}/>
+          </Grid>
+          <Grid item hidden={!addMorePhotos}>
+            <RenderDropzoneField photoFraming="photoSup3" label="( Facultatif )" submitSucceeded={submitSucceeded}/>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          onClick={() => this.setState({addMorePhotos: true})}
+          spacing={24}>
+          {
+            !addMorePhotos ?
+              <Button color="primary">
+                Ajouter plus de photos
+              </Button>
+            :
+            ''
+          }
         </Grid>
       <NextButton/>
     </Form>
@@ -102,7 +132,9 @@ Photos = reduxForm({
   destroyOnUnmount: false,
   onSubmit: (values, dispatch, props) => {
     // Vérifie que toute les photos on bien étais ajouté
-    if (props.photos.every((photo) => photo.preview)) {
+    const { photos } = props;
+    let allowNextStep = photos[0].preview && photos[1].preview && photos[2].preview
+    if (!!allowNextStep) {
       dispatch(setNextStep(6))
       props.history.push(`password`)
     }
