@@ -43,6 +43,7 @@
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
+    "start:local": "REACT_APP_STAGE=local react-scripts start",
     "start": "REACT_APP_STAGE=dev react-scripts start",
     "build:dev": "REACT_APP_STAGE=dev react-scripts build",
     "build": "react-scripts build",

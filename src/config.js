@@ -1,6 +1,10 @@
 import { Auth } from 'aws-amplify'
 
 export const getApiEndPoint = () => {
+  const local = {
+      name: 'newModelsParisLocalApi',
+      endpoint: 'http://localhost:3000'
+  };
   const dev = {
       name: 'newModelsParisDevApi',
       endpoint: 'https://api-dev.newmodelsparis.com'
@@ -12,6 +16,8 @@ export const getApiEndPoint = () => {
   };
 
   switch (process.env.REACT_APP_STAGE) {
+    case 'local':
+      return local;
     case 'dev':
       return dev;
     case 'prod':

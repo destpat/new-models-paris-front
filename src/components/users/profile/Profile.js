@@ -26,7 +26,6 @@ class Profile extends Component {
   render() {
     const { currentPublicUser: { firstname, height, hairColor, eyesColor, extraType, photos, clothes, id }, fetchingPublicUser, favoriteUsers, currentPublicUser } = this.props;
     return (
-
       <div>
         {
           fetchingPublicUser ?
