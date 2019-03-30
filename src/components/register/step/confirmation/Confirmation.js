@@ -146,14 +146,13 @@ const mapStateToProps = state => {
   }
 
   let birthdate = `${month}-${day}-${year}`
-
   return {
     email: contactFormSelector(state, 'email'),
     singnupLoading: state.register.singnupLoading,
     singnupSuccess: state.register.singnupSuccess,
     password: passwordFormSelector(state, 'password'),
     createUserInformation: {
-      photos: state.register.photos,
+      photos: state.register.photos.filter((photo) => photo.base64),
       ...informationFormSelector(state, 'firstname', 'lastname', 'sex', 'instagram'),
       ...descriptionFormSelector(state, 'hairColor', 'eyesColor'),
       ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),
