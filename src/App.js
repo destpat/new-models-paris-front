@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link, Switch} from "react-router-dom"
+import { Route, Link, Switch, NavLink} from "react-router-dom"
 import { slide as Menu } from 'react-burger-menu'
 
 import styled from 'styled-components'
@@ -8,8 +8,9 @@ import { withStyles } from '@material-ui/core/styles'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+
 
 import Register from './components/register/Register'
 import Women from './components/women/Women'
@@ -17,11 +18,15 @@ import Men from './components/men/Men'
 import Search from './components/search/Search'
 import Profile from './components/users/profile/Profile'
 import Favorite from './components/favorite/Favorite'
+import Home from './components/home/Home'
+
 
 import logo from './logo.png'
 import  './burgerMenuStyle.css'
 
-library.add(faInstagram, faTimesCircle)
+library.add(faInstagram, faTimesCircle, faFacebookF)
+
+
 
 const Header = styled.header`
   background-color: #fff;
@@ -40,12 +45,17 @@ const LogoLink = styled(Link)`
   margin-right: auto;
 `
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   color: #444444;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.8em;
-  margin-right: 35px;
+  font-size: 0.7em;
+  margin-right: 25px;
+  &:hover {
+    color: #ac99ff
+    transition: 0.3s;
+  }
+
 `;
 
 const MenuLinkResponsive = styled(Link)`
@@ -114,6 +124,7 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
+    <div>
       <div>
         <div className={classes.burgerMenu}>
           <Menu classNames={styles}
@@ -138,17 +149,18 @@ class App extends Component {
         </LogoLink>
         <div className={classes.menu}>
           <Nav>
-            <MenuLink to="/women">Women</MenuLink>
-            <MenuLink to="/men">Men</MenuLink>
-            <MenuLink to="/search">Search</MenuLink>
-            <MenuLink to="/candidatures">Become a model</MenuLink>
-            <MenuLink to="/favorites">
+            <MenuLink to="/women" activeClassName="selected-nav">Women</MenuLink>
+            <MenuLink to="/men" activeClassName="selected-nav">Men</MenuLink>
+            <MenuLink to="/search" activeClassName="selected-nav">Search</MenuLink>
+            <MenuLink to="/candidatures" activeClassName="selected-nav">Become a model</MenuLink>
+            <MenuLink to="/favorites" activeClassName="selected-nav">
               Favorites <FavoriteIcon className={classes.icon}/>
             </MenuLink>
           </Nav>
         </div>
         </Header>
         <Switch>
+          <Route exact path="/" component={Home}/>
           <Route path="/candidatures" component={Register}/>
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
@@ -157,6 +169,7 @@ class App extends Component {
           <Route path="/profile/:id" component={Profile}/>
         </Switch>
       </div>
+    </div>
     );
   }
 }

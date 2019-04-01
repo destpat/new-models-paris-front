@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
+  font-family: 'Montserrat', sans-serif;
 }
 
 code {
@@ -20,6 +21,10 @@ code {
 
 *:focus {
     outline: none;
+}
+
+.selected-nav {
+  color: #ac99ff;
 }
 
 input,
