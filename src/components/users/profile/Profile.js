@@ -38,10 +38,10 @@ class Profile extends Component {
                   <UserName>{ firstname }</UserName>
                   <UserInformationContainer>
                     <UserInfomationTitle>Taille : </UserInfomationTitle>
-                    <UserInformationValue style={{marginRight: 20}}>{height} cm</UserInformationValue>
+                    <UserInformationValue style={{marginRight: 20}}>{height}cm</UserInformationValue>
                     <UserInfomationTitle>Cheveux : </UserInfomationTitle>
                     <UserInformationValue style={{marginRight: 20}}>
-                      { hairsColorsBinding.find(o => o.value === hairColor).name  }
+                      { hairsColorsBinding.find(o => o.value === hairColor).name }
                     </UserInformationValue>
                     <UserInfomationTitle>Yeux : </UserInfomationTitle>
                     <UserInformationValue>
