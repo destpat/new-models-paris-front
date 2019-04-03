@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import backgroundImage from '../../images/home-background.png'
+import backgroundImage from '../../images/home-background.jpg'
 import Button from '@material-ui/core/Button'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import Grid from '@material-ui/core/Grid'
@@ -60,8 +61,13 @@ const CustomH2 = styled.h2`
   font-weight: 400;
   margin: 0;
   padding: 40px 0px 60px 80px;
+  @media(max-width: 960px) {
+    padding: O;
+    text-align: center;
+    font-size: 2em;
+  }
   @media(min-width: 1200px) {
-    font-size: 3em;
+    font-size: 2.4em;
   }
 `
 
@@ -122,7 +128,7 @@ const Email = styled(Grid)`
 const SocialIcon = styled(Grid)`
   padding: 8px;
   text-align: right;
-  @media(max-width: 960px) {
+  @media(max-width: 600px) {
     text-align: left;
   }
   & > a {
@@ -141,15 +147,16 @@ const CustomStrong = styled.strong`
 *  @description Component
 *  page d'acceuil du site
 */
-class HOME extends Component {
+class Home extends Component {
   render() {
+    const { history : { push } } = this.props;
     return (
       <div>
         <ImageContainer>
           <img src={backgroundImage} alt="test" style={{height: '72vh'}}/>
           <ImageOverContent>
             <Title>Les meilleurs modèles pour vos projets</Title>
-            <ButtonCustom color="primary" variant="contained"> Trouver un modèle </ButtonCustom>
+            <ButtonCustom color="primary" variant="contained" onClick={()=> push('/search')}> Trouver un modèle </ButtonCustom>
           </ImageOverContent>
         </ImageContainer>
         <div>
@@ -182,8 +189,10 @@ class HOME extends Component {
           </Grid>
         </StepContainer>
         <Grid container direction="row" justify="center" alignItems="center" spacing={32} style={{marginBottom: 60}}>
-          <CustomActionButton color="primary" variant="contained"> Devenenir modèle </CustomActionButton>
-          <CustomActionButton color="primary" variant="outlined" style={{background: 'none'}}> Trouver un modèle </CustomActionButton>
+          <CustomActionButton color="primary" variant="contained" onClick={()=> push('/candidatures')}>
+              Devenenir modèle
+           </CustomActionButton>
+          <CustomActionButton color="primary" variant="outlined" style={{background: 'none'}} onClick={()=> push('/search')}> Trouver un modèle </CustomActionButton>
         </Grid>
         <Footer
           container
@@ -213,4 +222,4 @@ class HOME extends Component {
   }
 }
 
-export default HOME;
+export default withRouter(Home);
