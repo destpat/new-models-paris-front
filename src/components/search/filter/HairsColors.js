@@ -7,6 +7,7 @@ const HairsColors = () => {
     <div>
       <CustomRefinementList
         attribute="hairColor"
+        operator="and"
         values={hairsColorsBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Couleur des cheveux"
       />

@@ -7,6 +7,7 @@ const Clothe = () => {
     <div>
       <CustomRefinementList
         attribute="clothes"
+        operator="and"
         values={clothesBinding.map(({name, value}) => ({  label: name,  value }))}
         categoryLabel="Type de tenu"
       />
