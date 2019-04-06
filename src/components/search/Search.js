@@ -52,7 +52,7 @@ const HitsContainer = styled(Grid)`
   -webkit-overflow-scrolling: touch;
 `
 const PaginationContainer = styled(Grid)`
-  padding: 0px 23px 50px 0px;
+  padding: 0px 50px 50px 0px;
 `
 
 const ButtonOpenMobileFilter = styled(Button)`
