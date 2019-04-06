@@ -24,7 +24,7 @@ code {
 }
 
 .selected-nav {
-  color: #ac99ff;
+  color: #ac99ff !important;
 }
 
 input,

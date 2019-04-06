@@ -12,6 +12,9 @@ const validate = values => {
   if (!values.endTime) {
     errors.endTime = 'Champs requis'
   }
+  if (!values.city) {
+    errors.city = 'Champs requis'
+  }
   if (!values.description) {
     errors.description = 'Veuillez ajouter une description'
   }

@@ -7,6 +7,15 @@ const validateEmail = (email) => {
 
 const validate = values => {
   const errors = {};
+  if (!values.firstname) {
+    errors.firstname = 'Champs requis'
+  }
+  if (!values.lastname) {
+    errors.lastname = 'Champs requis'
+  }
+  if (!values.artistName) {
+    errors.artistName = 'Champs requis'
+  }
   if (!values.email) {
     errors.email = 'Champs requis'
   }

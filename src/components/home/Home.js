@@ -61,13 +61,13 @@ const CustomH2 = styled.h2`
   font-weight: 400;
   margin: 0;
   padding: 40px 0px 60px 80px;
+  font-size: 1.8em;
   @media(max-width: 960px) {
-    padding: O;
+    padding: 30px 0px 40px 0px;
     text-align: center;
-    font-size: 2em;
   }
   @media(min-width: 1200px) {
-    font-size: 2.4em;
+    font-size: 2.2em;
   }
 `
 
@@ -141,8 +141,13 @@ const SocialIcon = styled(Grid)`
 `
 
 const CustomStrong = styled.strong`
-  line-height: 30px;
+  line-height: 25px;
 `
+
+const CustomSpan = styled.span`
+  line-height: 25px;
+`
+
 /*
 *  @description Component
 *  page d'acceuil du site
@@ -164,26 +169,26 @@ class Home extends Component {
           <CustomH2>
             Comment ça marche ?
           </CustomH2>
-          <Grid container direction="row" justify="center" alignItems="stretch" spacing={32}>
+          <Grid container direction="row" justify="center" alignItems="stretch" spacing={40}>
             <Grid item md={3} xs={8}>
               <section>
                   <Number>1</Number>
                   <CustomStrong> J’ajoute plusieurs modèles </CustomStrong>
-                  <span> qui correspondent aux besoins de mon projet dans mes favoris <CustomFavoriteIcon /></span>
+                  <CustomSpan> qui correspondent aux besoins de mon projet dans mes favoris. <CustomFavoriteIcon /></CustomSpan>
               </section>
             </Grid>
             <Grid item md={3} xs={8}>
               <section>
                 <Number>2</Number>
-                <CustomStrong> Je fais ma demande de booking </CustomStrong>
-                <span> en donnant les détails de mon projet </span>
+                <CustomStrong> Je fait ma demande </CustomStrong>
+                <CustomSpan> en donnant les détails de mon projet. </CustomSpan>
               </section>
             </Grid>
             <Grid item md={3} xs={8}>
               <section>
                 <Number>3</Number>
-                <CustomStrong> L’équipe new models paris  </CustomStrong>
-                <span> me contact avec une proposition</span>
+                <CustomStrong> En moins de 24h </CustomStrong>
+                <CustomSpan>l’équipe New Models Paris me contacte, avec la liste des modèles disponible pour mon projet.</CustomSpan>
               </section>
             </Grid>
           </Grid>

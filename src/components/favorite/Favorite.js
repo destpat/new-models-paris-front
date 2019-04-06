@@ -30,7 +30,6 @@ class Favorite extends Component {
   }
 
   handleCloseMobileEnquireForm = () => {
-    console.log(this.props.mobileEnquireMode);
     this.props.setMobileEnquireMode(false)
   }
 
@@ -77,7 +76,7 @@ class Favorite extends Component {
                   color="primary"
                   onClick={this.handleEnquireMode}>
                   {
-                    enquireMode ? 'Fermer' : 'Demande de booking'
+                    enquireMode ? 'Fermer' : 'Envoyer une demande'
                   }
                 </EnquireButton>
                 : ''
@@ -91,7 +90,7 @@ class Favorite extends Component {
 
               <Grid item md={6} style={{display: enquireMode ? 'block' : 'none'}}>
                 <EnquireTitle>
-                  Demande de booking
+                  Envoyer une demande
                 </EnquireTitle>
                 <EnquireForm />
               </Grid>
@@ -110,7 +109,7 @@ class Favorite extends Component {
                   variant="contained"
                   color="primary"
                   onClick={mobileEnquireMode ? this.handleCloseMobileEnquireForm : this.handleOpenMobileEnquireForm}>
-                  Demande de booking
+                  Envoyer une demande
                 </ButtonOpenBookingForm>
               }
             </MobileEnquireFormContainer>

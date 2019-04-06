@@ -26,7 +26,7 @@ class ProjectTypeInformation extends Component {
       <form onSubmit={handleSubmit}>
         <Grid container item justify="center">
           <Title>
-            Quelle est le type de projet ?
+            Type de projet
           </Title>
         </Grid>
         <Grid container item justify="center">
@@ -34,11 +34,11 @@ class ProjectTypeInformation extends Component {
             <FormGroup>
               <Field name="photoShoot"
                      id="photo-shoot-field"
-                     label="Shootings photos"
+                     label="Shooting photos"
                      component={renderCheckboxField}/>
               <Field name="shortFilms"
                      id="short-film-field"
-                     label="Courts métrage"
+                     label="Court-métrage"
                      component={renderCheckboxField}/>
               </FormGroup>
             </FormControl>
@@ -46,14 +46,14 @@ class ProjectTypeInformation extends Component {
               <FormGroup>
                 <Field name="musicVideo"
                        id="music-video-field"
-                       label="Clips vidéos"
+                       label="Clip vidéo"
                        component={renderCheckboxField}/>
                 <Field name="fashionShow"
                        id="fashion-show"
                        label="Défilé de mode"
                        component={renderCheckboxField}/>
               </FormGroup>
-              <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
+              <FormHelperText>Veuillez sélectionner au <br/> moins une case</FormHelperText>
             </FormControl>
         </Grid>
         <Grid container item justify="center">

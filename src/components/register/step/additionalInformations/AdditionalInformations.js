@@ -89,7 +89,7 @@ class AdditionalInformations extends Component {
                     label="Nu"
                     component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
+            <FormHelperText>Veuillez sélectionner au <br/> moins une case</FormHelperText>
           </FormControl>
          </Grid>
         <Grid container item justify="center">

@@ -24,13 +24,28 @@ class ProjectInformationSecond extends Component {
     const { handleSubmit, setStep } = this.props;
     return (
       <form onSubmit={handleSubmit}>
+        <Grid container item justify="center">
+          <Title>
+            Votre projet
+          </Title>
+        </Grid>
         <Grid container direction="column" spacing={24}>
           <Grid container item justify="center">
             <Grid item md={8} xs={10}>
               <Field name="numberOfModels"
                 id="number-of-models"
-                label="Nombre de figurant(e)s *"
+                label="Nombre de modèles souhaité *"
                 type="number"
+                style={{width:'100%'}}
+                component={renderTextField}/>
+            </Grid>
+          </Grid>
+          <Grid container item justify="center" style={{paddingTop: 0}}>
+            <Grid item md={8} xs={10}>
+              <Field name="city"
+                id="city"
+                label="Ville *"
+                type="text"
                 style={{width:'100%'}}
                 component={renderTextField}/>
             </Grid>

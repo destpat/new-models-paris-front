@@ -76,7 +76,7 @@ class ExtraType extends Component {
                      label="Défilé de mode"
                      component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
+            <FormHelperText>Veuillez sélectionner au <br/> moins une case</FormHelperText>
           </FormControl>
          </Grid>
         <NextButton/>

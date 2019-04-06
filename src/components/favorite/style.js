@@ -15,6 +15,7 @@ export const EnquireTitle = styled.h1`
   text-align: center;
   text-transform: uppercase;
   font-weight: 200;
+  font-size: 1.5em;
 `
 
 export const TitleHelper = styled.p`
@@ -78,7 +79,7 @@ export const Section = styled.section`
 `
 
 export const TitleFavorite = styled.h1`
-  font-size: 2.3em;
+  font-size: 1.8em;
   margin-bottom: ${props => props.enquireMode ? '10px': '0px'};
   margin-top: 10px;
   font-weight: 200;

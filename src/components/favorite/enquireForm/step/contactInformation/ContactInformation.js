@@ -21,6 +21,42 @@ class ContactInformationForm extends Component {
             <Grid container item md={8} xs={10} spacing={16}>
               <Grid item md={6} xs={12}>
                 <Field
+                    name="lastname"
+                    id="lastname"
+                    label="Nom *"
+                    style={{width:'100%'}}
+                    component={renderTextField}/>
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <Field
+                    name="firstname"
+                    id="firstname"
+                    label="Prénom *"
+                    style={{width:'100%'}}
+                    component={renderTextField}/>
+              </Grid>
+            </Grid>
+            <Grid container item md={8} xs={10} spacing={16}>
+                  <Grid item md={6} xs={12}>
+                    <Field
+                        name="productionName"
+                        id="production"
+                        label="Nom de la production"
+                        style={{width:'100%'}}
+                        component={renderTextField}/>
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                    <Field
+                        name="artistName"
+                        id="artiste-name"
+                        label="Nom de l'artiste *"
+                        style={{width:'100%'}}
+                        component={renderTextField}/>
+                </Grid>
+            </Grid>
+            <Grid container item md={8} xs={10} spacing={16}>
+              <Grid item md={6} xs={12}>
+                <Field
                     name="email"
                     id="email"
                     label="Email *"
@@ -36,42 +72,6 @@ class ContactInformationForm extends Component {
                     component={renderPhoneField}/>
               </Grid>
             </Grid>
-            <Grid container item md={8} xs={10} spacing={16}>
-              <Grid item md={6} xs={12}>
-                <Field
-                    name="lastname"
-                    id="lastname"
-                    label="Nom"
-                    style={{width:'100%'}}
-                    component={renderTextField}/>
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <Field
-                      name="firstname"
-                      id="firstname"
-                      label="Prénom"
-                      style={{width:'100%'}}
-                      component={renderTextField}/>
-                </Grid>
-              </Grid>
-              <Grid container item md={8} xs={10} spacing={16}>
-                  <Grid item md={6} xs={12}>
-                    <Field
-                        name="productionName"
-                        id="production"
-                        label="Nom de la production"
-                        style={{width:'100%'}}
-                        component={renderTextField}/>
-                  </Grid>
-                  <Grid item md={6} xs={12}>
-                    <Field
-                        name="artistName"
-                        id="artiste-name"
-                        label="Nom de l'artiste"
-                        style={{width:'100%'}}
-                        component={renderTextField}/>
-                  </Grid>
-              </Grid>
           </Grid>
         </Grid>
         <Grid container item justify="center">

@@ -26,7 +26,7 @@ class ProjectClotheInformation extends Component {
       <form onSubmit={handleSubmit}>
         <Grid container item justify="center">
           <Title>
-            Quelle tenue devrons porter les figurant(e)s ?
+            Tenues à prévoir
           </Title>
         </Grid>
         <Grid container item justify="center">
@@ -63,7 +63,7 @@ class ProjectClotheInformation extends Component {
                     label="Nu"
                     component={renderCheckboxField}/>
             </FormGroup>
-            <FormHelperText>Veuillez sélectioner au <br/> moins une case</FormHelperText>
+            <FormHelperText>Veuillez sélectionner au <br/> moins une case</FormHelperText>
           </FormControl>
         </Grid>
         <Grid container item justify="center">
