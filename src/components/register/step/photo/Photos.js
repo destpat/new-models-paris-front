@@ -62,12 +62,12 @@ class Photos extends Component {
         <Title> Mes photos </Title>
         <Grid container item justify="center" >
           <TitleHelper>
-            Merci de nous transmettre quelques photos de toi
+            Merci de nous envoyer quelques photos de toi
           </TitleHelper>
         </Grid>
         <Grid container item justify="center" >
           <SubTitle>
-            De préférence professionnelles si tu en as
+            ( Nous acceptons uniquement les photos professionnelles )
           </SubTitle>
         </Grid>
         <Grid container direction="row" justify="center" alignItems="center">

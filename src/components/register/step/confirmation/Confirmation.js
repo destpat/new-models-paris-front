@@ -96,7 +96,7 @@ class Confirmation extends Component {
               ''
               :
               <TitleHelper>
-                Ta candidature à bien été transmise, tu recevras une réponse d’ici 48 heures afin de savoir si elle à été validée
+                Ta candidature à bien été transmise, tu recevras une réponse d’ici 48 heures afin de savoir si elle à été validée.
               </TitleHelper>
             }
           </Grid>

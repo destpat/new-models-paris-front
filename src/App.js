@@ -130,16 +130,16 @@ class App extends Component {
           <Menu classNames={styles}
                 isOpen={this.state.menuOpen}
                 onStateChange={(state) => this.handleStateChange(state)}>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/women">Women</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/women">Femmes</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Men</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Hommes</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/search">Search</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/search">Rechercher</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Become a model</MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Devenir modèle</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorites">
-              Favorite <FavoriteIcon className={classes.iconBurger}/>
+              Mes favoris <FavoriteIcon className={classes.iconBurger}/>
             </MenuLinkResponsive>
           </Menu>
         </div>
@@ -149,12 +149,12 @@ class App extends Component {
         </LogoLink>
         <div className={classes.menu}>
           <Nav>
-            <MenuLink to="/women" activeClassName="selected-nav">Women</MenuLink>
-            <MenuLink to="/men" activeClassName="selected-nav">Men</MenuLink>
-            <MenuLink to="/search" activeClassName="selected-nav">Search</MenuLink>
-            <MenuLink to="/candidatures" activeClassName="selected-nav">Become a model</MenuLink>
+            <MenuLink to="/women" activeClassName="selected-nav">Femmes</MenuLink>
+            <MenuLink to="/men" activeClassName="selected-nav">Hommes</MenuLink>
+            <MenuLink to="/search" activeClassName="selected-nav">Rechercher</MenuLink>
+            <MenuLink to="/candidatures" activeClassName="selected-nav">Devenir modèle</MenuLink>
             <MenuLink to="/favorites" activeClassName="selected-nav">
-              Favorites <FavoriteIcon className={classes.icon}/>
+              Mes favoris <FavoriteIcon className={classes.icon}/>
             </MenuLink>
           </Nav>
         </div>

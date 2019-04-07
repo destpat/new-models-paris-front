@@ -27,6 +27,9 @@ export const StackGridContainer = styled.div`
   }
 `
 export const HoverText = styled.div`
+   & > p::first-letter  {
+     text-transform: uppercase;
+   }
   font-size: 1.3em;
   font-weight: 200;
   width: 100%;

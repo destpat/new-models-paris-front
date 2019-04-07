@@ -24,6 +24,7 @@ export const TitleHelper = styled.p`
 `
 
 export const ButtonOpenBookingForm = styled(Button)`
+  text-transform: none;
   position: fixed;
   border-radius: 0px;
   min-height: 46px;
@@ -86,6 +87,7 @@ export const TitleFavorite = styled.h1`
 `
 
 export const EnquireButton = styled(Button)`
+  text-transform: none;
   position: absolute;
   right: 150px;
   top: 20px;

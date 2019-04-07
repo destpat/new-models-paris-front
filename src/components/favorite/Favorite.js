@@ -54,9 +54,9 @@ class Favorite extends Component {
             <Grid container item justify="center">
               <Grid item md={6} xs={11}>
                 <TitleHelper>
-                  Pour ajouter des favoris cliquer sur le coeur à coté des modeles,
+                  Pour ajouter des modèles favoris à votre liste, cliquez sur le coeur près de leurs photos.
                   <br/>
-                  cela vous permettra de faire une demande de renseignement
+                  Vous pourrez par la suite faire directement une demande de booking.
                 </TitleHelper>
                 <FavoriteContainer>
                   <FavoriteBeat/>
@@ -68,7 +68,7 @@ class Favorite extends Component {
           <div>
             <Section>
               <TitleFavorite enquireMode={enquireMode}>
-                Vos models favoris
+                 Mes favoris
               </TitleFavorite>
               {
                 width > 959 ?

@@ -34,7 +34,7 @@ class UsersGrid extends Component {
                   <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
                     <Photo imageUrl={photos[0].url} alt="models"/>
                     <HoverText>
-                      {firstname}
+                      <p> {firstname} </p>
                       <br/>
                       <br/>
                       Voir le portfolio

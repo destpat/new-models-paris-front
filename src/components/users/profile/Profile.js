@@ -43,6 +43,7 @@ class Profile extends Component {
                     <UserInformationValue style={{marginRight: 20}}>
                       { hairsColorsBinding.find(o => o.value === hairColor).name }
                     </UserInformationValue>
+                    <br/>
                     <UserInfomationTitle>Yeux : </UserInfomationTitle>
                     <UserInformationValue>
                       { eyesColorsBinding.find(o => o.value === eyesColor).name }
