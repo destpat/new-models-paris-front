@@ -13,7 +13,9 @@ import { Photo,
          ExtraType,
          ExtraTypeContainer,
          AddToFavorite,
-         FavoriteContainer
+         FavoriteContainer,
+         Br,
+         CustomChip
        } from './style'
 import Loader from '../../utilis/loader/Loader'
 import Favorite from '../utilis/Favorite'
@@ -24,7 +26,7 @@ class Profile extends Component {
     getPublicUser(match.params.id)
   }
   render() {
-    const { currentPublicUser: { firstname, height, hairColor, eyesColor, extraType, photos, clothes, id }, fetchingPublicUser, favoriteUsers, currentPublicUser } = this.props;
+    const { currentPublicUser: { firstname, regionName, height, hairColor, eyesColor, extraType, photos, clothes, id }, fetchingPublicUser, favoriteUsers, currentPublicUser } = this.props;
     return (
       <div>
         {
@@ -36,6 +38,7 @@ class Profile extends Component {
               <Grid container direction="row" justify="center" alignItems="center">
                 <InformationContainer>
                   <UserName>{ firstname }</UserName>
+                  <CustomChip label={regionName ? regionName : 'France' }  variant="outlined"/>
                   <UserInformationContainer>
                     <UserInfomationTitle>Taille : </UserInfomationTitle>
                     <UserInformationValue style={{marginRight: 20}}>{height}cm</UserInformationValue>
@@ -43,7 +46,7 @@ class Profile extends Component {
                     <UserInformationValue style={{marginRight: 20}}>
                       { hairsColorsBinding.find(o => o.value === hairColor).name }
                     </UserInformationValue>
-                    <br/>
+                    <Br/>
                     <UserInfomationTitle>Yeux : </UserInfomationTitle>
                     <UserInformationValue>
                       { eyesColorsBinding.find(o => o.value === eyesColor).name }

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Category } from './style';
+import React from 'react'
+import CustomMenuSelect from './utilis/CustomMenuSelect'
 
 const Region = () => {
   return (
     <div>
-      <Category>Région</Category>
+      <CustomMenuSelect attribute="regionName"/>
     </div>
   )
 }

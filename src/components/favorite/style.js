@@ -80,10 +80,14 @@ export const Section = styled.section`
 `
 
 export const TitleFavorite = styled.h1`
-  font-size: 1.8em;
+  font-size: 1.6em;
+  font-family: 'Playfair Display', serif;
   margin-bottom: ${props => props.enquireMode ? '10px': '0px'};
   margin-top: 10px;
   font-weight: 200;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-style: italic;
 `
 
 export const EnquireButton = styled(Button)`

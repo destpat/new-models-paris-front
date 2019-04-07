@@ -35,8 +35,6 @@ class UsersGrid extends Component {
                     <Photo imageUrl={photos[0].url} alt="models"/>
                     <HoverText>
                       <p> {firstname} </p>
-                      <br/>
-                      <br/>
                       Voir le portfolio
                     </HoverText>
                   </PhotoContainer>

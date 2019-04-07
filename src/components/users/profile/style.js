@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import Grid from '@material-ui/core/Grid'
+import Chip from '@material-ui/core/Chip'
 
 export const Photo = styled.img`
   width: auto;
-  max-height: 85vh;
+  max-height: 90vh;
   max-width: 100%;
   @media only screen
     and (min-device-width: 320px)
@@ -74,6 +75,7 @@ export const UserInformationValue = styled.span`
   margin-left: 5px;
   font-family: 'Indie Flower', cursive;
   font-size: 1.2em;
+  text-transform: lowercase;
 `
 
 export const ExtraType = styled.li`
@@ -97,5 +99,17 @@ export const AddToFavorite = styled.div`
 
 export const FavoriteContainer = styled.div`
   display: inline-flex;
+  margin-bottom: 30px;
+`
+
+export const Br = styled.br`
+  @media (max-width: 959px) {
+    display: block;
+  }
+  display: none;
+`
+
+export const CustomChip = styled(Chip)`
+  color: #8580cb;
   margin-bottom: 30px;
 `
