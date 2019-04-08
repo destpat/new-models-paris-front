@@ -12,7 +12,7 @@ export const getApiEndPoint = () => {
 
   const prod = {
     name: 'newModelsParisProdApi',
-    endpoint: 'http://api.newmodelsparis.com'
+    endpoint: 'https://api.newmodelsparis.com'
   };
 
   switch (process.env.REACT_APP_STAGE) {
