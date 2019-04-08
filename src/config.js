@@ -31,7 +31,7 @@ export const AmplifyConfig = {
   Auth: {
       region: 'eu-west-1',
       userPoolId: 'eu-west-1_YwVAxwoEh',
-      userPoolWebClientId: '13tgmshtjrqs3ffmggp4e8f6bk',
+      userPoolWebClientId: '7hirhrmgt77503rdkqstdtjj8v',
       authenticationFlowType: 'USER_PASSWORD_AUTH'
   },
   API: {
