@@ -1,5 +1,5 @@
 import { getApiEndPoint } from '../config';
-import { API, Storage } from 'aws-amplify';
+import { API } from 'aws-amplify';
 
 const apiName = getApiEndPoint().name
 
@@ -33,8 +33,4 @@ export const enquire = {
       ...data
     }
   })),
-}
-
-export const s3 = {
-  getImage: (data) => (Storage.get(data.key, { level: 'protected', identityId: data.id, expires: 6000 }))
 }

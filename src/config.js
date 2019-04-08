@@ -29,15 +29,10 @@ export const getApiEndPoint = () => {
 
 export const AmplifyConfig = {
   Auth: {
-      region: 'eu-central-1',
-      identityPoolId: 'eu-central-1:53c4b26c-f336-456d-85b8-1da171026a2e',
-      userPoolId: 'eu-central-1_j3KxTsiir',
-      userPoolWebClientId: '4dac2ikcptciehmrs7ep2h6nrn',
+      region: 'eu-west-1',
+      userPoolId: 'eu-west-1_YwVAxwoEh',
+      userPoolWebClientId: '13tgmshtjrqs3ffmggp4e8f6bk',
       authenticationFlowType: 'USER_PASSWORD_AUTH'
-  },
-  Storage: {
-    bucket: 'new-models-paris-upload-photos',
-    region: 'eu-central-1',
   },
   API: {
     endpoints: [
