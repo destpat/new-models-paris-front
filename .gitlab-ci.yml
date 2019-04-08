@@ -18,7 +18,7 @@ deploy_dev:
   script:
     - aws s3 sync build s3://$AWS_BUCKET_DEV --delete
     - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID_DEV --paths '/*'
-    - echo "DEPLOYED SUCCESSFULLY"
+    - echo "DEPLOYED SUCCESSFULLY DEV"
   only:
     - develop
 
@@ -26,5 +26,7 @@ deploy_prod:
   stage: production
   script:
     - aws s3 sync build s3://$AWS_BUCKET_PROD --delete
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID_PROD --paths '/*'
+    - echo "DEPLOYED SUCCESSFULLY PROD"
   only:
     - master
