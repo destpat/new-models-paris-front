@@ -125,7 +125,7 @@ class Search extends Component {
   render() {
     const { size: { width } } = this.props;
     return (
-      <InstantSearch indexName="dev_new_models_paris"
+      <InstantSearch indexName={process.env.REACT_APP_STAGE === "dev" ? "dev_new_models_paris" : "prod_new_models_paris"}
                      searchClient={searchClient}
                      searchState={this.state.searchState}
                      onSearchStateChange={this.onSearchStateChange}
