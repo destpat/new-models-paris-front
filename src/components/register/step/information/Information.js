@@ -16,7 +16,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: 100;
 `
 

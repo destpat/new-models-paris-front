@@ -37,7 +37,7 @@ class Password extends Component {
         <Grid container item justify="center">
           <Grid item xs={12} md={3}>
             <TitleHelper>
-              Merci de saisir un mot de passe, tu l'utiliseras pour accéder à ton compte modèle.
+              Ce mot de passe servira à accéder à ton espace personnel.
             </TitleHelper>
           </Grid>
         </Grid>

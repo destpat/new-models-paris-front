@@ -12,7 +12,7 @@ const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
   font-weight: 100;
-  font-size: 2em;
+  font-size: 1.6em;
   margin-top: 20vh;
 `
 
@@ -28,7 +28,7 @@ class HomeRegistration extends Component {
       <div>
         <Grid container item justify="center">
           <Grid item md={6} xs={11}>
-            <Title> Become a model</Title>
+            <Title> Devenir modèle </Title>
             <TitleHelper>
               Tu souhaites devenir modèle ou continuer ta carrière en intégrant une agence ?
               <br/>

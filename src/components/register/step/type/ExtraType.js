@@ -16,7 +16,7 @@ const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
   font-weight: 100;
-  font-size: 2em;
+  font-size: 1.6em;
 `
 
 const TitleHelper = styled.p`

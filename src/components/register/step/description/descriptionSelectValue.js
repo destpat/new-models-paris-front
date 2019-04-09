@@ -12,7 +12,7 @@ export const hairColor = [
     value: 'grey'
   },
   {
-    name: 'Noir',
+    name: 'Noirs',
     value: 'black'
   },
   {
@@ -44,24 +44,28 @@ export const hairColor = [
 
 export const eyesColor = [
   {
-    name: 'Noir',
+    name: 'Noirs',
     value: 'black'
   },
   {
-    name: 'Marron',
+    name: 'Marrons',
     value: 'brown'
   },
   {
-    name: 'Noisette',
+    name: 'Noisettes',
     value: 'hazelnut'
   },
   {
-    name: 'Bleu',
+    name: 'Bleus',
     value: 'blue'
   },
   {
     name: 'Verts',
     value: 'green'
+  },
+  {
+    name: 'Vairons',
+    value: 'heterochromia'
   },
   {
     name: 'Gris',

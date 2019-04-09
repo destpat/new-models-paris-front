@@ -98,7 +98,7 @@ class ProjectInformationSecond extends Component {
                   <Grid item md={8} xs={10}>
                     <Field name="description"
                            id="description-field"
-                           label="Scénario ... *"
+                           label="ex : synopsis, détails importants ..."
                            multiline={true}
                            rows="4"
                            variant="outlined"

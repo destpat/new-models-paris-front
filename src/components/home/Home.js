@@ -49,12 +49,6 @@ font-weight: 300;
   font-size: 64px;
 }
 `
-const ButtonCustom = styled(Button)`
-  font-weight: 300;
-  font-size: 1.1em;
-  padding: 5px 50px;
-  text-transform: none;
-`
 
 const CustomH2 = styled.h2`
   color: #484848;
@@ -161,7 +155,7 @@ class Home extends Component {
           <img src={backgroundImage} alt="test" style={{height: '72vh'}}/>
           <ImageOverContent>
             <Title>Les meilleurs modèles pour vos projets</Title>
-            <ButtonCustom color="primary" variant="contained" onClick={()=> push('/search')}> Trouver un modèle </ButtonCustom>
+            <CustomActionButton color="primary" variant="contained" onClick={()=> push('/search')}> Rechercher un modèle </CustomActionButton>
           </ImageOverContent>
         </ImageContainer>
         <div>
@@ -197,7 +191,7 @@ class Home extends Component {
           <CustomActionButton color="primary" variant="contained" onClick={()=> push('/candidatures')}>
               Devenenir modèle
            </CustomActionButton>
-          <CustomActionButton color="primary" variant="outlined" style={{background: 'none'}} onClick={()=> push('/search')}> Trouver un modèle </CustomActionButton>
+          <CustomActionButton color="primary" variant="outlined" style={{background: 'none'}} onClick={()=> push('/search')}> Rechercher un modèle </CustomActionButton>
         </Grid>
         <Footer
           container

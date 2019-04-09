@@ -42,8 +42,7 @@ const MobileFilterContainer = styled(Grid)`
   }
 `
 
-const HitsContainer = styled(Grid)`
-  margin-top: 30px;
+const HitsContainer = styled.div`
   @media(max-width: 480px) {
     margin-top: 15px;
   }
@@ -63,6 +62,16 @@ const ButtonOpenMobileFilter = styled(Button)`
   right: 0;
   width: 100%;
   z-index: 1301;
+`
+
+const Title = styled.h1`
+  font-size: 1.6em;
+  margin-left: 35px;
+  margin-bottom: 5px;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
 `
 
 /*
@@ -107,10 +116,6 @@ class Search extends Component {
     }
   }
 
-  componentWillUnmount() {
-    clearAllBodyScrollLocks()
-  }
-
   onSearchStateChange = searchState => {
     clearTimeout(this.debouncedSetState)
     this.debouncedSetState = setTimeout(() => {
@@ -120,6 +125,10 @@ class Search extends Component {
       )
     }, updateAfter)
     this.setState({ searchState })
+  }
+
+  componentWillUnmount() {
+    clearAllBodyScrollLocks()
   }
 
   render() {
@@ -147,16 +156,19 @@ class Search extends Component {
             <Filter />
           </FilterContainer>
 
-          <HitsContainer item md={9} xs={12} id="hits-container">
-            <CustomHits />
-            <PaginationContainer
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="center">
-              <CustomPagination />
-            </PaginationContainer>
-          </HitsContainer>
+          <Grid item md={9} xs={12}>
+            <Title>RECHERCHER</Title>
+            <HitsContainer id="hits-container">
+              <CustomHits />
+              <PaginationContainer
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="center">
+                <CustomPagination />
+              </PaginationContainer>
+            </HitsContainer>
+          </Grid>
         </Grid>
       </InstantSearch>
     )

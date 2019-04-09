@@ -9,7 +9,7 @@ const Clothe = () => {
         attribute="clothes"
         operator="and"
         values={clothesBinding.map(({name, value}) => ({  label: name,  value }))}
-        categoryLabel="Type de tenu"
+        categoryLabel="Tenue"
       />
     </div>
   )

@@ -3,6 +3,16 @@ import { connect }  from 'react-redux'
 import UsersGrid from '../users/grid/UsersGrid'
 import { getPublicUsers } from '../users/usersAction'
 import Loader from '../utilis/loader/Loader'
+import styled from 'styled-components'
+
+const Title = styled.h1`
+  font-size: 1.6em;
+  margin-left: 35px;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+`
 
 /*
 *  @description Component
@@ -16,6 +26,9 @@ class Women extends Component {
     const { fetchingPublicUsers, publicUsers } = this.props
     return (
       <div>
+        <Title>
+          Femmes
+        </Title>
         {
           fetchingPublicUsers ?
           <Loader />

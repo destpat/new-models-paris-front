@@ -87,7 +87,7 @@ class Confirmation extends Component {
             Envoi des informations en cours
           </TitleHelper>
           :
-          <Title> Candidature envoyée </Title>
+          <Title> Demande envoyée avec succès <span role="img" aria-label="smile">🤗</span></Title>
         }
         <Grid container item justify="center">
           <Grid item xs={12} md={3}>
@@ -96,7 +96,7 @@ class Confirmation extends Component {
               ''
               :
               <TitleHelper>
-                Ta candidature à bien été transmise, tu recevras une réponse d’ici 48 heures afin de savoir si elle à été validée.
+                Vous obtiendrez une réponse dans moins de 24h.
               </TitleHelper>
             }
           </Grid>

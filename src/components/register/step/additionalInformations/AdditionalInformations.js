@@ -21,7 +21,7 @@ const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
   font-weight: 100;
-  font-size: 2em;
+  font-size: 1.6em;
 `
 
 const TitleHelper = styled.p`
@@ -94,14 +94,14 @@ class AdditionalInformations extends Component {
          </Grid>
         <Grid container item justify="center">
           <TitleHelper>
-            As-tu d’autres talents comme la danse, un sport, etc.. ? (Factultatif)
+            ex : danse hip-hop, instrument de musique, sport,etc.. (Factultatif)
           </TitleHelper>
           <Grid container spacing={8} direction="column">
             <Grid container item spacing={0} justify="center">
               <Grid item xs={11} md={3}>
                 <Field name="other"
                        id="other-field"
-                       label="Danse, instrument de musqiue, performances, sports ..."
+                       label="ex : danse hip-hop, instrument de musique, sport, etc .."
                        multiline={true}
                        rows="4"
                        variant="outlined"
