@@ -148,7 +148,7 @@ class Search extends Component {
             <ButtonOpenMobileFilter variant="contained"
                                     color="primary"
                                     onClick={this.state.mobileFilterOpen ? this.handleCloseMobileFilter : this.handleMobileFilter}>
-              { this.state.mobileFilterOpen ? <CustomStateResults/> : "Filtre" }
+              { this.state.mobileFilterOpen ? <CustomStateResults/> : "Filtres" }
             </ButtonOpenMobileFilter>
           </MobileFilterContainer>
 

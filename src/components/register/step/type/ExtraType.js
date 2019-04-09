@@ -55,12 +55,12 @@ class ExtraType extends Component {
             <FormGroup>
               <Field name="photoShoot"
                      id="photo-shoot-field"
-                     label="Shootings photos"
+                     label="Shooting photo"
                      component={renderCheckboxField}/>
 
               <Field name="shortFilms"
                      id="short-film-field"
-                     label="Courts métrage"
+                     label="Court-métrage"
                      component={renderCheckboxField}/>
 
             </FormGroup>
@@ -69,7 +69,7 @@ class ExtraType extends Component {
             <FormGroup>
               <Field name="musicVideo"
                      id="music-video-field"
-                     label="Clips vidéos"
+                     label="Clip vidéo"
                      component={renderCheckboxField}/>
               <Field name="fashionShow"
                      id="fashion-show"

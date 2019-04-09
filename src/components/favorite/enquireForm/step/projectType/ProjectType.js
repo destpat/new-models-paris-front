@@ -34,7 +34,7 @@ class ProjectTypeInformation extends Component {
             <FormGroup>
               <Field name="photoShoot"
                      id="photo-shoot-field"
-                     label="Shooting photos"
+                     label="Shooting photo"
                      component={renderCheckboxField}/>
               <Field name="shortFilms"
                      id="short-film-field"

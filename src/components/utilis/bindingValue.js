@@ -86,15 +86,15 @@ export const eyesColorsBinding = [
 
 export const extraTypeBinding = [
   {
-    name: 'Court métrage',
+    name: 'Court-métrage',
     value: 'shortFilms'
   },
   {
-    name: 'Clips vidéos',
+    name: 'Clip vidéo',
     value: 'musicVideo'
   },
   {
-    name: 'Shootings photos',
+    name: 'Shooting photo',
     value: 'photoShoot'
   },
   {
