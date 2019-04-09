@@ -19,6 +19,7 @@ import Search from './components/search/Search'
 import Profile from './components/users/profile/Profile'
 import Favorite from './components/favorite/Favorite'
 import Home from './components/home/Home'
+import Login from './components/login/Login'
 
 
 import logo from './logo.png'
@@ -138,6 +139,8 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Devenir modèle</MenuLinkResponsive>
             <br/>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/login"> Login </MenuLinkResponsive>
+            <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorites">
               Mes favoris <FavoriteIcon className={classes.iconBurger}/>
             </MenuLinkResponsive>
@@ -153,6 +156,7 @@ class App extends Component {
             <MenuLink to="/men" activeClassName="selected-nav">Hommes</MenuLink>
             <MenuLink to="/search" activeClassName="selected-nav">Rechercher</MenuLink>
             <MenuLink to="/candidatures" activeClassName="selected-nav">Devenir modèle</MenuLink>
+            <MenuLink to="/login" activeClassName="selected-nav">Login</MenuLink>
             <MenuLink to="/favorites" activeClassName="selected-nav">
               Mes favoris <FavoriteIcon className={classes.icon}/>
             </MenuLink>
@@ -166,6 +170,7 @@ class App extends Component {
           <Route exact path="/men" component={Men}/>
           <Route exact path="/search" component={Search}/>
           <Route exact path="/favorites" component={Favorite}/>
+          <Route exact path="/login" component={Login}/>
           <Route path="/profile/:id" component={Profile}/>
         </Switch>
       </div>

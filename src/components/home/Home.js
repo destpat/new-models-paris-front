@@ -18,9 +18,12 @@ const CustomFavoriteIcon = styled(FavoriteIcon)`
 
 const ImageOverContent = styled.div`
   position: absolute;
-  top: 32%;
+  top: 38%;
   left: 50%;
   width: 60%;
+  @media(max-width: 600px) {
+    top: 43%;
+  }
   @media(max-width: 959px) {
     width: 95%;
   }
@@ -37,18 +40,18 @@ const ImageContainer = styled.div`
 `
 
 const Title = styled.h1`
-color: #aea8fa;
-font-family: 'Nunito', sans-serif;
-font-weight: 300;
-@media(max-width: 480px) {
-  font-size: 38px;
-}
-@media(min-width: 480px) {
-  font-size: calc(3.8vw + 20.67px);
-}
-@media(min-width: 1200px) {
-  font-size: 64px;
-}
+  color: #fff;
+  background-color: rgba(174, 168, 250, 0.5);
+  font-weight: 300;
+  @media(max-width: 480px) {
+    font-size: 38px;
+  }
+  @media(min-width: 480px) {
+    font-size: calc(3.8vw + 20.67px);
+  }
+  @media(min-width: 1200px) {
+    font-size: 52px;
+  }
 `
 
 const CustomH2 = styled.h2`

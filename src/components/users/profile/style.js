@@ -73,14 +73,12 @@ export const UserInfomationTitle = styled.span`
 export const UserInformationValue = styled.span`
   margin-right: 20px;
   margin-left: 5px;
-  font-family: 'Indie Flower', cursive;
-  font-size: 1.2em;
+  font-size: 0.9em;
   text-transform: lowercase;
 `
 
 export const ExtraType = styled.li`
-  font-family: 'Indie Flower', cursive;
-  font-size: 1.2em;
+  font-size: 0.9em;
   display: inline-block;
   margin: 10px;
 `

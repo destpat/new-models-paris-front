@@ -87,14 +87,13 @@ class Favorite extends Component {
               <FavoriteUsersContainer item width={width} md={enquireMode ? 5 : 12} xs={12}>
                 <UsersGrid users={favoriteUsers}/>
               </FavoriteUsersContainer>
-
+              
               <Grid item md={6} style={{display: enquireMode ? 'block' : 'none'}}>
                 <EnquireTitle>
                   Envoyer une demande
                 </EnquireTitle>
                 <EnquireForm />
               </Grid>
-
             </Grid>
 
             <MobileEnquireFormContainer>

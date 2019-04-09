@@ -38,7 +38,7 @@ class Profile extends Component {
               <Grid container direction="row" justify="center" alignItems="center">
                 <InformationContainer>
                   <UserName>{ firstname }</UserName>
-                  <CustomChip label={regionName ? regionName : 'France' }  variant="outlined"/>
+                  <CustomChip label={regionName ? regionName : 'France'}  variant="outlined"/>
                   <UserInformationContainer>
                     <UserInfomationTitle>Taille : </UserInfomationTitle>
                     <UserInformationValue style={{marginRight: 20}}>{height}cm</UserInformationValue>
