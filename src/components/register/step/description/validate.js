@@ -6,6 +6,9 @@ const validate = values => {
   if (!values.eyesColor) {
     errors.eyesColor = 'Champs requis'
   }
+  if (!values.shoeSize) {
+    errors.shoeSize = 'Champs requis'
+  }
   if (!values.height) {
     errors.height = 'Champs requis'
   }

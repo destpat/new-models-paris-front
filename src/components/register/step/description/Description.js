@@ -48,6 +48,16 @@ class Description extends Component {
                      component={renderTextField}/>
             </Grid>
           </Grid>
+          <Grid container item spacing={0} justify="center" >
+            <Grid item xs={11} md={3}>
+              <Field name="shoeSize"
+                     id="shoe-size"
+                     label="Pointure"
+                     type="number"
+                     style={{width:'100%'}}
+                     component={renderTextField}/>
+            </Grid>
+          </Grid>
           <Grid container item spacing={0} justify="center">
             <Grid item xs={11} md={3}>
               <Field

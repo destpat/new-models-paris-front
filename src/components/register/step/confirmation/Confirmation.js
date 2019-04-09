@@ -130,6 +130,7 @@ const mapStateToProps = state => {
   let extraTypeSeclection = typeFormSelector(state, 'shortFilms', 'photoShoot', 'musicVideo', 'fashionShow')
   let additionalSelection = AdditionalInformationsFormSelector(state, 'fashionMode', 'fitness', 'bikini', 'underwear', 'lingerie', 'vixen', 'nude')
   let height = descriptionFormSelector(state, 'height')
+  let shoeSize = descriptionFormSelector(state, 'shoeSize')
   let extraType = []
   let clothes = []
 
@@ -158,6 +159,7 @@ const mapStateToProps = state => {
       ...contactFormSelector(state, 'email', 'phone', 'city', 'postCode'),
       other: AdditionalInformationsFormSelector(state, 'other'),
       height: +height,
+      shoeSize: +shoeSize,
       birthdate,
       extraType,
       clothes
