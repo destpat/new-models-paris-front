@@ -18,7 +18,7 @@ const CustomFavoriteIcon = styled(FavoriteIcon)`
 
 const ImageOverContent = styled.div`
   position: absolute;
-  top: 38%;
+  top: 32%;
   left: 50%;
   width: 60%;
   @media(max-width: 959px) {
@@ -37,6 +37,7 @@ const ImageContainer = styled.div`
 `
 
 const Title = styled.h1`
+color: #aea8fa;
 font-family: 'Nunito', sans-serif;
 font-weight: 300;
 @media(max-width: 480px) {
@@ -152,7 +153,7 @@ class Home extends Component {
     return (
       <div>
         <ImageContainer>
-          <img src={backgroundImage} alt="test" style={{height: '72vh'}}/>
+          <img src={backgroundImage} alt="test" style={{height: '72vh', width: '100%', objectFit: 'cover'}}/>
           <ImageOverContent>
             <Title>Les meilleurs modèles pour vos projets</Title>
             <CustomActionButton color="primary" variant="contained" onClick={()=> push('/search')}> Rechercher un modèle </CustomActionButton>

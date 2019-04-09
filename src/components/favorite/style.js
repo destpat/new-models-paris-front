@@ -20,6 +20,7 @@ export const EnquireTitle = styled.h1`
 
 export const TitleHelper = styled.p`
   font-weight: 200;
+  line-height: 2;
   text-align: center
 `
 
