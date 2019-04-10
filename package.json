@@ -24,6 +24,7 @@
     "react-burger-menu": "^2.5.4",
     "react-dom": "^16.5.2",
     "react-dropzone": "^7.0.0",
+    "react-ga": "^2.5.7",
     "react-instantsearch-dom": "^5.4.0",
     "react-jss": "^8.6.1",
     "react-redux": "^5.0.7",

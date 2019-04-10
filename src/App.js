@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactGA from 'react-ga'
 import { Route, Link, Switch, NavLink} from "react-router-dom"
 import { slide as Menu } from 'react-burger-menu'
 
@@ -21,12 +22,17 @@ import Favorite from './components/favorite/Favorite'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 
-
 import logo from './logo.png'
 import  './burgerMenuStyle.css'
 
-library.add(faInstagram, faTimesCircle, faFacebookF)
 
+// Google analytics
+if (process.env.REACT_APP_STAGE === 'prod') {
+  ReactGA.initialize('UA-138144375-1');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
+library.add(faInstagram, faTimesCircle, faFacebookF)
 
 
 const Header = styled.header`
