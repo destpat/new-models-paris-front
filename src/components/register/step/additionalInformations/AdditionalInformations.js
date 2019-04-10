@@ -78,12 +78,15 @@ class AdditionalInformations extends Component {
                      id="underwear"
                      label={sex === 'men' ? 'Sous-vêtements' : 'Lingerie'}
                      component={renderCheckboxField}/>
-
-              <Field name="vixen"
-                     id="vixen"
-                     label="Vixen"
-                     component={renderCheckboxField}/>
-
+               {
+                sex !== 'men' ?
+                 <Field name="vixen"
+                   id="vixen"
+                   label="Vixen"
+                   component={renderCheckboxField}/>
+                 :
+                 ''
+               }
              <Field name="nude"
                     id="nude"
                     label="Nu"

@@ -52,7 +52,7 @@ class Contact extends Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container justify="center">
+        <Grid container spacing={8} justify="center">
           <Grid container item md={3} xs={11} justify="space-between">
             <Grid item xs={5} md={5}>
               <Field
