@@ -43,7 +43,7 @@ class Description extends Component {
                      id="height-field"
                      label="Hauteur"
                      type="number"
-                     inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment>}}
+                     inputProps={{endAdornment: <InputAdornment position="end">cm</InputAdornment> }}
                      style={{width:'100%'}}
                      component={renderTextField}/>
             </Grid>

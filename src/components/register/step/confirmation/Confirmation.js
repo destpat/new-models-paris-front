@@ -53,8 +53,7 @@ class Confirmation extends Component {
     const { email, password, setSignupLoading, createUser} = this.props;
       setSignupLoading(true)
       try {
-        let lowerCaseEmail = email.toLowerCase();
-
+        let lowerCaseEmail = email.replace(/\s/g, '').toLowerCase();
         // Inscription de l'utilisateur
         await Auth.signUp({
           username: lowerCaseEmail,
@@ -63,7 +62,6 @@ class Confirmation extends Component {
             email: lowerCaseEmail
           }
         })
-
         // Login de l'utilisateur pour la récupération du token
         let user = await Auth.signIn(lowerCaseEmail, password)
         let userId = user.signInUserSession.idToken.payload.sub

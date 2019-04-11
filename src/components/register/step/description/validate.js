@@ -15,6 +15,9 @@ const validate = values => {
   if (+values.height > 250) {
     errors.height = 'Ta hauteur nous semble incorrecte 🤔'
   }
+  if (+values.height < 0) {
+    errors.height = 'Ta hauteur nous semble incorrecte 🤔 ( elle ne peut être négative )'
+  }
   return errors;
 }
 

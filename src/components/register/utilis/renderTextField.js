@@ -16,6 +16,7 @@ const renderTextField = ({ input, label, meta, helperText, style, inputProps, ty
       rows={rows}
       variant={variant}
       type={type}
+      className="data-hj-whitelist"
       {...input}
     />
   )

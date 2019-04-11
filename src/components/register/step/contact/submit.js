@@ -10,6 +10,7 @@ const validateEmail = (email) => {
 /* eslint-enable */
 
 const submit = (values, dispatch, props) => {
+  values.email = values.email.replace(/\s/g, '')
   // Faux code pour vérifier si l'email de l'utilisateur existe déjà
   const code = '000000'
   if (!values.phone) {
