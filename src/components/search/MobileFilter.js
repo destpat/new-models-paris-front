@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Slide from '@material-ui/core/Slide';
 
 import Sex from './filter/Sex'
-// import Age from './filter/Age'
+import Age from './filter/Age'
 import Height from './filter/Height'
 import Region from './filter/Region'
 import Clothe from './filter/Clothe'
@@ -63,6 +63,8 @@ const Filters = ({handleCloseMobileFilter}) => {
       </CustomAppBar>
       <FilterContainer>
         <Sex/>
+        <Divider variant="middle"/>
+        <Age />
         <Divider variant="middle"/>
         <Height/>
         <Divider variant="middle"/>
