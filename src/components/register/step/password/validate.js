@@ -1,5 +1,9 @@
 const validate = values => {
+  console.log(values);
   const errors = {};
+  if (!values.cgu) {
+    errors.cgu = 'Champs requis'
+  }
   if (!values.password) {
     errors.password = 'Champs requis'
   }

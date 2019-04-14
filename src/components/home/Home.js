@@ -146,6 +146,16 @@ const CustomSpan = styled.span`
   line-height: 25px;
 `
 
+const LinkToCgu = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  color: #383838;
+  &:hover {
+    text-decoration: underline;
+    transition: 0.3s;
+  }
+`
+
 /*
 *  @description Component
 *  page d'acceuil du site
@@ -203,7 +213,7 @@ class Home extends Component {
           justify="space-between"
           alignItems="center">
           <Grid item md={4} sm={4} xs={12} style={{padding: 8}}>
-            <div>New Models Paris - 2019 - </div>
+            <div>New Models Paris - 2019 - <LinkToCgu href="https://www.newmodelsparis.com/cgu" target="_blank" rel="noopener noreferrer"> CGU </LinkToCgu></div>
           </Grid>
           <Email item md={4} sm={4} xs={12}>
             <a href="mailto:contact@newmodelsparis.com">
@@ -211,10 +221,10 @@ class Home extends Component {
             </a>
           </Email>
           <SocialIcon item md={4} sm={4} xs={12}>
-            <a href="https://www.instagram.com/newmodels.paris/">
+            <a href="https://www.instagram.com/newmodels.paris/" target="_blank" rel="noopener noreferrer">
               <CustomFontAwesomeIcon icon={['fab', 'instagram']}/>
             </a>
-            <a href="https://www.facebook.com/Newmodels.Paris/">
+            <a href="https://www.facebook.com/Newmodels.Paris/" target="_blank" rel="noopener noreferrer">
               <CustomFontAwesomeIcon icon={['fab', 'facebook-f']}/>
             </a>
           </SocialIcon>

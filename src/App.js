@@ -21,6 +21,7 @@ import Profile from './components/users/profile/Profile'
 import Favorite from './components/favorite/Favorite'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
+import Cgu from './components/cgu/Cgu'
 
 import logo from './logo.png'
 import  './burgerMenuStyle.css'
@@ -171,6 +172,9 @@ class App extends Component {
         </Header>
         <Switch>
           <Route exact path="/" component={Home}/>
+
+          <Route exact path="/cgu" component={Cgu}/>
+
           <Route path="/candidatures" component={Register}/>
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>
