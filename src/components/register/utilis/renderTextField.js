@@ -10,7 +10,10 @@ const renderTextField = ({ input, label, meta, helperText, style, inputProps, ty
       helperText={displayError ? meta.error : helperText}
       style={style}
       error={displayError}
-      InputProps={{inputProps, 'data-hj-whitelist': true}}
+      InputProps={{
+        ...inputProps,
+        'data-hj-whitelist': true
+      }}
       InputLabelProps={InputLabelProps}
       multiline={multiline}
       rows={rows}
