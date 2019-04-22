@@ -188,15 +188,17 @@ class Home extends Component {
             <Grid item md={3} xs={8}>
               <section>
                 <Number>2</Number>
-                <CustomStrong> Je fait ma demande </CustomStrong>
-                <CustomSpan> en donnant les détails de mon projet. </CustomSpan>
+                <CustomStrong> Je fais ma demande </CustomStrong>
+                <CustomSpan>de modèle depuis cette même page.</CustomSpan>
               </section>
             </Grid>
             <Grid item md={3} xs={8}>
               <section>
                 <Number>3</Number>
                 <CustomStrong> En moins de 24h </CustomStrong>
-                <CustomSpan>l’équipe New Models Paris me contacte, avec la liste des modèles disponible pour mon projet.</CustomSpan>
+                <CustomSpan>
+                  l’équipe New Models Paris me contacte, avec la liste des modèles disponibles pour mon projet.
+                </CustomSpan>
               </section>
             </Grid>
           </Grid>
