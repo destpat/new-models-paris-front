@@ -51,7 +51,7 @@ const HitsContainer = styled.div`
   -webkit-overflow-scrolling: touch;
 `
 const PaginationContainer = styled(Grid)`
-  padding: 30px 50px 90px 0px;
+  padding: 30px 50px 20px 0px;
   @media(max-width: 480px) {
     padding: 30px 0px 50px 0px;
   }
