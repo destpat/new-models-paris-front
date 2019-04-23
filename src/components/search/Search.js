@@ -51,7 +51,10 @@ const HitsContainer = styled.div`
   -webkit-overflow-scrolling: touch;
 `
 const PaginationContainer = styled(Grid)`
-  padding: 0px 50px 50px 0px;
+  padding: 30px 50px 90px 0px;
+  @media(max-width: 480px) {
+    padding: 30px 0px 50px 0px;
+  }
 `
 
 const ButtonOpenMobileFilter = styled(Button)`
@@ -160,13 +163,13 @@ class Search extends Component {
             <Title>RECHERCHER</Title>
             <HitsContainer id="hits-container">
               <CustomHits />
-              <PaginationContainer
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="center">
-                <CustomPagination />
-              </PaginationContainer>
+                <PaginationContainer
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center">
+                  <CustomPagination />
+                </PaginationContainer>
             </HitsContainer>
           </Grid>
         </Grid>
