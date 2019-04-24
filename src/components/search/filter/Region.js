@@ -1,12 +1,12 @@
 import React from 'react'
-import CustomMenuSelect from './utilis/CustomMenuSelect'
+import CustomMenuSelectRegion from './utilis/CustomMenuSelectRegion'
 
 const Region = () => {
   return (
     <div>
-      <CustomMenuSelect attribute="regionName"/>
+      <CustomMenuSelectRegion attribute="regionName"/>
     </div>
   )
 }
 
-export default Region;
+export default Region

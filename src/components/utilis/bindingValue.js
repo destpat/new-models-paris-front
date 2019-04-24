@@ -133,3 +133,30 @@ export const clothesBinding = [
     value: 'nude'
   }
 ]
+
+export const originsBinding = [
+  {
+    name: 'Caucasien/ne',
+    value: 'caucasian'
+  },
+  {
+    name: 'Métisse',
+    value: 'metis'
+  },
+  {
+    name: 'Noir/e',
+    value: 'black'
+  },
+  {
+    name: 'Maghrébin/e',
+    value: 'maghreb'
+  },
+  {
+    name: 'Asiatique',
+    value: 'asian'
+  },
+  {
+    name: 'Amériendien/ne',
+    value: 'indian'
+  }
+]

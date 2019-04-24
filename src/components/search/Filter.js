@@ -11,6 +11,7 @@ import Clothe from './filter/Clothe'
 import Project from './filter/Project'
 import HairsColors from './filter/HairsColors'
 import EyesColor from './filter/EyesColor'
+import Origin from './filter/Origin'
 
 import ClearRefinements from './filter/utilis/ClearRefinements'
 
@@ -53,6 +54,8 @@ class Search extends Component {
           <Height />
           <Divider variant="middle"/>
           <Region/>
+          <Divider variant="middle"/>
+          <Origin/>
           <Divider variant="middle"/>
           <Clothe/>
           <Divider variant="middle" />

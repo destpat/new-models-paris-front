@@ -7,11 +7,11 @@ import Select from '@material-ui/core/Select'
 import NativeSelect from '@material-ui/core/NativeSelect'
 import detectingMobileDevice from '../../../register/utilis/detectingMobileDevice'
 
-const MenuSelect = ({ items, currentRefinement, refine, label, binding }) => {
+const MenuSelect = ({ items, currentRefinement, refine }) => {
 if (detectingMobileDevice) {
   return (
     <FormControl style={{width: '90%', marginBottom: 30, marginTop: 20 }}>
-      <InputLabel>{label}</InputLabel>
+      <InputLabel>Région</InputLabel>
       <NativeSelect
         value={currentRefinement || ''}
         onChange={event => refine(event.target.value)}>
@@ -19,7 +19,7 @@ if (detectingMobileDevice) {
         {
           items.map((item, index) => {
             return <option key={index} value={item.isRefined ? currentRefinement : item.value}>
-              { binding.find(o => o.value === item.label).name }
+              {item.label}
             </option>
           })
         }
@@ -29,14 +29,14 @@ if (detectingMobileDevice) {
 } else {
   return (
     <FormControl style={{width: '90%', marginBottom: 30, marginTop: 20 }}>
-      <InputLabel>{label}</InputLabel>
+      <InputLabel>Région</InputLabel>
       <Select value={currentRefinement || ''}
               onChange={event => refine(event.target.value)}>
         <MenuItem value="">--</MenuItem>
         {
           items.map((item, index) => {
             return <MenuItem key={index} value={item.isRefined ? currentRefinement : item.value}>
-              { binding.find(o => o.value === item.label).name }
+              {item.label}
             </MenuItem>
           })
         }
