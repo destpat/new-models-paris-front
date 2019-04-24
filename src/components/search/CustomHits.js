@@ -1,11 +1,12 @@
 import React from 'react'
-import { connectHits } from 'react-instantsearch-dom';
+import { connectHits } from 'react-instantsearch-dom'
 import sizeMe from 'react-sizeme'
 import UsersGrid from '../users/grid/UsersGrid'
 import CustomPagination from './filter/utilis/Pagination'
 
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
+import Loading from './Loading'
 
 const PaginationContainer = styled(Grid)`
   padding: 30px 50px 20px 0px;
@@ -14,9 +15,11 @@ const PaginationContainer = styled(Grid)`
   }
 `
 
-const Hits = ({ hits, size: { width }}) => (
+const Hits = ({ hits }) => (
   <div>
-    <UsersGrid users={hits} type='search' />
+    <Loading>
+      <UsersGrid users={hits} type='search'/>
+    </Loading>
     <PaginationContainer
       container
       direction="row"
@@ -29,4 +32,4 @@ const Hits = ({ hits, size: { width }}) => (
 
 const CustomHits = connectHits(Hits);
 
-export default sizeMe()(CustomHits)
+export default sizeMe()((CustomHits))

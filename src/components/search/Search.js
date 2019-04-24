@@ -152,7 +152,6 @@ class Search extends Component {
           <FilterContainer item md={3} xs={3} width={width}>
             <Filter />
           </FilterContainer>
-
           <Grid item md={9} xs={12}>
             <Title>RECHERCHER</Title>
             <HitsContainer id="hits-container">
@@ -164,5 +163,6 @@ class Search extends Component {
     )
   }
 }
+
 
 export default sizeMe()(connect()(Search));
