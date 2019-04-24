@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import StackGrid from "react-stack-grid"
+import StackGrid from 'react-stack-grid'
 import sizeMe from 'react-sizeme'
 import { HoverText,
          UserNameContainer,

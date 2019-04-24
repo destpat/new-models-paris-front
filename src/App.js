@@ -138,6 +138,8 @@ class App extends Component {
           <Menu classNames={styles}
                 isOpen={this.state.menuOpen}
                 onStateChange={(state) => this.handleStateChange(state)}>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/">Accueil</MenuLinkResponsive>
+            <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/women">Femmes</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/men">Hommes</MenuLinkResponsive>
@@ -146,7 +148,7 @@ class App extends Component {
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/candidatures">Devenir modèle</MenuLinkResponsive>
             <br/>
-            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/login"> Login </MenuLinkResponsive>
+            <MenuLinkResponsive onClick={() => this.closeMenu()} to="/login">Connexion</MenuLinkResponsive>
             <br/>
             <MenuLinkResponsive onClick={() => this.closeMenu()} to="/favorites">
               Mes favoris <FavoriteIcon className={classes.iconBurger}/>
@@ -159,11 +161,12 @@ class App extends Component {
         </LogoLink>
         <div className={classes.menu}>
           <Nav>
+            <MenuLink to="/" exact activeClassName="selected-nav">Accueil</MenuLink>
             <MenuLink to="/women" activeClassName="selected-nav">Femmes</MenuLink>
             <MenuLink to="/men" activeClassName="selected-nav">Hommes</MenuLink>
             <MenuLink to="/search" activeClassName="selected-nav">Rechercher</MenuLink>
             <MenuLink to="/candidatures" activeClassName="selected-nav">Devenir modèle</MenuLink>
-            <MenuLink to="/login" activeClassName="selected-nav">Login</MenuLink>
+            <MenuLink to="/login" activeClassName="selected-nav">Connexion</MenuLink>
             <MenuLink to="/favorites" activeClassName="selected-nav">
               Mes favoris <FavoriteIcon className={classes.icon}/>
             </MenuLink>
@@ -172,9 +175,7 @@ class App extends Component {
         </Header>
         <Switch>
           <Route exact path="/" component={Home}/>
-
           <Route exact path="/cgu" component={Cgu}/>
-
           <Route path="/candidatures" component={Register}/>
           <Route exact path="/women" component={Women}/>
           <Route exact path="/men" component={Men}/>

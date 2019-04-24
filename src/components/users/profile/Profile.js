@@ -53,7 +53,7 @@ class Profile extends Component {
                     </UserInformationValue>
                   </UserInformationContainer>
                   <div style={{marginBottom: 20}}>
-                    <UserInfomationTitle>  Type de figuration : </UserInfomationTitle>
+                    <UserInfomationTitle>  Type de projet : </UserInfomationTitle>
                   </div>
                   <ExtraTypeContainer>
                     {
