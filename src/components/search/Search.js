@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect }  from 'react-redux'
 import { InstantSearch } from 'react-instantsearch-dom'
 import sizeMe from 'react-sizeme'
-
-import CustomPagination from './filter/utilis/Pagination'
 import algoliasearch from 'algoliasearch/lite'
 import styled from 'styled-components'
 
@@ -45,17 +43,13 @@ const MobileFilterContainer = styled(Grid)`
 const HitsContainer = styled.div`
   @media(max-width: 480px) {
     margin-top: 15px;
+    height: calc(100vh - 250px);
   }
   height: calc(100vh - 150px);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 `
-const PaginationContainer = styled(Grid)`
-  padding: 30px 50px 20px 0px;
-  @media(max-width: 480px) {
-    padding: 30px 0px 50px 0px;
-  }
-`
+
 
 const ButtonOpenMobileFilter = styled(Button)`
   position: fixed;
@@ -163,13 +157,6 @@ class Search extends Component {
             <Title>RECHERCHER</Title>
             <HitsContainer id="hits-container">
               <CustomHits />
-                <PaginationContainer
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center">
-                  <CustomPagination />
-                </PaginationContainer>
             </HitsContainer>
           </Grid>
         </Grid>
