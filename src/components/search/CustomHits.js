@@ -15,9 +15,9 @@ const PaginationContainer = styled(Grid)`
   }
 `
 
-const Hits = ({ hits }) => (
+const Hits = ({ hits, size: { width } }) => (
   <div>
-    <Loading>
+    <Loading width={width}>
       <UsersGrid users={hits} type='search'/>
     </Loading>
     <PaginationContainer
