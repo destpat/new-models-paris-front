@@ -16,13 +16,22 @@ import JssProvider from 'react-jss/lib/JssProvider'
 import { createGenerateClassName, jssPreset } from '@material-ui/core/styles'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
+import 'lazysizes'
 import 'typeface-roboto'
 import './index.css'
+
 import rootSaga from './saga'
 import Amplify from 'aws-amplify'
 import { AmplifyConfig } from './config'
 
 Amplify.configure(AmplifyConfig);
+
+document.addEventListener('lazybeforeunveil', function(e){
+  let bg = e.target.getAttribute('data-bg');
+  if(bg){
+      e.target.style.backgroundImage = 'url(' + bg + ')';
+  }
+});
 
 const styleNode = document.createComment('insertion-point-jss');
 document.head.insertBefore(styleNode, document.head.firstChild);
