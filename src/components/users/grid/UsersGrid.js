@@ -14,7 +14,6 @@ import { HoverText,
        } from './style'
 import { setFavoriteUser, removeFavoriteUser } from '../../favorite/favoriteAction'
 import Favorite from '../utilis/Favorite'
-
 /*
  *  @description Component
  *  Affichage en grille des profils utilisateurs
@@ -33,7 +32,7 @@ class UsersGrid extends Component {
               return (
                 <div key={index}>
                   <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
-                    <Photo data-bg={photos[0].url} className="lazyload" alt="models"/>
+                    <Photo imageUrl={photos[0].url} alt="models"/>
                     <HoverText>
                       <p> {firstname} </p>
                       Voir le portfolio

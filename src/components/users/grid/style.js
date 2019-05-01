@@ -58,6 +58,7 @@ export const Photo = styled.div`
   width: 100%;
   height: 300px;
   background-color: #fafafa;
+  background-image: url(${props => props.imageUrl});
   cursor: pointer;
   background-size: cover;
   @media(max-width: 480px) {
