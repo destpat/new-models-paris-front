@@ -1,19 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import StackGrid from 'react-stack-grid'
 import sizeMe from 'react-sizeme'
 import { HoverText,
          UserNameContainer,
          UserName,
          Photo,
          PhotoContainer,
-         StackGridContainer,
          getWidth,
          getGutterWidth
        } from './style'
 import { setFavoriteUser, removeFavoriteUser } from '../../favorite/favoriteAction'
 import Favorite from '../utilis/Favorite'
+import styled from 'styled-components'
+import LazyLoad from 'react-lazyload'
+
+const Container = styled.div`
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+`
+
+const Profile = styled.div`
+  width: ${props => getWidth(props.width)}px;
+  margin: 0px ${props => getGutterWidth(props.width, props.type)}px;
+`
+
 /*
  *  @description Component
  *  Affichage en grille des profils utilisateurs
@@ -22,34 +35,37 @@ class UsersGrid extends Component {
   render() {
     const { size: { width }, users, type, favoriteUsers } = this.props
     return (
-      <StackGridContainer>
-        <StackGrid gutterWidth={getGutterWidth(width, type)}
-                   gutterHeight={5}
-                   columnWidth={getWidth(width)}>
-          {
-            users.map((user, index) => {
-              let { id, firstname, photos } = user
-              return (
-                <div key={index}>
-                  <PhotoContainer onClick={() =>  this.props.history.push(`profile/${id}`)}>
+      <Container>
+        {
+          users.map((user, index) => {
+            let { id, firstname, photos } = user
+            return (
+              <Profile key={index} width={width} type={type}>
+                <PhotoContainer onClick={() => this.props.history.push(`profile/${id}`)}>
+                  {
+                    type === 'search' ?
                     <Photo imageUrl={photos[0].url} alt="models"/>
-                    <HoverText>
-                      <p> {firstname} </p>
-                      Voir le portfolio
-                    </HoverText>
-                  </PhotoContainer>
-                  <UserNameContainer>
-                    <Favorite user={user} id={id} favoriteUsers={favoriteUsers}/>
-                    <UserName>
-                      {firstname}
-                    </UserName>
-                  </UserNameContainer>
-                </div>
-              )
-            })
-          }
-        </StackGrid>
-      </StackGridContainer>
+                    :
+                    <LazyLoad height={200}>
+                      <Photo imageUrl={photos[0].url} alt="models"/>
+                    </LazyLoad>
+                  }
+                  <HoverText>
+                    <p> {firstname} </p>
+                    Voir le portfolio
+                  </HoverText>
+                </PhotoContainer>
+                <UserNameContainer>
+                  <Favorite user={user} id={id} favoriteUsers={favoriteUsers}/>
+                  <UserName>
+                    {firstname}
+                  </UserName>
+                </UserNameContainer>
+              </Profile>
+            )
+          })
+        }
+      </Container>
     )
   }
 }

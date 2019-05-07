@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const getGutterWidth = (width, type) => {
   if (type === 'search') {
-    return width <= 480 ? 10 : 15
+    return width <= 480 ? 10 : 10
   } else {
-    return width <= 480 ? 10 : 40
+    return width <= 500 ? 10 : 20
   }
 }
 
@@ -14,18 +14,12 @@ export const getWidth = (width) => {
   } else if (width <= 800) {
     return 220
   } else if (width <= 1024){
-    return 200
+    return 220
   } else {
-    return 240
+    return 235
   }
 }
 
-export const StackGridContainer = styled.div`
-  margin-top: 30px;
-  @media(max-width: 480px) {
-    margin-top: 15px;
-  }
-`
 export const HoverText = styled.div`
    & > p::first-letter  {
      text-transform: uppercase;
