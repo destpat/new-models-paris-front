@@ -54,7 +54,7 @@ const HitsContainer = styled.div`
 const ButtonOpenMobileFilter = styled(Button)`
   position: fixed;
   border-radius: 0px;
-  min-height: 46px;
+  min-height: 45px;
   bottom: 0;
   right: 0;
   width: 100%;
