@@ -85,9 +85,9 @@ class Favorite extends Component {
 
             <Grid width={width} container item justify="center">
               <FavoriteUsersContainer item width={width} md={enquireMode ? 5 : 12} xs={12}>
-                <UsersGrid users={favoriteUsers}/>
+                <UsersGrid users={favoriteUsers} type="favorite"/>
               </FavoriteUsersContainer>
-              
+
               <Grid item md={6} style={{display: enquireMode ? 'block' : 'none'}}>
                 <EnquireTitle>
                   Envoyer une demande

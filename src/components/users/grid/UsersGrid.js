@@ -18,8 +18,12 @@ import LazyLoad from 'react-lazyload'
 const Container = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: ${props => props.type === 'favorite' ? 'start' : 'center'};
   width: 100%;
+  margin-top: 30px;
+  @media(max-width: 480px) {
+    margin-top: 15px;
+  }
 `
 
 const Profile = styled.div`
@@ -35,7 +39,7 @@ class UsersGrid extends Component {
   render() {
     const { size: { width }, users, type, favoriteUsers } = this.props
     return (
-      <Container>
+      <Container type={type}>
         {
           users.map((user, index) => {
             let { id, firstname, photos } = user
