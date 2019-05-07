@@ -88,13 +88,14 @@ export const TitleFavorite = styled.h1`
   margin-top: 20px;
   text-transform: uppercase;
   font-style: italic;
+  margin-bottom: 15px;
 `
 
 export const EnquireButton = styled(Button)`
   text-transform: none;
   position: absolute;
   right: 150px;
-  top: 20px;
+  top: 0px;
   font-size: 0.9em;
 `
 
