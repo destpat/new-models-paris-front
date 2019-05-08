@@ -4,7 +4,7 @@ export const getGutterWidth = (width, type) => {
   if (type === 'search') {
     return width <= 480 ? 10 : 10
   } else {
-    return width <= 500 ? 10 : 20
+    return width <= 480 ? 5 : 20
   }
 }
 
